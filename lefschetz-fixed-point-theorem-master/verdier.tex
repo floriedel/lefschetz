@@ -1,0 +1,335 @@
+
+Throughout this section, fix a category $\bcat$ which admits all finite limits
+and a symmetric monoidal functor
+\[ \D{-} \colon \Span{\bcat} \too \Prlst,\] where $\Span{\cC}$ denotes the 1-category
+of spans in $\bcat$ equipped with the cartesian monoidal structure.
+We write $\D{\pt}=\cD$ and note that $\D{\pt}$ refines to an object
+$\D{\pt} \in \CAlg(\Prlst)$ and $\D{-}$ naturally refines to a symmetric monoidal functor
+\[ \D{-} \colon \Span{\bcat} \too \Mod_{\cD}(\Prlst)\] for which we abusively use
+the same notation. We also make the standing assumption that $\cD$ is compactly
+generated and \tdef{rigid}, that is, an object of $\cD$ is compact if and only
+if it is dualizable.
+For a map $f\colon X\to Y$ in $\bcat$ we denote by
+\[ f^{\ast}\colon \D{Y} \too \D{X}\] the $\D{\pt}$-linear left adjoint obtained by
+applying $\D{-}$ to the span
+\[\begin{tikzcd}
+    & X \\
+    Y && X \arrow["f"', from=1-2, to=2-1] \arrow["\id", from=1-2, to=2-3].
+  \end{tikzcd}\] Conversely, we denote by
+\[ f_{!}\colon \D{X} \too \D{Y}\] the $\D{\pt}$-linear left adjoint obtained by
+applying $\D{-}$ to the span
+\[\begin{tikzcd}
+    & X \\
+    X && Y \arrow["\id"', from=1-2, to=2-1] \arrow["f", from=1-2, to=2-3],
+  \end{tikzcd}\] and denote the induced adjoints as
+\[ f^{\ast}\dashv f_{\ast} \qquad f_{!} \dashv f^{!}.\]
+\begin{defn}
+  For any $X\in \bcat$ and $\cE\in \D{X}$, we write
+  $\Gamma^{c}(X;\cE):=X_{!}\cE \in \D{\pt}$ and $\Gamma(X;\cE):= X_{\ast}\cE$. Moreover, for
+  any map $f\colon X\to Y$ in $\bcat$ we write $\omega_{X/Y}:= f^{!}\1_{\D{Y}}$ and call
+  this the \tdef{relative dualizing sheaf} of $f$. For $f=X\to \pt$, being the
+  terminal map, we also write $\omega_{X}:=X^{!}\1$ and call this the (absolute)
+  \tdef{dualizing sheaf} of $X$.
+\end{defn}
+
+\begin{rmk}
+  The category $\D{X}$ inherits a natural presentably symmetric monoidal
+  structure via the functors
+  \[ X^{\ast}\colon \D{\pt} \too \D{X}\]
+  \[ \Delta^{\ast}\colon \D{X \times X} \simeq \D{X} \otimes \D{X} \too \D{X}\]
+\end{rmk}
+Since $\D{X}$ is presentably monoidal, the functor
+\[ \cE \otimes - \colon \D{X} \too \D{X},\] admits a right adjoint, which we denote by
+\[ \Hom_{\D{X}}(\cE, -) \colon \D{X} \too \D{X}.\] Such that, for any $\cF\in \D{X}$ we
+have an equivalence
+\[ \Gamma(X;\Hom(\cE,\cF))=X_{\ast} \Hom_{\D{X}}(\cE, \cF) \simeq \map_{\D{X}}(\cE,\cF) \in \D{\pt}. \]
+
+\begin{prop}\label{prop: projection formula}
+  Let $f\colon X\to Y$ be a map in $\bcat$. Then for any $\cE, \cE^{\prime}\in \D{X}$ and
+  $\cF\in \D{Y}$, we have the following natural equivalences
+  \[ f_{!}(\cE \otimes f^{\ast}\cF) \simeq f_{!}(\cE)\otimes \cF\]
+  \[\Hom_{\D{Y}}(f_{!}\cE, \cF)\simeq f_{\ast}\Hom_{\D{X}}(\cE, f^{!}\cF) \]
+  \[ f^{!}\Hom_{\D{X}}(\cE, \cE^{\prime})\simeq \Hom_{\D{Y}}(f^{\ast}\cE, f^{!}\cE^{\prime} ).\]
+\end{prop}
+\begin{cons}
+  Since any $X\in \Span{\bcat}$ is canonically self-dual, we also obtain a natural
+  equivalence
+  \[ \VD \colon \D{X} \rar{\sim} \D{X}^{\vee}, \quad \cE \mapsto X_{!}(- \otimes \cE)\] associating to
+  each $\cE\in \D{X}$ the continuous functor given by the composite
+  \[ \D{X} \rar{\pi_{1}^{\ast}} \D{X} \otimes \D{X} \rar{ \id \otimes \cE } \D{X} \otimes \D{X} \rar{\Delta^{\ast}} \D{X} \rar{X_{!}} \D{X}.\]
+  This comes together with, for any map $f\colon X\to Y$, identifications
+  \[ f^{\ast} \simeq \VD\circ~(f_{!})^{\vee}\circ \VD \]
+  \[ f_{!} \simeq \VD \circ~(f^{\ast})^{\vee}\circ \VD.\] In particular, composing with the
+  internal dual in $\D{X}^{\vee}$, we obtain a functor
+  \[ \Dl\colon \D{X} \rar{\VD} \D{X}^{\vee} \rar{(\Hom_{\D{X}}(-,\1))^{\vee}} (\D{X}^{\vee})^{\op} \rar{ (\VD^{-1})^{\op}} \D{X}^{\op}.\]
+  Unwinding the definitions, we see that $\Dl$ is given by
+  \[ \Dl = \Hom_{\D{X}}(-, \omega_{X}) = \Hom_{\D{X}}(-, X^{!}\1). \]
+\end{cons}
+
+\begin{defn}
+  For any $X\in \bcat$, we say that $\cE\in \D{X}$ is \tdef{reflexive}, if the
+  canonical map $\Dl^{2}(\cE) \to \cE$ is an equivalence.
+\end{defn}
+
+\begin{lem}\label{lem:push pull dual}
+  Let $f\colon X\to Y$ be a map in $\bcat$ and $\cE\in \D{X}$ and $\cF\in \D{Y}$. Then, we
+  have natural equivalences
+  \[ \Dl(f_{!}\cE)\simeq f_{\ast}\Dl(\cE) \in \D{Y}\]
+  \[ f^{!}\Dl(\cF) \simeq \Dl(f^{\ast}\cF) \in \D{X}.\]
+\end{lem}
+\begin{proof}
+  Indeed, the first equivalence is given by the composite
+  \[ \Dl (f_{!}\cE) = \Hom(f_{!}\cE, \omega_{Y}) \simeq f_{\ast}\Hom(\cE, f^{!}\omega_{Y}) \simeq f_{\ast}\Hom(\cE, \omega_{X}) \simeq f_{\ast}\Dl(\cE), \]
+  while the second is obtained as
+  \[ f^{!}\Dl(\cF)= f^{!}\Hom(\cF, \omega_{Y}) \simeq \Hom(f^{\ast}\cE, \omega_{X}) =\Dl(f^{\ast}\cF),\]
+  proving our claim.
+\end{proof}
+
+Combining the two equivalences, we learn that for a sheaf $\cF\in \D{Y}$ we have
+equivalences
+\[ \Gamma(X; f^{!}(\Dl(\cF)))\simeq \Gamma(X;\Dl(f^{\ast}\cF))= X_{\ast} \Dl(f^{\ast}\cF) \simeq \Dl(X_{!}f^{\ast}\cF) \simeq \Gamma^{c}(X;f^{\ast}\cF)^{\vee}.\]
+In particular, for $Y=X$ and $f=\id$ we have:
+\[ (X_{!}\cE)^{\vee}=\Gamma^{c}(X;\cE)^{\vee} \simeq \Gamma(X;\Dl(\cE))=X_{\ast}\Dl(\cE).\] Put
+differently, this means that the functor $\D{X} \to \D{\pt}$ which takes $\cE$ to
+$\Gamma^{c}(X;\cE)^{\vee}$ is represented by the dualizing sheaf $\omega_{X}$. If $X$ is
+additionally assumed to be proper, i.e.~$X_{!}=X_{\ast}$, we may iterate this
+reasoning to see that
+\[ \Gamma(X;\Dl^{2}(\cE)) \simeq (\Gamma(X;\cE)^{\vee})^{\vee}.\]
+\begin{cor}\label{cor:coherent push}
+  For a proper map $f\colon X\to Y\in \bcat$, the functor $f_{!}$ preserves reflexive
+  sheaves.
+\end{cor}
+\begin{proof}
+  Since $f$ is proper, we have $f_{!}=f_{\pt}$ and so applying \cref{lem:push pull dual} twice
+  we get for any reflexive $\cE\in \D{X}$ equivalences
+  \[ \Dl^{2}(f_{!}\cE) \simeq \Dl(f_{!}\Dl(\cE)) \simeq f_{!}\Dl^{2}(\cE) \simeq f_{!}\cE.\]
+  Thus, $f_{!}\cE\in \D{Y}$ is by definition reflexive.
+\end{proof}
+
+Notice that, for any rfelexive $\cF,\cE\in \D{X}$ we have
+\[\Hom(\cF, \Dl(\cE)) \simeq \Hom(\cF \otimes \cE, \omega_{X})
+  \simeq \Dl(\cF \otimes \cE).\] Replacing $\cF$ with $\Dl(\cF)$, we learn that we can
+compute the internal mapping sheaf between reflexive sheaves sheaves as the tensor
+product
+\[ \Hom(\cF, \cE) \simeq \Hom(\cF, \Dl(\Dl(\cE))) \simeq \Dl(\cF \otimes \Dl(\cE)) \in \D{X}.\]
+
+
+\begin{lem}\label{lem:suave conditions}
+  Let $f\colon X\to Y$ be a proper map in $\bcat$ and let $\cE\in \D{X}$. The
+  following statements are equivalent:
+  \begin{enumerate}
+    \item The functor $f^{\ast}(-)\otimes \cE$ has a left adjoint
+    \item The functor $f_{!}(\cE \otimes -)$ has a continuous right adjoint
+    \item The functor $\Hom(\cE, f^{!}(-))$ has a right adjoint
+  \end{enumerate}
+  Moreover, in this case we have $\Dl^{2}(\cE)\simeq \cE$ and the adjunctions are
+  given by
+  \[ f_{!}(\Dl(\cE)\otimes - ) \dashv f^{\ast}(-)\otimes\cE \simeq \Hom(\Dl(\cE), f^{!}(-))\] and
+  \[ \Hom(\cE, f^{!}(-)) \simeq f^{\ast}(-)\otimes \Dl(\cE) \dashv f_{!}(\Dl(\cE)^{\vee} \otimes - )\]
+\end{lem}
+\begin{proof}
+  Note that $f_{!}(\cE\otimes -)$ always admits a right adjoint given by
+  $\Hom(\cE, f^{!}(-))$, so conditions (2) and (3) are clearly equivalent.
+\end{proof}
+
+\begin{defn}
+  Let $f\colon X\to Y$ be a map in $\bcat$. If $\cE\in \D{X}$ satisfies any of the
+  equivalent conditions of \cref{lem:suave conditions}, we call $\cE$ \tdef{$f$-suave} or just
+  \tdef{suave} if $Y=\pt$ and $f$ is the terminal map. We write $\Ds{X}$ for the
+  full subcategory of $\D{X}$ spanned by the suave sheaves on $X$. Moreover, we
+  call $X\in \bcat$ suave if the unit $\1_{X}\in \D{X}$ is suave and \tdef{smooth}
+  if additionally $\omega_{X}=X^{!}\1$ is dualizable.
+\end{defn}
+
+In particular, suaveness ensures that the cohomology $\Gamma(X)$ is dualizable in $\D{\pt}$.
+
+
+\begin{prop}\label{prop: sections dualizable}
+  Let $X\in \bcat$ be proper and $\cE\in \D{X}$ be suave. If $\1_{\cD}\in \cD^{\omega}$,
+  the global sections $\Gamma(X;\cE)$ are a dualizable object of $\D{\pt}$.
+\end{prop}
+\begin{proof}
+  Since $X$ is proper, the functor $X^{\ast}$ is strongly continuous and hence
+  preserves compact objects, hence the unit $X^{\ast}\1=\1_{X}\in \D{X}$ is
+  compact. Moreover, since $\cE$ is suave, the functor $X_{!}(-\otimes \cE)$
+  is strongly continuous and thus $\Gamma(X;\cE)=X_{!}(\1_{X}\otimes \cE)\in \D{X}$
+  is compact and hence dualizable, since $\D{\pt}$ is locally rigid..
+\end{proof}
+
+For $X\in \bcat$, denote by $\pi_{i}X\times X\to X$ the canonical projections and by
+$\Delta\colon X \to X\times X$ the diagonal. The \tdef{external tensor product}
+of two sheaves $\cE,\cF\in \D{X}$ is defined to be
+\[ \cE\boxtimes \cF := \pi_{1}^{\ast}\cE \otimes \pi_{2}^{\ast}\cF \in \D{X\times X}.\]
+Note that, we have a natural equivalence
+\[ \Delta^{\ast}(\cE\boxtimes \cF)\simeq \cE\otimes \cF\in \D{X}.\]
+
+\begin{prop}\label{prop: external hom}
+Let $\cE,\cF\in \D{X}$ be suave and denote by $\pi_{i}\colon X\times X \to X$ the two projections.
+Then, we have a natural equivalence
+\[ \pi_{1}^{\ast}\Dl(\cE)\otimes \pi_{2}^{\ast}\cF \rar{\sim} \Hom(\pi_{1}^{\ast}\cE, \pi_{2}^{!}\cF)\in \D{X\times X}\]
+\end{prop}
+
+\begin{cor}
+  If $\cE,\cF\in \D{X}$ are suave, we have a natural equivalence
+  \[ \Delta^{!}(\Dl(\cE)\boxtimes \cF)\simeq\Hom(\cE, \cF) \in \D{X} .\]
+\end{cor}
+\begin{proof}
+  Follows by applying $\Delta^{!}$ to the equivalence of \cref{prop: external hom} and
+  observing that we have
+  \[ \Delta^{!}\Hom(\pi_{1}^{\ast}\cE, \pi_{2}^{!}\cF)
+    \simeq \Hom(\Delta^{\ast}\pi_{!}^{\ast}\cE, \Delta^{!}\pi_{2}^{!}\cF)
+  \simeq \Hom(\cE, \cF)\]
+by \cref{prop: projection formula} and the fact that $\pi_{i}\circ \Delta=\id$.
+\end{proof}
+% \end{prop}
+% \begin{proof}
+%   The ``if'' direction is clear by Lemma~\ref{lem:suave conditions}. For the only if direction first
+%   note that $\cE$ is suave if and only if $\Dl(\cE)$ is suave. Moreover, if
+%   the functor $X^{\ast}(-)\otimes \Dl(\cE)$ admits a left adjoint, it is necessarily
+%   given by $X_{!}(\Dl^{2}(\cE) \otimes -)$. However, the latter functor always
+%   admits a right adjoint, which is given by $\Hom(\cE,X^{!}(-))$. Since $X$ is
+%   suave we have $X^{!}(-)\simeq X^{\ast}(-)\otimes \omega_{X}$ and hence $\Dl(\cE)$ is suave if
+%   and only if we have an equivalence
+%   \[ X^{\ast}(-)\otimes \Dl(\cE) \simeq \Hom(\cE,X^{\ast}(-)\otimes \omega_{X}) \] Since $X$ was assumed
+%   to be smooth i.e.~$\omega_{X}$ is dualizable, we obtain an equivalences
+%   \[ \omega_{X}\otimes \cE^{\vee}\simeq \omega_{X} \otimes \Hom(\cE, \1_{X}) \simeq \Hom(\cE, \omega_{X}) = \Dl(\cE)\]
+%   as claimed.
+% \end{proof}
+
+
+% \begin{obs}\label{obs: diagonal comparison}
+%   Let $X\in \bcat$ be separated, then there is a canonical comparison map
+%   $\delta\colon \Delta^{!}\to \Delta^{\ast}$ given by the composite
+%   \[ \delta\colon \Delta^{!}\simeq \Delta^{\ast}\Delta_{\ast}\Delta^{!} \simeq \Delta^{\ast}\Delta_{!}\Delta^{!}\too \Delta^{\ast},\] where the last map
+%   is the unit of the adjunction $\Delta_{!}\dashv \Delta^{!}$.
+% \end{obs}
+
+% \begin{prop}
+%   Let $X\in \bcat$ be separated and suave, denote the diagonal by $\Delta\colon X\to X\times X$ and
+%   the two projections by $\pi_{i}\colon X\times X \to X$. For any $\cE,\cF\in \Ds{X}$, the
+%   external tensor product
+%   \[ \cE \boxtimes \cF:= \pi_{1}^{\ast}\cE \otimes \pi_{2}^{\ast} \cF \in \D{X\times X}\] is suave with Verdier
+%   dual given by
+%   \[ \Dl(\cE \boxtimes \cF)\simeq \Dl(\cE)\boxtimes \Dl(\cF)\in \D{X\times X}.\] In particular, we can
+%   compute the mapping space as the exceptional inverse image
+%   \[ \Hom(\cF, \cE) \simeq \Delta^{!}(\cE \boxtimes \Dl(\cF)) \in \D{X}.\]
+% \end{prop}
+
+% \begin{defn}\label{def: character}
+%   Let $X$ be separated and suave. For any $\cE\in \Ds{X}$ we define the
+%   \tdef{character} of $\cE$ as the composite map
+%   \[ \chi^{\cE}\colon\1_{X}\rar{\id} \Hom(\cE, \cE)\simeq \Delta^{!}(\cE \boxtimes \Dl(\cE)) \rar{\delta} \Delta^{\ast}(\cE \boxtimes \Dl(\cE))\simeq \cE \otimes \Dl(\cE) \rar{\ev} \omega_{X}.\]
+%   Equivalently, under the adjunction $X^{\ast}\dashv X_{\ast}$, the map $\chi^{\cE}$ defines
+%   an element in the global sections $\chi^{\cE}\colon \1 \to \Gamma(X;\omega_{X})$, i.e.~a class in
+%   the homology of $X$.
+% \end{defn}
+% \begin{prop}
+%   For $X\in \bcat$ smooth with proper diagonal, the category $\Dc{X}$ inherits
+%   the structure of a small, idempotent complete, stable, symmetric monoidal
+%   category from $\D{X}$.
+% \end{prop}
+% \begin{proof}
+%   Since $\Dl=\Hom_{\D{X}}(-,\omega_{X})$, the functor $\Dl^{2}$ commutes with
+%   finite limits and colimits. Moreover, since any functor preserves retracts,
+%   the first claim follows. Now, for any $\cE \in \D{X}^{\dual}$ we have
+%   equivalences
+%   \[ \Dl^{2}\cE \simeq \Dl(\Hom_{\D{X}}(\cE, \omega_{X})) \simeq \Hom_{\D{X}}(\omega_{X}\otimes \cE^{\vee},\omega_{X}) \simeq \omega_{X} \otimes (\omega_{X} \otimes \cE^{\vee})^{\vee} \simeq \cE,\]
+%   and thus $\D{X}^{\dual}\subseteq \Dc{X}$, as claimed. Smallness should follows since
+%   $\Dl$ induces an equivalence $\Dc{X} \simeq \Dc{X}^{\op}$ and the final claim is
+%   clear since $\D{X}$ is stable and idempotent complete.
+% \end{proof}
+% \Fnote{The next bit is wrong cause of monoidality}
+
+% \begin{cor}
+%   Let $X\in \bcat$ be smooth and proper and let $\cE,\cF\in \D{X}$ be coherent.
+%   Then $X_{!}\cE= \Gamma^{c}(X;\cE)$ and $\map(\cE ,\cF)$ are dualizable objects in
+%   $\D{\pt}$.
+% \end{cor}
+% \begin{proof}
+%   Indeed, we have that
+%   \[ \map(\cE,\cF) = X_{!}\Hom(\cE,\cF)\simeq X_{!}\Dl((\cF\otimes \Dl(\cE)) = \Gamma^{c}(X;\Dl(\cF \otimes \Dl(\cE))),\]
+%   and hence both claims follow from the previous lemma, using that
+%   $\Dc{\pt}=\D{\pt}^{\dual}$ holds by definition.
+% \end{proof}
+
+% Let $\Cat^{\perf}_{\D{\pt}^{\dual}}$ denote the category of small, stable,
+% idempotent complete, $\D{\pt}^{\dual}$-linear categories with maps given by
+% exact, $\D{\pt}$-linear functors.
+
+% \begin{prop}
+%   For any smooth and proper $X\in \bcat$, the functor
+%   \[ \Dc{X}^{\op} \too \Fun^{\rm{ex}}_{\Dc{\pt}}(\Dc{X},\Dc{\pt}), \quad \cE \mapsto X_{!}(\Hom(\cE, -)) \simeq X_{!}( - \otimes \Dl(\cE))\]
+%   is an equivalence. Moreover, the category $\Dc{X}$ is dualizable in
+%   $\Cat^{\perf}_{\D{\pt}^{\dual}}$ with dual $\Dc{X}^{\vee} = \Dc{X}^{\op}$ and
+%   evaluation given by the enriched Yoneda functor
+%   \[ X_{!}\Hom(-,-)\colon \Dc{X} \times \Dc{X}^{\op} \too \D{\pt}^{\dual}\] and
+%   coevaluation given by the functor
+%   \[ (X^{\ast}, \Dl(X^{\ast}))\colon \D{\pt}^{\dual} \too \Dc{X}\times \Dc{X}^{\op}.\]
+% \end{prop}
+
+% This allows us to fix the defect that the pullback functor $f^{\ast}$ has no
+% reason to preserve coherent sheaves.
+% \begin{cons}
+%   Let $f\colon X\to Y \in \bcat$ be a proper map of proper, smooth spaces. We define
+%   the \tdef{coherent pullback} along $f$ as the functor obtained by the
+%   composition
+%   \[ f^{\flat}\colon\Dc{Y} \rar{\sim} \Dc{Y}^{\vee} \rar{f_{!}^{\vee}} \Dc{X}^{\vee} \rar{\sim} \Dc{X}.\]
+% \end{cons}
+
+% \begin{defn}
+%   Let $X\in \bcat$ be smooth and proper. We write $\IcD{X}$ for the Ind-category
+%   of $\Dc{X}$ and call this the category of \tdef{ind-coherent} sheaves on
+%   $X$.
+% \end{defn}
+
+% Write $\bcat^{sp}$ for the subcategory of $\bcat$ spanned by the smooth and
+% proper objects with proper maps between them.
+
+% \begin{prop}
+%   For $X\in \bcat^{sp}$, the category $\IcD{X}$ is stable, presentable,
+%   compactly generated and inherits the structure of a presentably symmetric
+%   monoidal $\D{\pt}$-linear category. Moreover, $\IcD{X}$ is fully dualizable
+%   and canonically self-dual.
+% \end{prop}
+
+% For $f\colon X\to Y \in \bcat^{sp}$, the functors $f^{\flat}$ and $f_{\ast}$ induce continuous
+% functors on Ind-categories
+% \[ f_{!}\colon \IcD{X} \too \IcD{Y} \qquad f^{\flat} \colon \IcD{Y} \too \IcD{X}.\]
+% \begin{thm}
+%   The functors above refine to a symmetric monoidal functor
+%   \[ \IcD{-}\colon \Span{\bcat^{sp}} \too \Prlst\] i.e.~a six functor formalism.
+% \end{thm}
+% \subsection{Ramification}
+
+% Let $X\in \bcat$ be a space. We want to measure ``singularities'' of $X$.
+
+% \begin{defn}
+% For a sheaf $\cE\in \D{X}$ we define its \tdef{vanishing set} to be the set of points $V(\cE)\subseteq X$
+% at which the stalk $x^{\ast} \cE$ vanishes. The \tdef{support} of $\cE$ is define to be
+% $S(\cE):= X\setminus V(\cE)$.
+% \end{defn}
+
+% \begin{defn}
+%   We define a sheaf $\cR_{X} \in \D{X}$ called the \tdef{ramification sheaf} of $X$
+%   as the fiber of the evaluation map
+%   \[ \cR_{X}:= \fib \left( \omega_{X} \otimes \omega_{X}^{\vee} \too \1_{X} \right)\]
+%   We say that a point $x\in X$ is \tdef{singular} if $x\in S(\cR_{X})$ and \tdef{regular}
+%   else. We call $X$ regular if all of its points are regular.
+% \end{defn}
+
+% Note that $X$ is regular if and only if $\omega_{X}$ is \textit{invertible}.
+
+% \begin{ex}
+%   Let $X$ be a graph and let $x\in X$ be a point. Then the support of $\cR_{X}$ is given by those
+%   vertices which have more than 2 incoming edges.
+% \end{ex}
+
+% \begin{ex}
+%   Let $M$ be a manifold of dimension $n$. Then $\omega_{X}$ is locally isomorphic to the constant
+%   sheaf $\S[n]$ and hence invertible, so $M$ is regular. In fact, being regular is equivalent
+%   to being a homology manifold.
+% \end{ex}
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

@@ -1,0 +1,250 @@
+% Project specific macros
+%
+\newcommand{\Fnote}[1]{{\bf FLORIAN:  #1}}  % Person specific notes
+\newcommand{\Onote}[1]{{\bf OSCAR:  #1}}
+
+\newcommand{\Top}{\mathrm{Top}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\can}{\mathrm{can}}
+\newcommand{\all}{\mathrm{all}}
+\newcommand{\coShat}{\check{\mathfrak{D}}}
+\newcommand{\Prdualf}{\mathcal{P}\mathrm{r}_{\mathrm{st}}^{\dual}}
+\newcommand{\Prdual}{\Pr_{\mathrm{st}}^{\dual}}
+\newcommand{\ass}{\mathfrak{a}}
+\newcommand{\loc}{\mathrm{loc}}
+\newcommand{\LocSys}[1]{\Sp^{\abs{#1}}}
+
+\newcommand{\tset}{A}
+
+\newcommand{\integral}[2]{\int_{#2}{#1}}
+\newcommand{\Prlstf}{\mathcal{P}\mathrm{r}^{\mathrm{L}}_{\mathrm{st}} }
+
+
+%% Old stuff below
+
+\newcommand{\dual}{\lozenge}  % dualizable objects
+\newcommand{\evalu}{\mathrm{ev}}
+\newcommand{\tr}[2]{\mathrm{tr}_{#2} (#1)} % Trace of (1:Map) in (2:category)
+\renewcommand{\dim}[2]{\mathrm{dim}_{#2} (#1)} % dimension  of (1:Object) in (2:cat)
+\newcommand{\Trc}{\mathrm{Tr}^{\otimes}} % The 2-categorical trace functor
+\newcommand{\TrcL}{\mathrm{Tr}^{\mathrm{L}}} % 2-cat trace for Prl
+\newcommand{\Endtrl}{\mathrm{End}^{\mathrm{tr}}} % Cat of traceable endomorphisms
+
+\newcommand{\bmH}{H^{\mathrm{BM}}} % Borel--Moore homology
+\NewDocumentCommand{\Sections}{ m o }{%
+  \IfNoValueTF{#2}
+    {\Gamma (#1)}
+    {H^{#2} (#1)}%
+  }
+
+  \NewDocumentCommand{\cptSections}{ m o }{%
+    \IfNoValueTF{#2}
+    {\Gamma_c (#1)}
+    {H^{#2}_c (#1)}%
+  }
+
+
+  \newcommand{\Span}[1]{\operatorname{\mathrm{Span}}({#1})} % Category of Spans in (1:cat)
+  \newcommand{\sSpan}[1]{\operatorname{\mathcal S\mathrm{pan}}({#1})} % Category of Spans in (2:cat)
+\newcommand{\bcat}{\mathfrak{B}} % Base category in the 6ff
+
+\newcommand{\D}[1]{\Sheaves({#1})} % Sheaves on (1:Space)
+\newcommand{\fctD}[1]{\Sheaves_!^*({#1})} % Sheaves 6FF applied to (1:Span of spaces)
+\newcommand{\Ds}[1]{\Sheaves({#1})} % Suave sheaves on (1:Space)
+ % Local Systems
+
+\newcommand{\ch}[2]{\lambda^{#1}_{#2}} % Lefschetz trace
+\newcommand{\ind}[2]{\mathrm{ind}_{#2}(#1)} % index 
+
+\newcommand{\rig}{\mathrm{rig}} % rigid cats
+\newcommand{\lrig}{\mathrm{lrig}} % locally rigid cats
+
+\newcommand{\ani}[1]{\abs{#1}} % shape of a condensed space
+\newcommand{\as}{\partial} % The comparison map from a condensed space to the shape
+\newcommand{\pPrl}[1]{\Pr^{\rm{L}}_{#1}} % Modules in Prl over (1: category)
+\newcommand{\freeondual}{\Sp\lbrack T,T^\vee\rbrack}
+
+
+\DeclareMathOperator{\Sheaves}{\mathcal{D}}
+\DeclareMathOperator{\fundgroupoid}{\Pi_\infty}
+\DeclareMathOperator{\HH}{HH}
+\DeclareMathOperator{\THH}{THH}
+\DeclareMathOperator{\lcH}{\mathcal{H}} % Locally compact Hausdorff spaces
+\DeclareMathOperator{\VD}{\mathbb{V}} % Categorical Verdier dual
+\DeclareMathOperator{\Dl}{\mathbb{D}} % Cartier dual in the sheaf cat
+\DeclareMathOperator{\Hom}{\mathcal{H}om} % Internal mapping object
+\DeclareMathOperator{\Homd}{\mathcal{H}om^{\dual}} % Internal mapping object between dualizable categories
+\DeclareMathOperator{\FAlg}{FAlg} % Frobenius algebras 
+\DeclareMathOperator{\CondSpc}{\cl{S}^{\rm{top}}} % Condensed spaces
+
+% General macros
+\DeclareMathOperator{\map}{map}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\fib}{fib}
+\DeclareMathOperator{\cofib}{cofib}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Nat}{Nat}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\et}{\acute{e}t}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Spc}{\mathcal{S}}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\Prl}{Pr^L}
+\DeclareMathOperator{\Prlst}{Pr^L_{st}}
+\DeclareMathOperator{\Prr}{Pr^{R}}
+\DeclareMathOperator{\Prrst}{Pr^{R}_{st}}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\grVect}{grVect}
+\DeclareMathOperator{\coMod}{coMod}
+\DeclareMathOperator{\Cat}{Cat}
+\DeclareMathOperator{\CAlg}{CAlg}
+\DeclareMathOperator{\QCoh}{QCoh}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Pro}{Pro}
+\DeclareMathOperator{\Ql}{\mathbb{Q}_{\ell}}
+\DeclareMathOperator{\Qp}{\mathbb{Q}_{p}}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\coev}{coev}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\hShv}{\hat{Shv}}
+\DeclareMathOperator{\Shv}{Shv}
+
+\DeclareMathOperator*{\colim}{\mathop{\rm{colim}}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+\newcommand{\Yo}{\text{\usefont{U}{min}{m}{n}\symbol{'110}}}
+
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\DD}{\bb{D}}
+\newcommand{\EE}{\bb{E}}
+\newcommand{\E}{\bb{E}}
+\newcommand{\CC}{\bb{C}}
+\newcommand{\RR}{\bb{R}}
+\newcommand{\FF}{\bb{F}}
+\newcommand{\F}{\bb{F}}
+\newcommand{\bF}{\bar{\F}}
+\newcommand{\GG}{\bb{G}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+
+\renewcommand{\SS}{\mathbb{S}}
+\renewcommand{\AA}{\mathbb{A}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+
+\newcommand{\fr}{\mathfrak}
+\newcommand{\cl}{\mathcal}
+\newcommand{\scr}{\mathscr}
+\newcommand{\bb}{\mathbb}
+\renewcommand{\rm}{\mathrm}
+
+\newcommand{\too}{\longrightarrow}
+\newcommand{\rar}{\xrightarrow}
+\newcommand{\lar}{\xleftarrow}
+\newcommand{\rari}{\xhookrightarrow}
+\newcommand{\empt}{\varnothing}
+\newcommand{\p}{\prime}
+\newcommand{\ul}{\underline}
+\newcommand{\sub}{\subseteq}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\blank}{{-}}
+\newcommand{\iso}{\cong}
+\newcommand{\pt}{\mathrm{pt}} %previously \ast, but * is overloaded
+\newcommand{\op}{{\mathrm{op}}}
+\newcommand{\ab}{^{\mathrm{ab}}}
+\newcommand{\hyp}{\mathrm{hyp}}
+\newcommand{\1}{\mathds{1}}
+
+\renewcommand{\hat}{\widehat}
+
+\newcommand{\tdef}[1]{\textit{\textcolor{DefColor}{#1}}}  % text definition
+\newcommand{\mdef}[1]{\textcolor{DefColor}{#1}} % math mode definition
+
+
+\newcommand\noloc{%
+  \nobreak
+  \mspace{6mu plus 1mu}
+  {:}
+  \nonscript\mkern-\thinmuskip
+  \mathpunct{}
+  \mspace{2mu}
+}
+\newcommand{\fcolim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font colim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\fcolim}{%
+  \mathop{\mathpalette\fcolim@{\rightarrowfill@\textstyle}}\nmlimits@
+}
+\newcommand{\flim@}[2]{%
+  \vtop{\m@th\ialign{##\cr
+    \hfil$#1\operator@font lim$\hfil\cr
+    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
+    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
+}
+\newcommand{\flim}{%
+  \mathop{\mathpalette\flim@{\leftarrowfill@\textstyle}}\nmlimits@
+}
+\usepackage{pict2e}
+
+\makeatletter
+\newcommand{\cwedge}{\mathbin{\mathpalette\do@cwedge\relax}}
+\newcommand{\do@cwedge}[2]{%
+    \sbox\z@{$#1\m@th\wedge$}%
+    \dimen@=\ht\z@
+    \unitlength=.005\wd\z@
+    \count@=\dimen@ 
+    \divide\count@\unitlength
+    \begin{picture}(200,\count@)
+    \roundjoin
+    \polygon(25,0)(100,\count@)(175,0)
+    \end{picture}%
+}
+\newcommand{\cvee}{\mathbin{\mathpalette\do@cvee\relax}}
+\newcommand{\do@cvee}[2]{%
+    \sbox\z@{$#1\m@th\vee$}%
+    \dimen@=\ht\z@
+    \unitlength=.005\wd\z@
+    \count@=\dimen@ 
+    \divide\count@\unitlength
+    \begin{picture}(200,\count@)
+    \roundjoin
+    \polygon(25,\count@)(100,0)(175,\count@)
+    \end{picture}%
+}
+\makeatother

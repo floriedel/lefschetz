@@ -1,0 +1,49 @@
+#+TITLE: Fixed point theory revisited 
+#+BIBLIOGRAPHY: sources.bib
+#+LATEX_HEADER: \newcommand{\tset}{A}
+#+LATEX_HEADER: \newcommand{\ZZ}{\mathbb Z}
+#+TODO: SOLVE(s@/!) WRITE(w@/!) CHECK(c@/!) POLISH(p@/!) | DONE(d@/!)
+
+* Important tasks
+** CHECK Review "Recollection on six-functor formalisms"
+:LOGBOOK:
+- State "CHECK"      from              [2026-04-30 Thu 13:05] \\
+  wrote this very quickly, may contain mistakes
+:END:
+** DONE 2-categorical enhancement of 6FF
+CLOSED: [2026-04-30 Thu 18:07]
+:LOGBOOK:
+- State "DONE"       from "WRITE"      [2026-04-30 Thu 18:07] \\
+  wrote short description of Cnossen--Lenz--Linskens result
+- State "WRITE"      from "SOLVE"      [2026-04-30 Thu 17:30] \\
+  found reference
+- State "SOLVE"      from              [2026-04-30 Thu 13:00] \\
+  probably somewhere in Mann, Liu--Zheng, or Scholze
+:END:
+
+Reference for 2-categorical enhancement: https://arxiv.org/pdf/2505.19192 (note in particular that their construction forgets down to the Liu--Zheng construction).
+
+In order to get the desired naturality statements (which we use to identify e.g. the map $\mathbb S\lbrack L^fK\rbrack\to\mathbb S$), need 2-categorical enhancement of six-functor formalisms. These naturality statements should go in the subsection about the categorical Lefschetz fixed point theorem.
+
+** POLISH Reorganize article outline
+:LOGBOOK:
+- State "POLISH"     from "CHECK"      [2026-04-30 Thu 13:04] \\
+  as discussed over WhatsApp
+:END:
+** WRITE Categorical Lefschetz fixed point theorem                   :oscar:
+:LOGBOOK:
+- State "WRITE"      from              [2026-04-30 Thu 12:58] \\
+  started writing up lefschetz fixed pt theorem for separated objects in general sym mon 6FF
+:END:
+* Unimportant tasks
+** SOLVE Comparison of sheaf homology and ordinary homology
+*** Notes
+The zeroth sheaf homology is probably not equal to the zeroth singular homology, causing the Lefschetz trace formula we get to be different from the classical one. Even for sheaf cohomology this fails for arbitrary spaces, e.g. for the Cantor set [fn:1]. That's not so good, since apparently the Cantor set is the generic fixed point set of a self-homeomorphism, see [cite:@Craciun2013]. We should adjust the formula in Theorem 1.1 accordingly.
+
+That is, for a general $f$ our Lefschetz--Nielsen theorem will involve $\Gamma_c( \tset^f,\omega_{\tset^f})$. Previously I think people have just assumed that $f$ is sufficiently nice for the fixed point set to be again a compact ENR, or typically I guess a finite set. We can probably prove something much more general.
+
+It would be good if we at least had some comparison like $\mathrm{rk}\pi_0\left(\Gamma_c(\tset^f,\omega_{\tset^f})\otimes\ZZ\right)\leq\mathrm{rk}H_0^{\rm sing}(\tset^f;\ZZ)$ -- for instance, something like this is true for sheaf cohomology, where one always has a surjection in degree zero in one direction. An analogous result for sheaf homology might follow from the work in Section 12 of [cite:@Bredon1997], see also [cite:@Bredon1968; @Borel_Moore1960].
+
+* Footnotes
+
+[fn:1] This is the example given on Wikipedia, see [[https://en.wikipedia.org/wiki/Sheaf_cohomology][here]].

@@ -1,0 +1,179 @@
+We now prove the thing wanted to.
+
+\subsection{Topological Lefschetz}
+
+Let $\bcat$ be the category of locally compact Hausdorff topological sets. Then the assignment
+$X\mapsto \D{X}=\Shv(X;\Sp)$ defines a symmetric monoidal six functor formalism, \todo{Cite Marco}
+which we use throughout.
+
+\begin{lem}
+  A map $f\colon X\to Y \in \bcat$ of topological sets is $\cD$-proper in the sense of~\ref{defn: adjectives} if
+  and only if preimages of compact sets are compact. Moreover, if $X$ and $Y$ are compact,
+  then $f$ is automatically proper.
+\end{lem}
+
+\begin{prop}
+  For any $X\in \bcat$, if the projection $X\to \pt$ is a \textit{shape submersion} in the
+  sense of \todo{cite} then $X$ is $\cD$-suave in the sense of~\ref{defn: adjectives}.
+\end{prop}
+
+\begin{cor}
+If $X\in \bcat$ is a Euclidean neighborhood retract (ENR), e.g.~a compact CW-complex, then $X$
+is $\cD$-suave.
+\end{cor}
+
+\begin{lem}
+  Let $X\in \bcat$ be a compact topological manifold and let $f\colon X\to X$ be a proper
+  and suave self map. Then the index of $f$ as defined in \cref{defn: index}
+  agrees with the intersection number of $\Delta(X)$ and $\Gamma^{f}(X)$ in $X\times X$
+  i.e.~we have
+  \[ \ind{f}{}= \sharp(\Delta(X)\cap \Gamma^{f}(X))\]
+\end{lem}
+\begin{proof}
+Follows from K-S \todo{cite}.
+\end{proof}
+
+\begin{thm}
+  Let $X$ be a compact ENR and $f\colon X\to X$ be a self map such that the
+  set of fixed points $X^{f}$ is finite and discrete. Then, we have an equality:
+  \[ \sum_{x\in X^{f}} \ind{f}{x}= \tr{\Gamma(f)\colon \Gamma(X)\to \Gamma(X)}{\Sp}\]
+\end{thm}
+
+
+\subsection{Homotopical Lefschetz}
+
+Now let $\bcat$ be the category of spaces $\Spc$. We consider the six functor formalism
+given by sending $X\in \Spc$ to the category of $X$-parametrized spectra $\Sp^{X}$.
+
+\begin{prop}
+  Any map of spaces $f\colon X\to Y$ is $\cD$-\'etale. Moreover, if $f$ has compact fibers, then
+  it is $\cD$-prim. In particular, any space is $\cD$-\'etale and it is $\cD$-prim
+  if it is compact.
+\end{prop}
+
+\begin{prop}
+  Let $f\colon X \to X$ be self map of compact space. Then, we have a natural equivalence
+  \[ \tr{\S[f]\colon \S[X]\to \S[X]}{\Sp} \simeq \int_{\cL^{f} X} \xi^{f}\]
+  where $\xi^{f}\colon \S\to \S[\cL^{f} X]$ is the $f$-equivariant co-character of $\S_{X}\in \Sp^{X}$.
+\end{prop}
+
+\begin{prop}
+Suppose $f\colon X\to X$ is a smooth self map of a compact space. Then the
+\end{prop}
+
+% \subsection{Assembly}
+
+% Let $X$ be a compact $CW$-complex considered as a static condensed space and let $f\colon X\to X$
+% be self-map. Then $X$ has an associated discrete space $\ani{X}\in \CondSpc$, together
+% with a comparison map
+% \[ \as \colon X\too \ani{X}\in \CondSpc.\]
+% Moreover, $f$ induces a map $\abs{f}\colon \abs{X}\to \abs{X}$ of the associated spaces,
+% fitting into a diagram
+% \[\begin{tikzcd}
+% 	X & X \\
+% 	{\abs{X}} & {\abs{X}}
+% 	\arrow["f", from=1-1, to=1-2]
+% 	\arrow["\as",from=1-1, to=2-1]
+% 	\arrow["\as",from=1-2, to=2-2]
+% 	\arrow["{\abs{f}}", from=2-1, to=2-2].
+% \end{tikzcd}\]
+
+% \begin{defn}
+%   We say that $X\in \CondSpc$ is homotopical if the shape of $X$ is pro-constant and denote the
+%   associated discrete space by $\ani{X}\in \CondSpc$.
+% \end{defn}
+
+% \begin{prop}
+%   Let $X\in \CondSpc$ be homotopical. If $X$ is suave, then the map $\as\colon X\to \ani{X}$
+%   is suave.
+% \end{prop}
+
+% \begin{lem}
+%   For any locally compact Hausdorff space $X$, the functor
+%   \[\as^{\ast}\colon \D{\abs{X}}\too \D{X}\]
+%   is fully faithful with essential image given by the locally constant sheaves on $X$.
+% \end{lem}
+
+% \begin{cons}
+%   Let $X\in \CondSpc$ be homotopical, suave an prim. Then the comparison map $\as \colon X \to \ani{X}$ is suave as well, and hence $\as^{\ast}$ admits a left adjoint $\as_{\sharp}$.
+%   Consider the following composite in $\Prlst$:
+%   \[ \Sp \rar{X^{\ast}} \D{X} \rar{\as_{\sharp}} \D{\ani{X}} \rar{\ani{X}_{!}} \Sp.\]
+%   Since $X$ is prime, $X^{\ast}$ is strongly continuous and $\ani{X}$ is \'etale \todo{Really?}.
+%   Hence, all functors are strongly continuous and we may apply $\Trc$ to obtain a
+%   commutative diagram
+%   \[\begin{tikzcd}
+% 	{\S(X)} && {\S[\cL \ani{X}]} \\
+% 	\S && \S
+% 	\arrow["{\Trc(\as_{\sharp})}", from=1-1, to=1-3]
+% 	\arrow[from=1-3, to=2-3]
+% 	\arrow[from=2-1, to=1-1]
+% 	\arrow["{\Trc(\ani{X}_!(\as_\sharp\S_X))}", from=2-1, to=2-3].
+% \end{tikzcd}\]
+% Note that, since $\ani{X}$ is \'etale we have
+% \(\abs{X}_{!}\as_{\sharp}\simeq X_{\sharp}\simeq X_{!}(-\otimes \omega_{X})\). In particular, we learn that we get a factorization
+% \[\begin{tikzcd}
+% 	& {\S[\cL\ani{X}]} \\
+% 	{\S(X)} & \S
+% 	\arrow[from=1-2, to=2-2]
+% 	\arrow["{\Trc(\as_\sharp)}", from=2-1, to=1-2]
+% 	\arrow["T"', from=2-1, to=2-2]
+% \end{tikzcd}\]
+% \end{cons}
+
+
+% Now $X$ is suave and $f$ is proper. Moreover, $\abs{X}$ is compact, hence prim and \'etale
+% and $\abs{f}$ is \'etale. Thus, applying our constructions, we get both a ``topological'' character
+% \[ \chi_{f}\colon \S \too \Gamma^{c}(X^{f},\omega_{X})\]
+% and a ``homotopical'' character map
+% \[ \xi^{f}\colon \S \too \S[\cL^{f}\abs{X}],\]
+% where we have written $\abs{X}^{f}=\cL^{f}\abs{X}$ for emphasis.
+% Post-composing with the projection maps, we learn that
+% \[ \int_{X^{f}}\chi_{f}=  \tr{\Gamma^{c}(f;\omega_{X})}{\Sp} \simeq \tr{\S[f]}{\Sp}
+%   \simeq \int_{\abs{X}^{f}}\xi^{f}\in \S.\]
+
+% \begin{prop}
+%   The canonical comparison map $c\colon X\to\ani{X}$ induces a commutative diagram
+% \[\begin{tikzcd}
+% 	{\S[\cL^f\ani{X}]} & {\Gamma^c(X^{f};\omega_X)} \\
+% 	\S & \S
+% 	\arrow[from=1-1, to=1-2]
+% 	\arrow["{\xi^f}"', from=2-1, to=1-1]
+% 	\arrow[from=2-1, to=2-2]
+% 	\arrow["{\chi_f}", from=2-2, to=1-2]
+% \end{tikzcd}\]
+% \end{prop}
+\section{Actions of cyclic groups}
+Let $p$ be a prime and write $C_{p}$ for the cyclic group with $p$-elements. If $X$ is a compact
+Hausdorff space, then a $C_{p}$-action on $X$ is the same as a continuous self-map $f\colon X\to X$
+satisfying $f^{p}= \id$. The idea is that this ``untwists'' the $f$-equivariant character
+of $\S_{X}$.
+
+\begin{thm}
+  Let $X$ be an $\F_{p}$-finite $p$-complete space and let $G$ be a cyclic $p$-group. Then,
+  for any generator $g\in G$, we have that
+  \[ \chi(X^{hG})= \tr{\S[g]\colon \S[X]\to \S[X]}{}.\]
+\end{thm}
+
+Classically: The trace of an idempotent is given by the rank.
+This should mean for us
+$\tr{\S[g]}{} = \chi(X) - \dim{\fib(g)}{}$ or something.\\
+
+Noting that $\cL^{g}X= X^{h\ZZ}$ where $\ZZ$ acts via $g$, we see that
+it will suffice to show the following:
+\begin{prop}
+The canonical map $X^{hG}\to X^{h\ZZ}$ induces a commutative diagram
+\[\begin{tikzcd}
+	\S & {\S[X^{hG}]} & {} \\
+	\S & {\S[\cL^gX]}
+	\arrow["\chi", from=1-1, to=1-2]
+	\arrow["\id"', from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{\xi^g}", from=2-1, to=2-2]
+\end{tikzcd}\]
+\todo{Unclear if this is true}
+\end{prop}
+
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

@@ -1,0 +1,54 @@
+\usepackage{amsmath,amsthm,amssymb,amsfonts,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+%\usepackage[regular]{newcomputermodern}
+\usepackage{dsfont,stmaryrd}
+%
+\usepackage[mathscr]{eucal}
+
+\usepackage{graphicx,tikz-cd,hyperref,enumitem,xfrac,comment,todonotes,fancyhdr,xparse}
+% \usepackage[new]{old-arrows}
+
+\numberwithin{equation}{section}
+
+\usepackage[a4paper,vmargin=3.5cm]{geometry}
+
+\usepackage[maxbibnames=99, backend=biber, style=alphabetic]{biblatex}
+
+\usetikzlibrary{arrows}
+
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+\definecolor{DefColor}{rgb}{0.6,0.15,0.25}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, linkcolor=PineGreen,
+    citecolor=PineGreen, urlcolor=PineGreen
+}
+
+\usepackage{thmtools} % Needs to be loaded before cleveref
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+\usepackage[toc,page]{appendix}
+\usepackage{macros}
+\usepackage{quiver}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{ex}[thm]{Exercise}
+\newtheorem{conj}[thm]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{war}[thm]{Warning}
+\newtheorem{cons}[thm]{Construction}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{notation}[thm]{Notation}
+\newtheorem{exam}[thm]{Example}
+\newtheorem{slogan}[thm]{Slogan}
+\newtheorem{obs}[thm]{Observation}

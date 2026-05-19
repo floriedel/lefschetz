@@ -1,0 +1,242 @@
+Throughout this section, fix a symmetric monoidal $(\infty,2)$-category $(\cC,\otimes)$ with
+monoidal unit $\1_{\cC} \in \cC$ and write $\Omega\cC$ for the $(\infty,1)$-category of
+endomorphisms $\1_{\cC} \to \1_{\cC}$. The symmetric monoidal structure on $\cC$
+induces a natural symmetric monoidal structure on $\Omega \cC$, such that
+the tensor product $f\otimes_{\Omega_{\cC}} g$ of two endomorphisms
+$f,g\colon \1_{\cC} \to \1_{\cC}$ is simply given by the map $f\otimes g\colon \1_{\cC} \to \1_{\cC}$. 
+
+\begin{defn}
+  An object $X\in \cC$ is said to be \tdef{dualizable}
+  if the functor $X\otimes - \colon \cC \to \cC$ admits an adjoint of the form
+  $Y\otimes - \colon \cC \to \cC$. In this case, we write $Y= X^{\vee}$ and refer to $X^{\vee}$ as
+  the \tdef{dual} $X$. We denote by $\cC^{\dual}\subseteq \cC$ the full subcategory
+  spanned by the dualizable objects.
+\end{defn}
+
+\begin{rmk}
+  For any $X\in \cC^{\dual}$ we have a canonical equivalence $(X^{\vee})^{\vee}\simeq X$ and
+  the assignment $X \mapsto X^{\vee}$ refines to an equivalence of categories
+  $\cC^{\dual, \op}\rar{\sim} \cC^{\dual}$.
+\end{rmk}
+
+By definition, any $X\in \cC^{\dual}$ comes equipped with evaluation and
+coevaluation maps
+\[ \coev_{X}\colon \1_{\cC} \too X\otimes X^{\vee}\]
+\[ \ev_{X}\colon X^{\vee} \otimes X \too \1_{\cC}\]
+Moreover, since $\cC$ is symmetric monoidal, there is a canonical \textit{braiding}, giving a natural
+equivalence
+\[ \tau \colon X\otimes X^{\vee} \simeq X^{\vee} \otimes X \,.\]
+
+\begin{defn}
+  A \tdef{generalized endomorphism} of an object $X\in \cC$ is a map
+  \[ f\colon Y\otimes X  \to X \otimes Z,\]
+  for some $Y,Z\in \cC$. 
+  The \tdef{trace} of $f$ is defined to be the composite
+  \[ \tr{f}{\cC} \colon  Y \rar{Y \otimes \coev_X} Y\otimes X \otimes X^{\vee} \rar{f \otimes \id} Z\otimes X \otimes X^{\vee} \rar{Z\otimes \tau} Z\otimes  X^{\vee} \otimes X \rar{Z\otimes \ev_X} Z .\]
+  We refer to $\tr{\id_X}{\cC}\colon \1_{\cC} \to \1_{\cC}$ as the \tdef{dimension} of
+  $X$ and denote it by $\dim{X}{\cC}$.
+\end{defn}
+
+In~\cite{Hoyois_Scherotzke_Sibilla2017} Hoyois--Scherotzke--Sibilla construct an $(\infty,1)$-category $\Endtrl(\cC)$
+of \textit{traceable endomorphisms} in $\cC$ as follows:
+
+\begin{cons}
+The assignment $\cC\mapsto \cC^{\dual}$ refines to a functor
+\[ (-)^{\dual}\colon \Cat^{\otimes}_{(\infty,2)} \too \Cat_{(\infty,2)}\]
+which preserves filtered colimits and all limits by~\cite[Proposition 4.6.1.11]{Lurie2017}
+and thus admits a left adjoint denoted by
+\[ \rm{Fr}^{\dual}\colon \Cat_{(\infty,2)} \too \Cat^{\otimes}_{(\infty,2)}.\]
+The $(\infty,1)$-category of traceable endomorphisms $\Endtrl(\cC)$ is defined as the maximal sub-$(\infty,1)$-category of the $(\infty,2)$-category $\Fun^{\rm{oplax}}_{\otimes}(\rm{Fr}^{\dual}(B\NN), \cC)$
+of symmetric monoidal oplax functors from the ``dualizably free'' $(\infty,2)$-category
+on the walking category with one endomorphism.
+\end{cons}
+
+Explicitly, objects of $\Endtrl(\cC)$ are given by self
+maps of dualizable objects $f\colon X \to X$ in $\cC$, while a morphism $(X,f) \to (Y,g)$
+consists of an internal left adjoint $\varphi\colon X \to Y$ together with a 2-morphism
+$\alpha \colon \varphi \circ f \to g \circ \varphi $ i.e.~a lax commutative diagram
+\[\begin{tikzcd}
+    X & Y \\
+    X & Y \arrow["\varphi", from=1-1, to=1-2] \arrow["f"', from=1-1, to=2-1] \arrow["g", from=1-2, to=2-2] \arrow["\alpha", shorten <=4pt, shorten >=4pt, Rightarrow, from=2-1, to=1-2] \arrow["\varphi"', from=2-1, to=2-2]
+  \end{tikzcd}\]
+
+\begin{thm}\cite[Theorem 1.7.]{Hoyois_Scherotzke_Sibilla2017}\label{thm: trace functor}
+  The $(\infty,1)$-category $\Endtrl(\cC)$ inherits a natural
+  symmetric monoidal structure, such that the assignment taking $(X,f) \in \Endtrl(\cC)$ to the
+  trace $\tr{f}{\cC} \in \Omega_{\cC}$ refines to a symmetric monoidal functor
+  \[ \Trc_{\cC}\colon \Endtrl(\cC) \too \Omega \cC.\]
+\end{thm}
+
+More explicitly, the functoriality of $\Trc_{\cC}$ works as follows.
+Given a map $(\varphi, \alpha)\colon (X,f) \to (Y,g)$, denote by $\psi \colon Y\to X$ the internal right adjoint of $\varphi$.
+Then $\Trc_{\cC}$ takes the map $(\varphi,\alpha)$ to the natural transformation given by the composite
+\[ \tr{f}{\cC} \to \tr{\psi \varphi f}{\cC} \rar{\alpha} \tr{\psi g \varphi}{\cC}
+\simeq \tr{\varphi \psi g}{\cC} \to \tr{g}{\cC},\]
+where the first and last map are given by the unit and counit of the adjunction
+$\varphi \dashv \psi$, respectively. Diagrammatically, these are also induced by the 2-cells
+in the following diagram
+\begin{equation}\label{eq: trace functoriality}
+  \begin{tikzcd}
+	{\1_\cC} & {X \otimes X^\vee} && {X\otimes X^\vee} & {\1_\cC} \\
+	{\1_\cC} & {Y\otimes Y^\vee} && {Y \otimes Y^\vee} & {\1_\cC}
+	\arrow["{\rm{coev}_X}", from=1-1, to=1-2]
+	\arrow[equals, from=1-1, to=2-1]
+	\arrow["{f\otimes \id}", from=1-2, to=1-4]
+	\arrow[Rightarrow, from=1-2, to=2-1]
+	\arrow["{\varphi \otimes \psi^\vee}", from=1-2, to=2-2]
+	\arrow["{\ev_X}", from=1-4, to=1-5]
+	\arrow["\alpha"', Rightarrow, from=1-4, to=2-2]
+	\arrow["{\varphi \otimes \psi^\vee}"', from=1-4, to=2-4]
+	\arrow[Rightarrow, from=1-5, to=2-4]
+	\arrow[equals, from=1-5, to=2-5]
+	\arrow["{\rm{coev}_Y}"', from=2-1, to=2-2]
+	\arrow["{g\otimes \id}"', from=2-2, to=2-4]
+	\arrow["{\ev_Y}"', from=2-4, to=2-5]
+\end{tikzcd}\end{equation}
+
+% \begin{rmk}\label{rmk:compatibility-of-fancy-trace-with-normal-trace}
+%   The functor $\Trc_{\cC}$ enjoys the following compatibility with the natural symmetric
+%   monoidal structure on $\Omega\cC$.
+%   Given an endomorphism $\gamma \colon a \to a$ of dualizable object in $\Omega \cC$, we
+%   obtain an endomorphism in $\Endtrl(\cC)$ of the form
+%   \[ (a,\gamma) \colon (\1_{\cC},\id) \too (\1_{\cC},\id). \]
+%   Then we have a natural equivalence
+%   \[ \Trc(a,\gamma) \simeq \tr{\gamma}{\Omega \cC}\]
+%   of endomorphisms of
+%   $\Trc(\1_{\cC},\id)= \dim{\1_{\cC}}{\cC} = \1_{\Omega \cC} \in \Omega\cC$.\todo{Insert reference to Hoyois et al or short argument.}
+% \end{rmk}
+
+The $(-)^{\vee}\colon (\cC^{\dual})^{\op}\to \cC^{\dual}$ induces a functor on
+$\Endtrl(\cC^{\dual})$ in the obvious way. Note that in general $\Endtrl(\cC)^{\dual}\neq \Endtrl(\cC^{\dual})$.
+
+\begin{lem}
+  Let $F\colon \cC\to \cD$ be a unital lax symmetric monoidal functor of symmetric monoidal $\infty$-categories. Let $X\in \cC$ be an object such that $F(X)\in \cD^{\dual}$.
+  Given any $\phi \colon X^{\vee}\to Y \in \cC$ the induced map $F(\phi)\colon F(X^{\vee}) \to F(Y)$
+  factors naturally through the comparison map
+  \[\delta\colon F(X^{\vee})\to F(X)^{\vee}\]
+  given by the adjoint of the composite 
+  \[ F(X^{\vee})\otimes F(X) \to F(X^{\vee}\otimes X) \xrightarrow{F(\ev)} F(\1_{\cC})\simeq \SS.\]
+\end{lem}
+
+% For a map $(\varphi, \alpha)\colon (X,f) \to (X,g)$ in $\cC^{\trl}$ we refer to
+% the map
+% \[ \Trc(\varphi, \alpha)\colon \tr{f}{\cC} \too \tr{g}{\cC},\] obtained by
+% applying $\Trc$ and using the compatibility, as the \tdef{transfer} along
+% $(\varphi, \alpha)$.
+
+% \begin{cons}\label{dim and deg}
+%   Suppose we are given a map $(\varphi, \alpha)\colon (X,f) \to (X,g)$ in
+%   $\cC^{\rm{trl}}$ where $f$ and $g$ are right dualizable endomorphisms of a
+%   \textit{fully dualizable object} $X \in \cC$. Then by
+%   Proposition~\ref{monoidal structure} the source and target are dualizable, so
+%   we can form the internal trace of $(\varphi, \alpha)$ in $\cC^{\trl}$. This
+%   produces an endomorphism of the unit, i.e.~a map
+%   \[ (\tr{\varphi}{\cC^{\rm{trl}}},{\tr{\alpha}{\cC^{\rm{trl}}}}) \colon (\1_{\cC}, \id) \too (\1_{\cC}, \id),\]
+%   which we may identify with an endomorphism
+%   \[\ind{\varphi,\alpha}{}\colon \tr{\varphi}{\cC} \too \tr{\varphi}{\cC} \in \Omega\cC.\]
+%   that we refer to as the \tdef{index} of $(\varphi,\alpha)$.
+% \end{cons}
+
+
+% \begin{prop}[Abstract Lefschetz]\label{abstract lef}
+%   Let $X\in \cC$ be fully dualizable, $f,g\colon X\to X$ be two right dualizable maps and
+%   $\alpha\colon fg \to gf$ be a 2-morphism considered as the data of an
+%   endomorphism $(f,\alpha)\colon (X,g) \to (X,g) \in \cC$. If both $\tr{f}{\cC}$
+%   and $\tr{g}{\cC}$ are dualizable in $\Omega \cC$ we have a natural equivalence
+%   \[ \tr{\Trc(f,\alpha)}{\Omega \cC} \simeq \tr{\ind{f,\alpha}{}}{\Omega \cC}\]
+% \end{prop}
+% \begin{proof}
+%   By the discussion in Remark~\ref{compatibility}, the right hand side is given
+%   by taking the trace of $(f,\alpha)$ in $\cC^{\trl}$ and applying the functor
+%   $\Trc$ to the resulting endomorphism of $(\1_{\cC}, \id)$. Hence, the claim follows
+%   since $\Trc$ is symmetric monoidal by Theorem~\ref{trace functor} and symmetric
+%   monoidal functors commute with traces.
+% \end{proof}
+
+% We also have the following symmetric statement.
+
+% \begin{prop}[Symmetric Lefschetz]
+%   Let $f,g\colon X\to X$ be right dualizable maps and let
+%   $\tau\colon gf\rar{\sim} fg$ be an invertible 2-morphism.
+%   If both $\tr{f}{\cC}$ and $\tr{g}{\cC}$ are dualizable in $\Omega{\cC}$ we have
+%   a natural equivalence of traces of transfers
+%  \[ \tr{\Trc(f,\tau)}{\Omega\cC} \simeq \tr{\Trc(g,\tau^{-1})}{\Omega\cC}.\]
+% \end{prop}
+% \begin{proof}
+% Consider the composite $gf\colon X\to X$ together with the whiskered 2-morphism
+% $\tau^{\prime}\colon gffg \rar{\sim} fggf$ as an endomorphism of $(X,fg)$ in $\cC^{\trl}$,
+% diagrammatically
+% given by
+% \[\begin{tikzcd}
+%     X & X \\
+%     X & X \arrow["gf", from=1-1, to=1-2] \arrow["fg"', from=1-1, to=2-1] \arrow["fg", from=1-2, to=2-2] \arrow["{\tau^{\prime} }", shorten <=4pt, shorten >=4pt, Rightarrow, from=2-1, to=1-2] \arrow["gf"', from=2-1, to=2-2].
+%   \end{tikzcd}\]
+% Taking transfer and index respectively we obtain maps
+% \[ \Trc(gf,\tau f) \colon \tr{f}{\cC} \too \tr{f}{\cC},\]
+% \[\ind{gf,\tau f}{}\colon \tr{gf}{\cC} \too \tr{gf}{\cC}.\]
+% Unwinding the definitions, we see that $\Trc(gf,\tau f) = \ind{f,\tau}{}$ and so
+% by Proposition~\ref{abstract lef} twice, see that the traces of $\ind{gf}{\tau f}$,
+% $\Trc(gf,\tau f)$ and $\Trc(f,\tau)$ are all canonically equivalent.
+% Interchanging the roles of $f$ and $g$, we may also consider $(fg,\tau^{-1}g)$ as an
+% endomorphism of $(X,g)$, obtaining maps
+% \[ \Trc(fg, \tau^{-1}g):\tr{g}{\cC} \too \tr{f}{\cC}\]
+% \[ \ind{fg,\tau^{-1}g}{}\colon \tr{fg}{\cC} \too \tr{fg}{\cC}.\]
+% \end{proof}
+
+% \subsection{Frobenius algebras}
+
+% Fix $\cD\in \Pr^{\rm{rig}}$ compactly generated and denote by $\Prl_{\cD}$ the category of
+% modules $\Mod_{\cD}(\Prl)$.
+
+% \begin{defn}
+%   Let $\cA\in \CAlg(\Pr_{\cD})$  be dualizable. We say that $\cA$ is
+%   \begin{enumerate}
+%     \item \tdef{separated} if the multiplication map
+%           $\mu\colon \cA \otimes \cA \to \cA$ admits an $(\cA,\cA)$-linear internal right adjoint
+%           $\delta\colon \cA \to \cA \otimes \cA$.
+%     \item \tdef{prim} if the unit map $1_{\cA}\colon \cD \to \cA$ admits an
+%           internal right adjoint $\eta\colon \cA \to \cD$
+%     \item  \tdef{rigid} if it is separated and prim.
+%     \item \tdef{co-separated} if $\mu^{\vee}\colon \cA^{\vee} \to \cA^{\vee}\otimes \cA^{\vee}$
+%           admits an internal right adjoint
+%     \item \tdef{suave} if $1_{\cA}^{\vee}\colon \cA^{\vee}\to \cD$ admits an internal
+%           right adjoint
+%     \item \tdef{co-rigid} if it is co-separated and suave.
+%     \item \tdef{fully dualizable} if it satisfies all of the above.
+%   \end{enumerate}
+% \end{defn}
+
+% \begin{lem}
+%   Any separated $\cA$ inherits a natural \textit{Frobenius algebra} structure. In particular,
+%   $\cA^{\vee}$ is also a Frobenius algebra and we have an equivalence of the underling
+%   objects $\tau\colon \cA\simeq \cA^{\vee}$ that, in general, does not respect the Frobenius structures.
+%   \end{lem}
+
+% \begin{prop}
+%   Let $\cA$ be rigid and suave. Then under the equivalence $\tau\colon\cA \simeq \cA^{\vee}$
+%   we have that $\1_{\cA}^{\vee}\circ\tau \simeq \eta$.
+% \end{prop}
+
+% \begin{defn}
+%   For any separated $\cA$ we write
+%   \[ \1(\cA)\coloneq \1_{\cA}^{\vee}\circ \tau \circ\1_{\cA}\in \cD\]
+%   and refer to this object as the \tdef{global sections} of $\cA$.
+% \end{defn}
+
+% Let $\cA$ be prim and suave. Then, the composite
+% \[ \cD \rar{\1_{\cA}} \cA \rar{\tau} \cA^{\vee}\rar{\1_{\cA}^{\vee}} \cD \]
+% defines a diagram in $(\Prlst)^{\trl}$. Applying the functor $\Trc$ to this diagram we
+% get a diagram in $\cD$ of the form
+% \[\begin{tikzcd}
+% 	{\dim{\cA}{}} & {\dim{\cA^\vee}{}} \\
+% 	\1 & \1
+% 	\arrow["\sim", from=1-1, to=1-2]
+% 	\arrow["{\Trc(\1_\cA^\vee)}", from=1-2, to=2-2]
+% 	\arrow["{\Trc(\1_\cA)}", from=2-1, to=1-1]
+% 	\arrow["{\Trc(\1(\cA))}", from=2-1, to=2-2]
+% \end{tikzcd}\]
+
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

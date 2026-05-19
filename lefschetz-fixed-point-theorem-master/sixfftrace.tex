@@ -1,0 +1,388 @@
+\subsection{Traces in a six functor formalism}
+
+Let $\cV$ be a stable presentably monoidal category. The category
+$\Mod_{\cV}(\Prlst)$ admits a natural enhancement to a 2-category with
+2-morphisms given by natural transformations of $\cV$-linear functors, such that
+$\Omega \Mod_{\cV}(\Prlst)\simeq \cV$ and analogously for $\Prrst \simeq \Prlst^{\op}$.
+
+\begin{defn}
+  Let $\cV \in \CAlg(\Prl)$ and let $f\colon \cC\to \cD$ be a map of dualizable objects
+  in $\Mod_{\cV}(\Prl)$. Then we write $\tr{f}{L}\in \cV$ for the trace of $f$ in
+  $\Mod_{\cV}(\Prl)$. Similarly, if $g$ is the right adjoint, we write
+  $\tr{g}{R}\in \cV$ for the trace in $\Mod_{\cV}(\Prr)$.
+\end{defn}
+
+
+\begin{defn}
+  The \tdef{coincidence locus} of a pair of parallel morphisms $f,g\colon X\to Y$ in
+  $\bcat$ is the pullback
+  \begin{equation}
+    \label{eq:coincidence}
+    \begin{tikzcd}
+      X^{f,g}\arrow[d]\arrow[r] & Y\arrow[d ,"\Delta"] \\
+      X\arrow[r,"{(f,g)}"] & Y\times Y
+    \end{tikzcd}
+  \end{equation}
+  If $Y = X$ and $g=\id$, we also write $X^{f} = X^{f,\id}$ and refer to this
+  object as the \tdef{fixed point locus} of the map $f$.
+\end{defn}
+Note that, in an arbitrary category $\bcat$, the map $i\colon X^{\id} \to X$ need \textit{not}
+be an equivalence.
+
+\begin{prop}\label{trace computation}
+  For any $X\in \bcat$ the category $\D{X}$ is dualizable and canonically self
+  dual in $\Mod_{\D{\pt}}(\Prlst)$. Moreover, for any self map $f\colon X\to X$ there
+  is a canonical equivalence
+  \[
+    \operatorname{tr}_{L}\left( f_{!}\colon D(X)\to D(X) \right)\simeq \Gamma^{c}(X^{f})\in \D{\pt}.
+  \]
+  In particular, we have $\dim{\D{X}}{L}\simeq \Gamma^{c}(X^{\id})$.
+\end{prop}
+\begin{proof}
+  Since $D$ is symmetric monoidal, it commutes with taking trace, so we can
+  instead compute the trace in the category of correspondences. The object $X$
+  has a canonical self-duality given by
+  $\pt\xleftarrow{p} X\xrightarrow{\Delta} X\times X$ and
+  $X\times X\xleftarrow{\Delta} X\xrightarrow{p}\pt$. Thus we find that the trace is
+  calculated as
+  \begin{equation}\label{eq: trace span}
+    \begin{tikzcd}
+      &&& X^{f}\arrow[dl]\arrow[dr] \\
+      && X\arrow[dl,equal]\arrow[dr,"\Delta"] && Y \arrow[dr]\arrow[dl]\\
+      & X\arrow[dl,"p"] \arrow[dr,"\Delta"] && X\times X\arrow[dl,equal]\arrow[dr,"f\times\id"] && X\arrow[dl,"\Delta"] \arrow[dr,"p"] \\
+      \pt & & X\times X & & X\times X & & \pt
+    \end{tikzcd}
+  \end{equation}
+\end{proof}
+
+Tracing through the diagram of spans, we also learn that $\Gamma^{c}(X^{f})$ is given
+by the cohomology of $\Delta^{\ast}\Gamma^{f}_{!}\1_{X}= (\Gamma^{f})^{\ast}\Delta_{!}\1_{X}$, where
+$\Gamma^{f}=(f\times\id)\circ \Delta$ is the \textit{graph} of $f$.
+
+\begin{defn}\label{defn: adjectives}
+  A map $f\colon X\to Y$ in $\bcat$ is called
+  \begin{enumerate}
+\item \tdef{suave} if $f^{\ast}$ has a left adjoint
+          \item \tdef{smooth} if it is suave and $f^{!}(\1_{Y})$ is invertible
+          \item \tdef{prim} if $f_{\ast}$ has a right adjoint
+          \item \tdef{proper} if $f_{\ast}\simeq f_{!}$
+          \item \tdef{\'etale} if $f^{\ast}\simeq f^{!}$
+          \item \tdef{separated} if $\Delta_{f}\colon X\to X\times_{Y}X$ is proper
+  \end{enumerate}
+  If the projection $X\to \pt$ satisfies any of these properties, we also attach
+  the corresponding adjective to $X$ itself.
+\end{defn}
+
+\begin{lem}
+  Proper maps are closed under pullbacks.
+\end{lem}
+
+\subsection{Fixed points of proper maps}
+
+Let $f\colon X\to Y$ be a map in $\bcat$ and suppose we are given a map of sheaves
+$\sigma \colon f^{\ast}\cE \to \cF \in \D{X}$ where $\cE\in \D{Y}$ and $\cF\in \D{X}$. Then $\sigma$
+induces a pullback map on cohomology
+\[ \Gamma(\sigma)\colon \Gamma(Y;\cE) \too \Gamma(X;\cF) \in \D{X}\] by applying the functor $Y_{\ast}$ to the
+adjoint map $\tau\colon \cE \to f_{\ast}\cF \in \D{Y}$. For $\cE= \1_{Y}$ and $\cF=\1_{X}$ and
+the canonical equivalence $\sigma \colon f^{\ast}\1_{Y}\simeq \1_{X}$, the map $\Gamma(\sigma)$ is precisely
+the ordinary pullback on cohomology $\Gamma(Y) \to \Gamma(X)$.\\
+Let $\cC=\Mod_{\D{\pt}}(\Prlst)\in \Cat_{2}$ and let $\cC^{\trl}$ be as defined above.
+
+\begin{defn}
+  Let $f\colon X\to X$ be a self-map in $\bcat$. We define the space of
+  \tdef{suave co-sheaves with $f$-transfer} to be the mapping space
+  \[\D{X}_{f}:= \Map_{\cC^{\trl}}((\D{X},f_{!}), \cD).\]
+\end{defn}
+
+ Explicitly, a suave sheaf with $f$-transfer on
+  $X$ is a pair $(\cE, \sigma)$ where $\cE\in \Ds{X}$ together with a
+  map $\sigma \colon f^{\ast}\cE\to \cE$.
+
+\begin{cons}
+  Let $X\in \bcat$ be prim and $f\colon X\to X$ be a proper self map. Then, we have
+  that $X^{\ast}\colon \D{\pt}\to \D{X}$ is an internal left adjoint and we have a natural
+  transformation $\alpha\colon X^{\ast}\to f_{!}X^{\ast}$, adjoint to the equivalence
+  $f^{\ast}X^{\ast}\simeq X^{\ast}$. This defines a map in $\cC^{\trl}$ of the form
+  $(X^{\ast},\alpha) \colon (\D{\pt},\id) \to (\D{X},f_{!})$ and pre-composition with this
+  defines a natural map
+  \[ \1_{f}(X;-)\colon \D{X}_{f}\too \cL\cD;\quad
+    (\cE,\sigma)\mapsto \left(\1_{f}(X;\sigma)\colon \1(X;\cE)
+      \too \1(X;\cE)\right).\]
+\end{cons}
+
+
+\begin{cons}\label{cons:russian triangle}
+  Let $X\in \bcat$ be proper, $f\colon X\to X$ a proper self map, so that
+  $f^{\ast}\dashv f_{\ast}\simeq f_{!}$ and $(\cE, \sigma)$ be a suave sheaf with $f$-transfer.
+  Moreover, write $\cC=\Mod_{\D{\pt}}(\Prlst) \in \Cat_{2}$. From this, we can
+  form the (lax) commutative diagram in $\cC$ given by
+  \[\begin{tikzcd}
+      {\D{\pt}} & {\D{X}} & {\D{\pt}} \\
+      {\D{\pt}} & {\D{X}} & {\D{\pt}} \arrow["{X^\ast}", from=1-1, to=1-2] \arrow[equals, from=1-1, to=2-1] \arrow["{X_!(-\otimes \cE)}", from=1-2, to=1-3] \arrow["f_{!}",from=1-2, to=2-2] \arrow[equals, from=1-3, to=2-3] \arrow["\alpha"', Rightarrow, from=2-1, to=1-2] \arrow["{X^\ast}"', from=2-1, to=2-2] \arrow["\sigma"', Rightarrow, from=2-2, to=1-3] \arrow["{X_!(-\otimes \cE)}"', from=2-2, to=2-3],
+    \end{tikzcd}\]
+  where the left hand transformation is adjoint to the equivalence $f^{\ast}X^{\ast}\simeq X^{\ast}$
+  and the right hand transformation is given via the projection formula as
+  \[ X_{!}(f_{!}(-)\otimes \cE)\simeq X_{!}f_{!}(-\otimes f^{\ast}\cE)\rar{\sigma} X_{!}(-\otimes \cE).\]
+  Since $X$ is by assumption and proper and $\cE$ is suave,
+  this defines a diagram in $\cC^{\trl}$
+  \[ (\D{\pt},\id) \rar{(X^{\ast},\alpha)} (\D{X},f_{!}) \rar{(X_{!}(-\otimes \cE),\sigma)} (\D{\pt},\id), \]
+  to which we can apply the functor $\Trc$ of \cref{trace functor} to obtain a
+  commutative diagram in $\D{\pt}$
+  \begin{equation}\label{eq: russian triangle}
+    \begin{tikzcd}
+      & {\tr{f_{!}}{L}} \\
+      \1 && \1 \arrow["{\Trc(X_!(-\otimes \cE),\sigma)}", from=1-2, to=2-3] \arrow["{\Trc(X^\ast,\alpha)}", from=2-1, to=1-2] \arrow["{\Trc(X_!( X^\ast(-) \otimes \cE), \sigma\circ \alpha)}"', from=2-1, to=2-3].
+    \end{tikzcd}
+  \end{equation}
+  We denote the map $\Trc(X_{!}(X_{!}(-\otimes \cE),\sigma))$ by
+  \[ T_{(\cE,\sigma)}^{f}\colon \tr{f_{!}}{L}\simeq \Gamma^{c}(X^{f})\too \1.\] If $\cE=\1_{X}$ with
+  the canonical transfer datum, we also just write $T^{f}$.
+\end{cons}
+
+Let us identify two of the maps in the diagram~\eqref{eq: russian triangle} to understand what this
+means.
+
+\begin{lem}
+  In the situation of \cref{cons:russian triangle}, under the identification
+  $\tr{f_{!}}{L}\simeq \Gamma^{c}(X^{f})$, the map $\Trc(X^{\ast},\alpha)$ is given by the unit
+  map $\eps\colon \1 \to \Gamma^{c}(X^{f})$, i.e.~the pullback along the projection $X\to \pt$.
+\end{lem}
+
+\begin{lem}
+  In the situation of \cref{cons:russian triangle}, the cohomology $\Gamma^{c}(X;\cE)$ is
+  dualizable in $\D{\pt}$ and the map 
+  \[\Trc(X_{!}(X^{\ast}(-)\otimes \cE), \sigma\circ \alpha)\colon \1\too \1\]
+  is  given by the trace of the map
+  \[\Gamma^{c}(f)\colon \Gamma^{c}(X;\cE)\to \Gamma^{c}(X;\cE)\,\in \cD.\]
+\end{lem}
+\begin{proof}
+First note that, we are in the situation of \cref{prop: sections dualizable}, so $\Gamma^{c}(X;\cE)\in \D{X}$ is dualizable with dual given by $\Gamma(X;\Dl(\cE))$.
+\end{proof}
+
+Note that this immediately yields a general verison of the weak Lefschetz theorem.
+
+\begin{cor}[Weak proper Lefschetz]
+Let $f\colon X\to X \in \bcat$ be a proper self map of a proper and suave space $X\in \bcat$.
+If $\tr{\1(f)}{\cD}$ is non-zero, then $X^{f}$ is non-empty.
+\end{cor}
+\begin{proof}
+  By the above discussion $\tr{\1(f)}{\cD}$ factors through $\1(X^{f})\in \cD$ and so the claim
+  follows since $\1(\emptyset)=0\in \cD$.
+\end{proof}
+% The name of the game is now to identify these maps. To this, let us give them
+% names, in the hope that this grants us power over them. Note that, we can
+% replace the functor $X^{\ast}$ by any internal left adjoint functor
+% $E\colon\D{\ast} \to \D{X}$, together with a map $\alpha \colon E \to f_{\ast}E$, yielding a
+% commutative triangle
+% \[\begin{tikzcd}
+%     & {\Gamma^c(X^f)} \\
+%     \1 && \1 \arrow["{\Trc(X_!,\id)}", from=1-2, to=2-3] \arrow["{\Trc(E,\alpha)}", from=2-1, to=1-2] \arrow["{\Trc(X_! E, \id\circ \alpha)}"', from=2-1, to=2-3].
+%   \end{tikzcd}\] We call such a pair $(E,\alpha)$ an $f$-equivariant \tdef{local
+% system} on $X$ and write
+% \[ \LocSys{\D{X}}{f}:= \Map_{\cC^{\trl}}(\D{\pt}, \D{X}) \] for the space of
+% $f$-equivariant local systems on $X$ and write $\End(\D{\pt})$ for the space
+% of pairs $(A,\varphi)$ where $A\in \D{\pt}$ and $\varphi\colon A \to A$ is an endomorphism. Then
+% composition with $X_{!}$ defines a functor
+% \[ \Gamma(X;-)\colon \LocSys{\D{X}}{f} \too \End(\D{\pt})\] which takes the local system
+% $X^{\ast}$ with the canonical $f$-equivariant structure to the pullback map on
+% cohomology
+% \[ f^{\ast}\colon \Gamma^{c}(X) \too \Gamma^{c}(X).\]
+
+% \begin{lem}
+%   For any $(E,\alpha)\in \LocSys{\D{X}}{f}$ we have that the element
+%   \[\Trc(X_{!}E,\id \circ \alpha) \colon \1 \too \1 \in \D{\pt}\]
+%   is given by the trace of the induced map on cohomology
+%   \[ f^{\ast}\colon \Gamma^{c}(X;E) \too \Gamma^{c}(X;E) \in \D{\pt}.\]
+% \end{lem}
+
+% \begin{defn}
+%   Let $X\in \bcat$ be smooth and proper and $f\colon X \to X$ be a proper endomorphism.
+%   Taking $(E,\alpha) \in \LocSys{\D{X}}{f}$ to the element $\1\to \Gamma^{c}(X^{f})$
+%   obtained by applying the functor $\Trc$ to
+%   $(E,\alpha) \colon (\D{\pt},\id) \to (\D{X},f_{\ast})$, defines a map
+%   \[ \ch{f}\colon \LocSys{\D{X}}{f} \too \Omega^{\infty}\Gamma^{c}(X^{f}). \] We call
+%   $\ch{f}(E) \in \Gamma^{c}(X^{f})$ the $f$-equivariant \tdef{character} of
+%   $E\in \LocSys{f}{\D{X}}$.
+% \end{defn}
+
+% \begin{prop}
+%   Let $(E,\alpha) \in \LocSys{\D{X}}{f}$, with $\beta\colon f^{\ast}E \to E$ being the map adjoint
+%   to $\alpha$. Then, the character of $E$ is given by the trace of the induced map
+%   on stalks, i.e.~we have an equivalence
+%   \[ \ch{f}(E)\simeq \tr{i^{\ast} f^{\ast}E \simeq i^{\ast}E \rar{i^{\ast}\beta} i^{\ast}E}{\D{X^{f}}}\]
+%   under the equivalence $\Omega^{\infty} \Gamma^{c}(X^{f})\simeq \Map_{\D{X^{f}}}(\1,\1)$, where
+%   $i\colon X^{f} \to X$ is the canonical map.
+% \end{prop}
+
+% In particular, the character of a constant sheaf is trivial
+% i.e.~$\ch{f}(X^{\ast}\1)$
+% is given by the unit map $\1 \to \Gamma^{c}(X^{f})$.\\
+Let us now turn our attention to the map $T_{f}\colon \Gamma^{c}(X^{f}) \to \1$. For
+$f=\id$, this is by definition the free loop transfer along the projection map
+$X\to \pt$. In general, observe that by construction of $\Trc$, the map $T_{f}$ is
+given by the composite
+\[ \tr{f_{\ast}}{L} \to \tr{X^{!}X_{!}f_{\ast}}{L} \simeq \tr{X^{!}X_{!}}{L} \simeq \tr{X_{!}X^{!}}{L} \to \tr{\id_{\D{\pt}}}{L}.\]
+Since $X_{!}X^{!}$ is an endomorphism of the unit, we have
+$\tr{X_{!}X^{!}}{L} = X_{!}X^{!}\1=\Gamma^{c}(X;\omega_{X})$ since $X$ is proper. Hence,
+we obtain a canonical factorization
+\[\begin{tikzcd}
+    & {\Gamma^{c}(X;\omega_{X})} \\
+    {\Gamma^c(X^f)} && \1 \arrow["\eta", from=1-2, to=2-3] \arrow["{\four{f}}", from=2-1, to=1-2] \arrow["{T_{f}}"', from=2-1, to=2-3],
+  \end{tikzcd}\] where $\eta$ is the counit map. We call $\four{f}$ the
+\tdef{$f$-equivariant Fourier transform} on $X$.
+
+\begin{cons}
+  Let $f\colon X\to X\in \bcat$ be a proper self map of a suave and proper space.
+  Write $j\colon X^{f}\to X$ for the canonical map, $\Delta\colon X \to X\times X$ for the diagonal and
+  $\Gamma^{f}:=(f,\id)\colon X \to X\times X$ for the graph of $f$. For a suave sheaf with transfer
+  $(\cE, \sigma)$ consider the following composite:
+  \begin{align*}
+    \phi^{(\cE,\sigma)}\colon\Delta^{!}(\cE \boxtimes \Dl(\cE)) &\too \Delta^{!}\Gamma^{f}_{\ast}(\Gamma^{f})^{\ast}(\cE \boxtimes \Dl(\cE))\\
+    &\simeq \Delta^{!}\Gamma^{f}_{\ast}(f^{\ast}\cE \otimes \Dl(\cE))\\
+    &\xlongrightarrow{\sigma} \Delta^{!}\Gamma^{f}_{\ast}(\cE \otimes \Dl(\cE))\\
+    &\xlongrightarrow{\ev} \Delta^{!}\Gamma^{f}_{\ast}\omega_{X}.
+  \end{align*}
+  By definition of $X^{f}$, we can use the Beck-Chevalley formula to see that
+  $\Delta^{!}\Gamma^{f}_{\ast}\simeq j_{\ast}j^{!}$. Using this identification, we define the
+  \tdef{$f$-equivariant character} of $(\cE,\sigma)$ as the composite
+  \[ \chi_{f}^{(\cE,\sigma)}\colon\1_{X}\rar{\id_{\cE}}\Hom(\cE,\cE)\simeq \Delta^{!}(\cE \boxtimes \Dl(\cE)) \rar{\phi^{(\cE,\sigma)}} j_{\ast}j^{!}\omega_{X}\simeq j_{\ast}\omega_{X^{f}}.\]
+  Put differently, $\ch{(\cE,\sigma)}{f}$ defines an element of
+  $\1(X;j_{\ast}\omega_{X^{f}})\simeq \1(X^{f};\omega_{X^{f}})$. If $(\cE,\sigma)$ is given by $\1_{X}$ with
+  the canonical transfer datum, we also just write $\ch{}{f}$.
+\end{cons}
+
+Let us unwrap this in the simplest case $\cE=\1_{X}$ with the canonical transfer
+datum. We then use the equivalences
+\[\1_{X}\simeq \Delta^{!}(\pi_{1}\1_{X}\otimes \pi_{2}^{\ast}\omega_{X})
+  \simeq \Delta^{!}\pi_{2}^{\ast}\omega_{X}\]
+and the unit transformation $\id \to \Gamma_{\ast}^{f}(\Gamma^{f})^{\ast}$ to obtain a natural
+map
+\[ \ch{}{f}\colon\1_{X} \too \Delta^{!}\Gamma^{f}_{\ast}(\Gamma^{f})^{\ast}\omega_{X}\simeq \Delta^{!}\Gamma^{f}_{\ast}\omega_{X}.\]
+
+\begin{defn}\label{defn: index}
+  Let $f\colon X\to X$ be a proper self map of a suave and proper space. We define
+  the \tdef{fixed point index} of $f$ to be the composite
+  \[ \ind{f}{}\colon \1 \rar{\ch{}{f}} \1(X^{f};\omega_{X^{f}})\rar{\eta}\1\]
+\end{defn}
+
+\begin{prop}
+  Let $f\colon X\to X\in \bcat$ be a proper self map of a suave and proper space and
+  let $(\cE,\sigma)\in \D{X}_{f}$. Then, under the canonical identification
+  of $\1(X^{f})^{\vee}$ with $\1(X^{f};\omega_{X^{f}})$, we have that
+  \[\Trc(X_{!}(- \otimes \cE), \sigma)^{\vee} \simeq \chi_{f}^{(\cE,\sigma)}\]
+\end{prop}
+\begin{proof}
+  Apply $\D{-}$ to the trace diagram in $\Span{\bcat}$ of~\eqref{eq: trace span} and trace
+  through the functoriality of trace as in~\eqref{eq: trace functoriality}.
+\end{proof}
+
+\begin{cor}[Abstract proper Lefschetz]
+  Let $f\colon X\to X\in \bcat$ be a proper self map of a suave and proper space
+  and let $(\cE,\sigma)\in \D{X}_{f}$. Then, we have an equivalence
+  \[ \tr{\1(f,\sigma)\colon\1(X;\cE)\to \1(X;\cE)}{}
+  \simeq \eta (\ch{(\cE,\sigma)}{f}) \in \1.\]
+In particular, taking $\cE$ to be the unit $\1_{X}$ we obtain the formula
+\[ \tr{\1(f)}{}\simeq \ind{f}{} \in \1.\]
+\end{cor}
+
+\todo{Add additive decomp for discrete spaces}
+
+\subsection{Fixed points of \'etale maps}
+
+Let $f\colon X\to Y\in \bcat$ be a $\cD$-\'etale map. Then, the equivalence
+$f^{!}Y^{\ast}\simeq f^{\ast}Y^{\ast} \simeq X^{\ast}$ is adjoint to a map
+$f_{!}X^{\ast}\to Y^{\ast}$. Hence, applying $Y_{!}$ we get a pushforward map
+\[ \1(f)\colon \1(X)\too \1(Y).\]
+Our goal is to show that we also obtain a Lefschetz formula for pushforward
+along \'etale maps.
+
+\begin{defn}
+  Let $f\colon X\to X$ be a self map in $\bcat$. We define the space of
+  \tdef{prim sheaves with $f$-transfer} on $X$ as the mapping space
+  \[\D{X}^{f}:= \Map_{\cC^{\trl}}(\cD, (\D{X},f^{\ast})).\]
+  If additionally, $X$ is suave and $f$ is \'etale, the functor
+  $X_{!}\colon \D{X}\to \cD$ together with the natural transformation
+  $X_{!}f^{\ast}\simeq X_{!}f_{!}f^{!}\to X_{!}$ obtained by applying $X_{!}$
+  to the unit map $f_{!}f^{!}\to \id_{X}$ defines a map $X_{!}\colon (\D{X},f^{\ast})\to \cD$
+  in $\cC^{\trl}$. We denote by
+  \[ \1^{f}(X;-)\colon \D{X}^{f}\too \cL\cD^{\omega};\quad
+    (\cF,\tau)\mapsto \left(\1^{f}(X;\tau)\colon \1(X;\cF)\too \1(X;\cF)\right)\]
+  the map obtained by post-composition with $X_{!}$.
+\end{defn}
+
+\begin{prop}
+  Let $f\colon X\to X$ be a self map and suppose that $X^{f}\in \bcat$ is either prim
+  or suave and write $j\colon X^{f}\to X$ for the canonical map. Then, the assignment
+  $\cE\mapsto j_{!}\cE$ induces a natural map
+  \[ \D{X^{f}}\too \D{X}^{f}.\]
+\end{prop}
+\begin{proof}
+  Consider the following pullback diagram in $\bcat$:
+  \[\begin{tikzcd}
+	{X^f} & {j^{-1}(X^f)} & X \\
+	& {X^f} & X
+	\arrow["s", from=1-1, to=1-2]
+	\arrow["\id"', from=1-1, to=2-2]
+	\arrow["{j^\prime}", from=1-2, to=1-3]
+	\arrow["{f^\prime}"', from=1-2, to=2-2]
+	\arrow["f", from=1-3, to=2-3]
+	\arrow["j"', from=2-2, to=2-3].
+\end{tikzcd}\]
+Since $j$ is prim/suave, so are $j^{\prime}$ and $s$
+\end{proof}
+
+If $X$ is additionally prim so that $X^{\ast}\colon \cD \to \D{X}$ defines a prim sheaf
+with transfer via the canonical map $\rm{can}\colon f_{!}X^{\ast} \to X^{\ast}$, then
+$\1^{f}(X;\rm{can})= \1(f)$ as defined above.
+
+\begin{defn}
+  Let $f\colon X\to X$ be a self map in $\bcat$. Then applying $\Trc$ defines a natural map
+  \[ \xi^{f}\colon \D{X}^{f}\too \Omega^{\infty}\1(X^{f})\in \Spc\]
+  We call $\xi^{f}_{(\cF,\tau)}\colon \1 \to \1(X^{f})$ the \tdef{$f$-equivariant
+  co-character} of $(\cF,\tau)$.
+\end{defn}
+
+\begin{prop}
+  Let $f\colon X\to X$ be a $\cD$-\'etale self map and assume that $X$ is $\cD$-suave.
+  Then the following diagram commutes
+\[\begin{tikzcd}
+	{\D{X}^f} & {\cL\cD^\omega} \\
+	{\Omega^\infty\1(X^f)} & {\Omega^\infty\1}
+	\arrow["{\1(X;-)}", from=1-1, to=1-2]
+	\arrow["{\xi^f}"', from=1-1, to=2-1]
+	\arrow["{\tr{-}{\cD}}", from=1-2, to=2-2]
+	\arrow["\eta", from=2-1, to=2-2]
+\end{tikzcd}\]
+\end{prop}
+
+\begin{proof}
+  For any $(\cF,\tau) \in \pDf{X}{f}$, we get a commutative diagram:
+\[\begin{tikzcd}
+	{\D{\pt}} & {\D{X}} & {\D{\pt}} \\
+	{\D{\pt}} & {\D{X}} & {\D{\pt}}
+	\arrow["\cF", from=1-1, to=1-2]
+	\arrow["\id"', from=1-1, to=2-1]
+	\arrow["{X_!}", from=1-2, to=1-3]
+	\arrow["{f^\ast}", from=1-2, to=2-2]
+	\arrow["\id", from=1-3, to=2-3]
+	\arrow["\tau"', Rightarrow, from=2-1, to=1-2]
+	\arrow["\cF"', from=2-1, to=2-2]
+	\arrow["\beta", Rightarrow, from=2-2, to=1-3]
+	\arrow["{X_!}", from=2-2, to=2-3]
+\end{tikzcd}\]
+where $\beta\colon X_{!}f^{\ast}\to X_{!}$ is obtained by applying $X_{!}$ to the natural
+transformation $f_{!}f^{\ast}\simeq f_{!}f^{!}\to \id_{X}$. Applying the functor $\Trc$ to this
+diagram, we obtain a commutative diagram in $\cD$
+\[\begin{tikzcd}
+	& {\1(X^f)} \\
+	\1 && \1
+	\arrow["\eta", from=1-2, to=2-3]
+	\arrow["{\xi^f_{(\cF,\tau)}}", from=2-1, to=1-2]
+	\arrow["{\tr{\1(f,\tau)}{\cD}}"', from=2-1, to=2-3].
+\end{tikzcd}\]
+Unwinding the definitions, this is precisely our claim.
+\end{proof}
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

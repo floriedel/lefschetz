@@ -1,0 +1,137 @@
+\documentclass{amsart}
+\usepackage[T1]{fontenc}
+
+\addtolength{\textwidth}{2cm}
+\addtolength{\hoffset}{-1cm}
+\addtolength{\textheight}{2cm}
+\addtolength{\voffset}{-1cm}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage{amsmath,amsthm,hyperref,amssymb,mathtools,enumitem,tikz,tikz-cd}
+\usepackage{xcolor}
+% \usepackage{libertine,libertinust1math}
+\usepackage{mathrsfs}
+\usetikzlibrary{calc}
+\usepackage{graphicx} % Required for inserting images
+\numberwithin{equation}{section}
+\makeatletter
+\def\l@subsection{\@tocline{2}{0pt}{2.5pc}{5pc}{}}
+\makeatother
+
+\usetikzlibrary{arrows.meta,decorations.pathmorphing}
+
+\title{Stokes theorem revisited}
+\author{Oscar Harr and Florian Riedel}
+\date{\today}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{mainthm}{Theorem}
+\renewcommand{\themainthm}{\Alph{mainthm}}
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{cons}[thm]{Construction}
+\newtheorem{convent}[thm]{Convention}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{exmp}[thm]{Example}
+
+\DeclareMathOperator{\colimit}{\operatorname{colim}}
+\DeclareMathOperator{\limit}{\operatorname{lim}}
+\tikzset{%
+    symbol/.style={%
+        draw=none,
+        every to/.append style={%
+            edge node={node [sloped, allow upside down, auto=false]{$#1$}}}
+    }
+}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+
+\newcommand{\PresMon}{\mathrm{Pr}_{\mathrm{st}}^{L,\otimes}}
+\newcommand{\LinCatMon}[1]{\mathrm{LinCat}_{\mathrm{st},#1}^{\otimes_R}}
+\newcommand{\LinCat}[1]{\mathrm{LinCat}_{\mathrm{st},#1}}
+\newcommand{\Pres}{\mathrm{Pr}_{\mathrm{st}}^{L}}
+\newcommand{\NcMot}{\mathrm{NcMot}}
+\newcommand{\colimCats}{\mathrm{Pr}^L}
+\newcommand{\unstLinCat}[1]{\mathrm{LinCat}_{#1}}
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\Fin}{\mathrm{Fin}}
+\newcommand{\lchaus}{\mathrm{LCHaus}}
+\newcommand{\Ab}{\mathrm{Ab}}
+\newcommand{\frBord}[2]{\mathrm{Bord}_{#1}^{\mathrm{fr}}(\R^{#2})}
+\newcommand{\modules}[1]{\operatorname{Mod}_{#1}}
+
+\newcommand{\support}{\operatorname{supp}}
+\newcommand{\interior}{\operatorname{int}}
+
+\newcommand{\Corr}{\operatorname{Corr}}
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\iHom}{\underline{\operatorname{Hom}}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Map}{\operatorname{Map}}
+\newcommand{\intHom}{\underline{\operatorname{Hom}}}
+
+\newcommand{\term}{\mathrm{pt}}
+
+\newcommand{\trace}{\operatorname{tr}}
+\newcommand{\rig}[1]{#1^{\mathrm{rig}}}
+
+\newcommand{\Shv}{\operatorname{Shv}}
+\newcommand{\ccoShv}{\widehat{\operatorname{coShv}}}
+\newcommand{\CAlg}{\operatorname{CAlg}}
+
+\newcommand{\note}[1]{{\bf TODO: #1}}
+
+\begin{document}
+\begin{thm}
+  Let $X$ be a compact Hausdorff space and let $f\colon X\to X$ be a continuous map. There is an equivalence
+  $$
+  \trace\left(
+    f_?\curvearrowright\ccoShv (X;\Sp )
+  \right)
+  \simeq\Sigma^\infty_+|X^f|,
+  $$
+  natural in the pair $(X,f)$. 
+\end{thm}
+\begin{proof}
+  Let $\frBord 1 1$ be the $\infty$-category of framed tangles in $\lbrack 0,1\rbrack\times\R$. By the one-dimensional tangle hypothesis, this is the free monoidal stable $\infty$-category on a single dualizable object. Hence
+  $$
+  \mathcal E = \Fun (\frBord 1 1^{\text{op}},\Sp )
+  $$
+  with the monoidal structure of Day convolution is the free presentably monoidal category on a single dualizable object. An $\mathcal E$-module in $\Pres$ is the same as a presentable stable $\infty$-category $\mathcal C$ with a distinguished strongly continuous endofunctor $T\colon\mathcal C\to\mathcal C$. Explicitly, this endofunctor is given by scalar multiplication with the object $\Sigma^\infty_+y(\term )\in\Fun (\frBord 1 1^{\text{op}},\Sp )$, where $y\colon\frBord 1 1^{\text{op}} \to\mathcal S$ is the Yoneda embedding. It follows from the rigidity of $\frBord 1 1$ that $\mathcal E$ is rigid. By a theorem of Arinkin--Gaitsgory--Kazhdan--Raskin--Rozenblyum--Varshavsky, a dualizable $\mathcal E$-module is the same as an $\mathcal E$-module whose underlying presentable stable category is dualizable. We are interested in the finitary localizing invariant
+  $$
+  \tau\colon\modules{\mathcal E}(\Pres )\to\Sp
+  $$
+  given by sending $\mathcal C$ to $\trace\left( \term\curvearrowright \mathcal C\right)$. Specifically, we want to determine the value of $\tau$ on $\ccoShv (X;\Sp )$. Here we can identify $\ccoShv (X;\Sp )$ with the $\mathcal E$-linearly enriched Hom into the $(\mathcal E,\mathcal E)$-bimodule $\Sp$. It then follows by a theorem of Efimov that the universal finitary $\mathcal E$-linear localizing invariant $\mathcal U_{\text{loc},\mathcal E}$ that there is an equivalence
+  $$
+  \mathcal U_{\text{loc},\mathcal E}\ccoShv(X;\Sp )
+  \simeq\intHom_{\NcMot_{\mathcal E}}(\mathcal U_{\text{loc},\mathcal E}\Shv (X;\Sp ),\mathcal U_{\text{loc},\mathcal E}\Sp ),
+  $$
+  natural in $X$. \note{Finish this argument! There are still some details missing. It would be particularly clean if $\NcMot_{\mathcal E}$ has some description in terms of $\NcMot$, e.g. as $\NcMot^{\Delta^1}$.}
+\end{proof}
+\begin{prop}
+  Let $X$ be a compact Hausdorff space and let $f\colon X\to X$ be a continuous map. Assume that $X^f$ is a finite collection of points. The diagram
+  $$
+  \begin{tikzcd}
+    \Sp\arrow[r,"w^{\rm loc}_X"]\arrow[d,equal]
+    &\ccoShv (X;\Sp )\arrow[r,"a^*"]\arrow[d,"f_?"]\arrow[dl,shorten >=4ex,shorten <=4ex,Rightarrow]
+    & \Sp^{|X|}\arrow[d,"f_!"] \\
+    \Sp\arrow[r,swap,"w^{\rm loc}_X"]
+    &\ccoShv (X;\Sp )\arrow[r,swap,"a^*"]
+    & \Sp^{|X|}
+  \end{tikzcd}
+  $$
+  induces a commutative triangle $\mathbb S\to\Sigma^\infty_+ |X^f|\to\Sigma^\infty_+ L^f|X|$ \note{finish this}
+\end{prop}
+\note{Note that in the above }
+\end{document}
