@@ -241,148 +241,148 @@ We should expect the calculation of $\tr{f^?\curvearrowright\coShat (\tset )}{}$
   $\freeondual = \Fun (\mathrm{Bord}^1_{\mathrm{fr}}(\RR^1)^{\op},\Sp )$\todo{define Hopf algebra structure}
 \end{defn}
  
-\newpage
+% \newpage
 
-Let $\Spc$ denote the $\infty$-category of spaces. For any $X \in \Spc$, we write
-$\Sp^{X}$ for the category of local systems of spectra on $X$. For any map of spaces
-$f\colon X \to Y$, the pullback functor $f^{\ast}\colon \Sp^Y\to \Sp^X$ admits both adjoints
-$f_{\sharp}\dashv f^{\ast} \dashv f_{\ast}$, given by left and right Kan extension respectively.
-As before, if $Y=\pt$ and $f$ is the terminal map, we also write $X^{\ast}=f^{\ast}$ and so on.
-With this notation, we have that the composite
-\[X_{\sharp}X^{\ast}\SS = \SS[X] = \colim_X \SS\]
-is given by the spherical chains on $X\in \Spc$.
-By \todo{CITE}, the assignment taking
-a span of spaces $X\xleftarrow{f}Y \xrightarrow{g} Z$ to the composite functor
-$\Sp^X \xrightarrow{f^{\ast}} \Sp^Y \xrightarrow{g_{\sharp}} \Sp^Z$ refines to a symmetric monoidal
-functor
-\[ (\Sp^{(-)})^{\ast}_{\sharp}\colon \Span{\Spc} \too \Prlst\,.\]
-Given a self map $f\colon X\to X$ of a space $X\in \Spc$, we write $\cL^{f}X$ for the pullback
-\[\begin{tikzcd}
-    \cL^{f}X  & X \\
-    X & X\times X\,.
-    \arrow[from=1-1, to=1-2]
-    \arrow[from=1-1, to=2-1]
-    \arrow["\Delta", from=1-2, to=2-2]
-    \arrow["\Gamma^f"', from=2-1, to=2-2]
-  \end{tikzcd}\]
-Note that, $\cL X = \cL^{\id}X= \Map(S^1,X)$ is simply the free loop space of $X$. Arguing as in
-the proof of \cref{lem: trace computation}, we immediately learn that
-\[ \tr{f^{\ast}\colon \Sp^X\to \Sp^X}{\L}\simeq \SS[\cL^{f}X] \in \Sp\,.\]
+% Let $\Spc$ denote the $\infty$-category of spaces. For any $X \in \Spc$, we write
+% $\Sp^{X}$ for the category of local systems of spectra on $X$. For any map of spaces
+% $f\colon X \to Y$, the pullback functor $f^{\ast}\colon \Sp^Y\to \Sp^X$ admits both adjoints
+% $f_{\sharp}\dashv f^{\ast} \dashv f_{\ast}$, given by left and right Kan extension respectively.
+% As before, if $Y=\pt$ and $f$ is the terminal map, we also write $X^{\ast}=f^{\ast}$ and so on.
+% With this notation, we have that the composite
+% \[X_{\sharp}X^{\ast}\SS = \SS[X] = \colim_X \SS\]
+% is given by the spherical chains on $X\in \Spc$.
+% By \todo{CITE}, the assignment taking
+% a span of spaces $X\xleftarrow{f}Y \xrightarrow{g} Z$ to the composite functor
+% $\Sp^X \xrightarrow{f^{\ast}} \Sp^Y \xrightarrow{g_{\sharp}} \Sp^Z$ refines to a symmetric monoidal
+% functor
+% \[ (\Sp^{(-)})^{\ast}_{\sharp}\colon \Span{\Spc} \too \Prlst\,.\]
+% Given a self map $f\colon X\to X$ of a space $X\in \Spc$, we write $\cL^{f}X$ for the pullback
+% \[\begin{tikzcd}
+%     \cL^{f}X  & X \\
+%     X & X\times X\,.
+%     \arrow[from=1-1, to=1-2]
+%     \arrow[from=1-1, to=2-1]
+%     \arrow["\Delta", from=1-2, to=2-2]
+%     \arrow["\Gamma^f"', from=2-1, to=2-2]
+%   \end{tikzcd}\]
+% Note that, $\cL X = \cL^{\id}X= \Map(S^1,X)$ is simply the free loop space of $X$. Arguing as in
+% the proof of \cref{lem: trace computation}, we immediately learn that
+% \[ \tr{f^{\ast}\colon \Sp^X\to \Sp^X}{\L}\simeq \SS[\cL^{f}X] \in \Sp\,.\]
 
-In what follows, fix a self map $f\colon X\to X$ of a compact space $X\in \Spc^{\omega}$
+% In what follows, fix a self map $f\colon X\to X$ of a compact space $X\in \Spc^{\omega}$
 
-\begin{prop}\label{prop: weak lefschetz homotopical}
-  The trace $\tr{\SS[f]}{}\colon \SS\to \SS$ factors through the pushforward
-  $\SS[\cL^{f}X] \to \SS$ induced by the terminal map $\cL^{f}X\to \pt$.
-\end{prop}
-\begin{proof}
-  Since $X$ is compact, we have a chain of adjoints
-  $X_{\sharp} \dashv X^{\ast} \dashv X_{\ast} \dashv X^!$, so that $X_{\sharp}$ and $X^{\ast}$
-  are both strongly continuous. Let $\tau\colon X_{\sharp} f^{\ast}\to X_{\sharp}$ be the natural
-  transformation obtained by whiskering the counit $f_{\sharp}f^{\ast} \to \id_{\Sp^X}$ with
-  $X_{\sharp}$. Moreover, writing $\can \colon X^{\ast}\xrightarrow{\sim}f^{\ast}X^{\ast}$ for
-  the natural equivalence, we obtain a diagram in $\Endtrl(\Prlstf)$ of the form:
-  \[\begin{tikzcd}
-      {\Sp} & {\Sp^X} & {\Sp} \\
-      {\Sp} & {\Sp^X} & {\Sp}
-      \arrow["{X^{\ast}}", from=1-1, to=1-2]
-      \arrow[equals, from=1-1, to=2-1]
-      \arrow["{X_{\sharp}}", from=1-2, to=1-3]
-      \arrow["f^{\ast}",from=1-2, to=2-2]
-      \arrow[equals, from=1-3, to=2-3]
-      \arrow["\mathrm{can}"', Rightarrow, from=2-1, to=1-2]
-      \arrow["{X^\ast}"', from=2-1, to=2-2]
-      \arrow["{\tau}"', Rightarrow, from=2-2, to=1-3]
-      \arrow["{X_{\sharp}}"', from=2-2, to=2-3]\,.
-    \end{tikzcd}\]
-  Unwinding the definitions, we see that the composite is a map $(\Sp,\id)\to (\Sp,\id)$ given
-  by tensoring with the spectrum $\SS[X]$, together with the natural endomorphism of
-  $-\otimes \SS[X]$ given by the pushforward map $\SS[f]\colon \SS[X] \to \SS[X]$. Thus,
-  applying the functor $\TrcL$ to the diagram above, we obtain a commutative diagram
-  in spectra
-  \[\begin{tikzcd}
-      & {\tr{f^{\ast}}{\L}} \\
-      \SS && \SS
-      \arrow["{\TrcL(X_{\sharp},\tau)}", from=1-2, to=2-3]
-      \arrow["{\TrcL(X^{\ast},\can)}", from=2-1, to=1-2]
-      \arrow["{\tr{\SS[f]}{}}"', from=2-1, to=2-3]\,,
-    \end{tikzcd}\]
-  so it suffices to show that, under the identification $\tr{f^{\ast}}{\L} \simeq \SS[\cL^{f}X]$
-  the map $\TrcL(X_{\sharp},\tau)$ is given by the pushforward along the terminal map,
-  which again follows exactly as in \cref{lem: trace computation}
-\end{proof}
+% \begin{prop}\label{prop: weak lefschetz homotopical}
+%   The trace $\tr{\SS[f]}{}\colon \SS\to \SS$ factors through the pushforward
+%   $\SS[\cL^{f}X] \to \SS$ induced by the terminal map $\cL^{f}X\to \pt$.
+% \end{prop}
+% \begin{proof}
+%   Since $X$ is compact, we have a chain of adjoints
+%   $X_{\sharp} \dashv X^{\ast} \dashv X_{\ast} \dashv X^!$, so that $X_{\sharp}$ and $X^{\ast}$
+%   are both strongly continuous. Let $\tau\colon X_{\sharp} f^{\ast}\to X_{\sharp}$ be the natural
+%   transformation obtained by whiskering the counit $f_{\sharp}f^{\ast} \to \id_{\Sp^X}$ with
+%   $X_{\sharp}$. Moreover, writing $\can \colon X^{\ast}\xrightarrow{\sim}f^{\ast}X^{\ast}$ for
+%   the natural equivalence, we obtain a diagram in $\Endtrl(\Prlstf)$ of the form:
+%   \[\begin{tikzcd}
+%       {\Sp} & {\Sp^X} & {\Sp} \\
+%       {\Sp} & {\Sp^X} & {\Sp}
+%       \arrow["{X^{\ast}}", from=1-1, to=1-2]
+%       \arrow[equals, from=1-1, to=2-1]
+%       \arrow["{X_{\sharp}}", from=1-2, to=1-3]
+%       \arrow["f^{\ast}",from=1-2, to=2-2]
+%       \arrow[equals, from=1-3, to=2-3]
+%       \arrow["\mathrm{can}"', Rightarrow, from=2-1, to=1-2]
+%       \arrow["{X^\ast}"', from=2-1, to=2-2]
+%       \arrow["{\tau}"', Rightarrow, from=2-2, to=1-3]
+%       \arrow["{X_{\sharp}}"', from=2-2, to=2-3]\,.
+%     \end{tikzcd}\]
+%   Unwinding the definitions, we see that the composite is a map $(\Sp,\id)\to (\Sp,\id)$ given
+%   by tensoring with the spectrum $\SS[X]$, together with the natural endomorphism of
+%   $-\otimes \SS[X]$ given by the pushforward map $\SS[f]\colon \SS[X] \to \SS[X]$. Thus,
+%   applying the functor $\TrcL$ to the diagram above, we obtain a commutative diagram
+%   in spectra
+%   \[\begin{tikzcd}
+%       & {\tr{f^{\ast}}{\L}} \\
+%       \SS && \SS
+%       \arrow["{\TrcL(X_{\sharp},\tau)}", from=1-2, to=2-3]
+%       \arrow["{\TrcL(X^{\ast},\can)}", from=2-1, to=1-2]
+%       \arrow["{\tr{\SS[f]}{}}"', from=2-1, to=2-3]\,,
+%     \end{tikzcd}\]
+%   so it suffices to show that, under the identification $\tr{f^{\ast}}{\L} \simeq \SS[\cL^{f}X]$
+%   the map $\TrcL(X_{\sharp},\tau)$ is given by the pushforward along the terminal map,
+%   which again follows exactly as in \cref{lem: trace computation}
+% \end{proof}
 
-\begin{defn}
-  Given a self map of a compact space $f\colon X\to X$, 
-  we denote the homology class factoring the trace obtained in
-  \cref{prop: weak lefschetz homotopical} by
-  \[ \mdef{\rho_f} \colon \SS\to \SS[\cL^{f}X]\,,\]
-  and call $\rho_f$ the \tdef{Reidemeister trace} of $f$.
-\end{defn}
+% \begin{defn}
+%   Given a self map of a compact space $f\colon X\to X$, 
+%   we denote the homology class factoring the trace obtained in
+%   \cref{prop: weak lefschetz homotopical} by
+%   \[ \mdef{\rho_f} \colon \SS\to \SS[\cL^{f}X]\,,\]
+%   and call $\rho_f$ the \tdef{Reidemeister trace} of $f$.
+% \end{defn}
 
-\subsection{Cosheaves and assembly}
+% \subsection{Cosheaves and assembly}
 
-For a locally compact Hausdorff space $\tset \in \Top$, we write
-\[ \ani{\tset}\coloneq \ani{\mathrm{Sing}_{\bullet}{\tset}} \in \Spc\]
-for the geometric realization of the singular complex of $\tset$.
-If $\tset$ is compact and suave, we have a natural identification
-\[ \Gamma(\tset;\omega_\tset) \simeq \SS[\ani{\tset}]\]
-of the global sections of the dualizing sheaf with the spherical chains on $\ani{\tset}$,
-which we thus simply denote $\SS[\tset]$. 
+% For a locally compact Hausdorff space $\tset \in \Top$, we write
+% \[ \ani{\tset}\coloneq \ani{\mathrm{Sing}_{\bullet}{\tset}} \in \Spc\]
+% for the geometric realization of the singular complex of $\tset$.
+% If $\tset$ is compact and suave, we have a natural identification
+% \[ \Gamma(\tset;\omega_\tset) \simeq \SS[\ani{\tset}]\]
+% of the global sections of the dualizing sheaf with the spherical chains on $\ani{\tset}$,
+% which we thus simply denote $\SS[\tset]$. 
 
-We now relate the Lefschetz index of a map $f\colon \tset \to \tset$ to the Reidemeister
-trace of the induced map $\ani{f}\colon \ani{\tset} \to \ani{\tset}$. Denote by
-$i\colon \ani{A^f} \to \cL^{\ani{f}}\ani{A}$ the natural map induced by the assignment
-taking a fixed point $a\in A^f$ to the pair $(a,\mathrm{const}_a)$ were $\mathrm{const}_a$
-is the constant path $a\to f(a)=a$. 
+% We now relate the Lefschetz index of a map $f\colon \tset \to \tset$ to the Reidemeister
+% trace of the induced map $\ani{f}\colon \ani{\tset} \to \ani{\tset}$. Denote by
+% $i\colon \ani{A^f} \to \cL^{\ani{f}}\ani{A}$ the natural map induced by the assignment
+% taking a fixed point $a\in A^f$ to the pair $(a,\mathrm{const}_a)$ were $\mathrm{const}_a$
+% is the constant path $a\to f(a)=a$. 
 
-\begin{thm}
-  For any self map of a compact suave Hausdorff space $f\colon \tset \to \tset$,
-  the Reidemeister trace $\rho_{\ani{f}}$ factors naturally in $f$ through the Lefschetz trace,
-  i.e.~we have a commutative diagram in spectra of the form:
-\[\begin{tikzcd}
-	& {\Sections{\tset^f;\omega_{\tset^f}}} \\
-	\SS & {\SS[\cL^{f}\ani{\tset}]}
-	\arrow[from=1-2, to=2-2]
-	\arrow["{\ch{}{f}}", from=2-1, to=1-2]
-	\arrow["{\rho_{\ani{f}}}"', from=2-1, to=2-2]
-\end{tikzcd}\]
-\end{thm}
+% \begin{thm}
+%   For any self map of a compact suave Hausdorff space $f\colon \tset \to \tset$,
+%   the Reidemeister trace $\rho_{\ani{f}}$ factors naturally in $f$ through the Lefschetz trace,
+%   i.e.~we have a commutative diagram in spectra of the form:
+% \[\begin{tikzcd}
+% 	& {\Sections{\tset^f;\omega_{\tset^f}}} \\
+% 	\SS & {\SS[\cL^{f}\ani{\tset}]}
+% 	\arrow[from=1-2, to=2-2]
+% 	\arrow["{\ch{}{f}}", from=2-1, to=1-2]
+% 	\arrow["{\rho_{\ani{f}}}"', from=2-1, to=2-2]
+% \end{tikzcd}\]
+% \end{thm}
 
-We prove this by constructing a factorization of the map
-$(\ani{\tset}^{\ast},\can)\colon (\Sp,\id)\to (\Sp^{\ani{\tset}},\abs{f}^{\ast})$ in
-the category $\Endtrl(\Prlstf)$.
+% We prove this by constructing a factorization of the map
+% $(\ani{\tset}^{\ast},\can)\colon (\Sp,\id)\to (\Sp^{\ani{\tset}},\abs{f}^{\ast})$ in
+% the category $\Endtrl(\Prlstf)$.
 
-\begin{defn}
-  Denote by $\Prdualf$ the sub-$(\infty,2)$-category of $\Prlstf$ spanned by the dualizable objects
-  in $\Prlstf$ with strongly continuous functors between them.
-For any $\tset \in \Top$ we write
-\[ \coShat(\tset) \coloneq \map_{\Prdualf}(\D{\tset}, \Sp)\]
-for the weak dual of $\D{\tset}= \Shv(\tset; \Sp)$ in $\Prdualf$.
-\end{defn}
-Barthels--Nikolaus construct a factorization of the functor $\ani{\tset}^{\ast}\colon \Sp \to \Sp^{\ani{\tset}}$
-of the form
-\[ \Sp \xrightarrow{\chi_{\tset}^{\loc}} \coShat(\tset) \xrightarrow{\ass_{\tset}} \Sp^{\ani{\tset}}\,,\]
-where $\chi_{\tset}^{\loc}(\SS) $ is cosheaf taking an open $U\subseteq \tset$ to the spectrum
-$\SS[\abs{U}]$.
+% \begin{defn}
+%   Denote by $\Prdualf$ the sub-$(\infty,2)$-category of $\Prlstf$ spanned by the dualizable objects
+%   in $\Prlstf$ with strongly continuous functors between them.
+% For any $\tset \in \Top$ we write
+% \[ \coShat(\tset) \coloneq \map_{\Prdualf}(\D{\tset}, \Sp)\]
+% for the weak dual of $\D{\tset}= \Shv(\tset; \Sp)$ in $\Prdualf$.
+% \end{defn}
+% Barthels--Nikolaus construct a factorization of the functor $\ani{\tset}^{\ast}\colon \Sp \to \Sp^{\ani{\tset}}$
+% of the form
+% \[ \Sp \xrightarrow{\chi_{\tset}^{\loc}} \coShat(\tset) \xrightarrow{\ass_{\tset}} \Sp^{\ani{\tset}}\,,\]
+% where $\chi_{\tset}^{\loc}(\SS) $ is cosheaf taking an open $U\subseteq \tset$ to the spectrum
+% $\SS[\abs{U}]$.
 
-\begin{prop}
-We have a natural factorization in $\Endtrl(\Prlstf)$ of the form:
-\[\begin{tikzcd}
-	\Sp & {\coShat{\tset}} & {\Sp^{\ani{\tset}}} \\
-	\Sp & {\coShat{\tset}} & {\Sp^{\ani{\tset}}}
-	\arrow["{\chi_{\tset}^{\loc}}", from=1-1, to=1-2]
-	\arrow["\id", from=1-1, to=2-1]
-	\arrow["\ass_{\tset}", from=1-2, to=1-3]
-	\arrow["{f^{\natural}}", from=1-2, to=2-2]
-	\arrow["{f^{\ast}}", from=1-3, to=2-3]
-	\arrow[ Rightarrow, from=2-1, to=1-2]
-	\arrow["{\chi_{\tset}^{\loc}}"', from=2-1, to=2-2]
-	\arrow[ Rightarrow, from=2-2, to=1-3]
-	\arrow["\ass_{\tset}",from=2-2, to=2-3]
-\end{tikzcd}\]
-Moreover, the induced map on $\TrcL$ factors through $\TrcL(\D{\tset},f^{\ast})\simeq \Gamma_c(\tset;\SS_A)^{\vee}$. 
-\end{prop}
+% \begin{prop}
+% We have a natural factorization in $\Endtrl(\Prlstf)$ of the form:
+% \[\begin{tikzcd}
+% 	\Sp & {\coShat{\tset}} & {\Sp^{\ani{\tset}}} \\
+% 	\Sp & {\coShat{\tset}} & {\Sp^{\ani{\tset}}}
+% 	\arrow["{\chi_{\tset}^{\loc}}", from=1-1, to=1-2]
+% 	\arrow["\id", from=1-1, to=2-1]
+% 	\arrow["\ass_{\tset}", from=1-2, to=1-3]
+% 	\arrow["{f^{\natural}}", from=1-2, to=2-2]
+% 	\arrow["{f^{\ast}}", from=1-3, to=2-3]
+% 	\arrow[ Rightarrow, from=2-1, to=1-2]
+% 	\arrow["{\chi_{\tset}^{\loc}}"', from=2-1, to=2-2]
+% 	\arrow[ Rightarrow, from=2-2, to=1-3]
+% 	\arrow["\ass_{\tset}",from=2-2, to=2-3]
+% \end{tikzcd}\]
+% Moreover, the induced map on $\TrcL$ factors through $\TrcL(\D{\tset},f^{\ast})\simeq \Gamma_c(\tset;\SS_A)^{\vee}$. 
+% \end{prop}
 
 
 

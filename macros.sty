@@ -1,32 +1,38 @@
 % Project specific macros
 %
+
 \newcommand{\Fnote}[1]{{\bf FLORIAN:  #1}}  % Person specific notes
 \newcommand{\Onote}[1]{{\bf OSCAR:  #1}}
 
+\newcommand{\tset}{A}
 \newcommand{\Top}{\mathrm{Top}}
-\newcommand{\sF}{\mathscr{F}}
-\newcommand{\sE}{\mathscr{E}}
-\newcommand{\can}{\mathrm{can}}
-\newcommand{\all}{\mathrm{all}}
+
+\DeclareMathOperator{\Sheaves}{\mathcal{D}}
+\newcommand{\D}[1]{\Sheaves({#1})} % Sheaves on (1:Space)
+\newcommand{\fctD}[1]{\Sheaves_!^*({#1})} % Sheaves 6FF applied to (1:Span of spaces)
 \newcommand{\coShat}{\check{\mathfrak{D}}}
-\newcommand{\Prdualf}{\mathcal{P}\mathrm{r}_{\mathrm{st}}^{\dual}}
-\newcommand{\Prdual}{\Pr_{\mathrm{st}}^{\dual}}
-\newcommand{\ass}{\mathfrak{a}}
-\newcommand{\loc}{\mathrm{loc}}
 \newcommand{\LocSys}[1]{\Sp^{\abs{#1}}}
 
-\newcommand{\tset}{A}
+\newcommand{\Prdualf}{\mathcal{P}\mathrm{r}_{\mathrm{st}}^{\dual}}
+\newcommand{\Prlstf}{\mathcal{P}\mathrm{r}^{\mathrm{L}}_{\mathrm{st}} }
+\newcommand{\pPrl}[1]{\Pr^{\rm{L}}_{#1}} % Modules in Prl over (1: category)
+
+\newcommand{\Prdual}{\Pr_{\mathrm{st}}^{\dual}}
+% \newcommand{\rig}{\mathrm{rig}} % rigid cats
+% \newcommand{\lrig}{\mathrm{lrig}} % locally rigid cats
+
+\newcommand{\ass}{\mathfrak{a}}
+\newcommand{\loc}{\mathrm{loc}}
 
 \newcommand{\integral}[2]{\int_{#2}{#1}}
-\newcommand{\Prlstf}{\mathcal{P}\mathrm{r}^{\mathrm{L}}_{\mathrm{st}} }
 
 
 %% Old stuff below
 
 \newcommand{\dual}{\lozenge}  % dualizable objects
 \newcommand{\evalu}{\mathrm{ev}}
+
 \newcommand{\tr}[2]{\mathrm{tr}_{#2} (#1)} % Trace of (1:Map) in (2:category)
-\renewcommand{\dim}[2]{\mathrm{dim}_{#2} (#1)} % dimension  of (1:Object) in (2:cat)
 \newcommand{\Trc}{\mathrm{Tr}^{\otimes}} % The 2-categorical trace functor
 \newcommand{\TrcL}{\mathrm{Tr}^{\mathrm{L}}} % 2-cat trace for Prl
 \newcommand{\Endtrl}{\mathrm{End}^{\mathrm{tr}}} % Cat of traceable endomorphisms
@@ -44,41 +50,31 @@
     {H^{#2}_c (#1)}%
   }
 
+\newcommand{\Span}[1]{\operatorname{\mathrm{Span}}({#1})} % Category of Spans in (1:cat)
+\newcommand{\sSpan}[1]{\operatorname{\mathcal S\mathrm{pan}}({#1})} % Category of Spans in (2:cat)
 
-  \newcommand{\Span}[1]{\operatorname{\mathrm{Span}}({#1})} % Category of Spans in (1:cat)
-  \newcommand{\sSpan}[1]{\operatorname{\mathcal S\mathrm{pan}}({#1})} % Category of Spans in (2:cat)
 \newcommand{\bcat}{\mathfrak{B}} % Base category in the 6ff
 
-\newcommand{\D}[1]{\Sheaves({#1})} % Sheaves on (1:Space)
-\newcommand{\fctD}[1]{\Sheaves_!^*({#1})} % Sheaves 6FF applied to (1:Span of spaces)
-\newcommand{\Ds}[1]{\Sheaves({#1})} % Suave sheaves on (1:Space)
  % Local Systems
 
 \newcommand{\ch}[2]{\lambda^{#1}_{#2}} % Lefschetz trace
 \newcommand{\ind}[2]{\mathrm{ind}_{#2}(#1)} % index 
 
-\newcommand{\rig}{\mathrm{rig}} % rigid cats
-\newcommand{\lrig}{\mathrm{lrig}} % locally rigid cats
-
-\newcommand{\ani}[1]{\abs{#1}} % shape of a condensed space
 \newcommand{\as}{\partial} % The comparison map from a condensed space to the shape
-\newcommand{\pPrl}[1]{\Pr^{\rm{L}}_{#1}} % Modules in Prl over (1: category)
 \newcommand{\freeondual}{\Sp\lbrack T,T^\vee\rbrack}
 
-
-\DeclareMathOperator{\Sheaves}{\mathcal{D}}
 \DeclareMathOperator{\fundgroupoid}{\Pi_\infty}
-\DeclareMathOperator{\HH}{HH}
-\DeclareMathOperator{\THH}{THH}
+
 \DeclareMathOperator{\lcH}{\mathcal{H}} % Locally compact Hausdorff spaces
 \DeclareMathOperator{\VD}{\mathbb{V}} % Categorical Verdier dual
 \DeclareMathOperator{\Dl}{\mathbb{D}} % Cartier dual in the sheaf cat
 \DeclareMathOperator{\Hom}{\mathcal{H}om} % Internal mapping object
 \DeclareMathOperator{\Homd}{\mathcal{H}om^{\dual}} % Internal mapping object between dualizable categories
-\DeclareMathOperator{\FAlg}{FAlg} % Frobenius algebras 
-\DeclareMathOperator{\CondSpc}{\cl{S}^{\rm{top}}} % Condensed spaces
 
 % General macros
+
+\newcommand{\can}{\mathrm{can}}
+\newcommand{\all}{\mathrm{all}}
 \DeclareMathOperator{\map}{map}
 \DeclareMathOperator{\Map}{Map}
 \DeclareMathOperator{\Spec}{Spec}
@@ -114,6 +110,8 @@
 \DeclareMathOperator{\Fun}{Fun}
 \DeclareMathOperator{\hShv}{\hat{Shv}}
 \DeclareMathOperator{\Shv}{Shv}
+\DeclareMathOperator{\HH}{HH}
+\DeclareMathOperator{\THH}{THH}
 
 \DeclareMathOperator*{\colim}{\mathop{\rm{colim}}}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
@@ -164,6 +162,8 @@
 \newcommand{\cY}{\mathcal{Y}}
 \newcommand{\cZ}{\mathcal{Z}}
 
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sE}{\mathscr{E}}
 
 \newcommand{\fr}{\mathfrak}
 \newcommand{\cl}{\mathcal}

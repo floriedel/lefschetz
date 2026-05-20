@@ -1,17 +1,23 @@
 \subsection{Recollection on six-functor formalisms}
 For the reader's convenience, we briefly review the abstract theory of six-functor formalisms following \cite{Liu_Zheng2012, Mann2022, Scholze2025, Cnossen_Lenz_Linskens2026}.
 
-Fix a commutative algebra object $\mathcal A \in \operatorname{CAlg}(\Prlst)$. We denote by $\mathrm{Pr}^{\mathrm{L}}_{\mathcal A} := \operatorname{Mod}_{\mathcal A}(\Prlst)$ the symmetric monoidal $\infty$-category of $\mathcal A$-linear presentable stable $\infty$-categories, where the monoidal product is given by the relative tensor product $\otimes_{\mathcal A}$ over $\mathcal A$. Morphisms in $\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}$ are colimit-preserving functors equipped with a compatible $\mathcal A$-linear structure. 
+Fix a commutative algebra object $\mathcal A \in \operatorname{CAlg}(\Prlst)$. We denote by $\mathrm{Pr}^{\mathrm{L}}_{\mathcal A} \coloneq \operatorname{Mod}_{\mathcal A}(\Prlst)$ the symmetric monoidal $\infty$-category of $\mathcal A$-linear presentable stable $\infty$-categories, where the monoidal product is given by the relative tensor product over $\mathcal A$. Morphisms in $\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}$ are colimit-preserving functors equipped with a compatible $\mathcal A$-linear structure. 
 
 \begin{defn}
-A \tdef{geometric setup} is a pair $(\mathcal C, \mathcal E)$ where $\mathcal C$ is an $\infty$-category with finite limits\footnote{\cite{Mann2022} only asks that pullbacks along morphisms in $\mathcal E$ exist. For the sake of exposition (and because it suffices for our purposes), we require all finite limits to exist in $\mathcal C$. This also means that we do not have to mention $\infty$-operads later.} and $\mathcal E \subset \Map (\mathcal C)$ is a class of morphisms satisfying:
+A \tdef{geometric setup} is a pair $(\mathcal C, \mathcal E)$ where $\mathcal C$ is an $\infty$-category with finite limits
+% \footnote{\cite{Mann2022} only asks that pullbacks along morphisms in $\mathcal E$ exist. For the sake of exposition (and because it suffices for our purposes), we require all finite limits to exist in $\mathcal C$. This also means that we do not have to mention $\infty$-operads later.}
+and $\mathcal E \subseteq \Map (\mathcal C)$ is a class of morphisms satisfying the following conditions:
 \begin{enumerate}[label=(\roman*)]
     \item $\mathcal E$ contains all equivalences and is closed under composition.
     \item $\mathcal E$ is stable under base change in $\mathcal C$.
 \end{enumerate}
-Morphisms in $\mathcal E$ are called \tdef{admissible}. 
+Morphisms in $\mathcal E$ are called \tdef{admissible}. Given a geometric
+setup $(\cC,\cE)$, we write $\mdef{\Span{\cC}_{\cE}}$ for the associated
+symmetric monoidal $\infty$-category of \tdef{spans}, see \todo{Add Ref}. 
 \end{defn}
-The pair $(\mathcal C, \mathcal E)$ determines an $\infty$-category of spans $\Span{\mathcal C}_{\mathcal E}$, which has the following informal description:
+% The pair $(\mathcal C, \mathcal E)$ determines an $\infty$-category of spans $\Span{\mathcal C}_{\mathcal E}$, which has the following informal description:
+The category of spans $\Span{\cC}_{\cE}$ in a geometric
+setup $(\cC,\cE)$ admits the following informal description:
 \begin{itemize}
 \item the objects of $\Span{\mathcal C}_{\mathcal E}$ are the same as the objects of $\mathcal C$;
 \item morphisms $X\to Y$ are spans
@@ -73,8 +79,8 @@ Furthermore, the span category $\Span{\mathcal C}_{\mathcal E}$ has a symmetric 
 \begin{defn}\label{defn:six-func}
   Let $(\mathcal C, \mathcal E)$ be a geometric setup. An \tdef{($\mathcal A$-linear) six-functor formalism} on $(\mathcal C,\mathcal E)$ is a lax symmetric monoidal functor
   \[
-    \mathcal D\colon\Span{\mathcal C}_{\mathcal E}^{\otimes}\longrightarrow
-    \mathrm{Pr}^{\mathrm{L},\otimes_{\mathcal A}}_{\mathcal A}.
+    \mdef{\cD}\colon\Span{\mathcal C}_{\mathcal E}\longrightarrow
+    \mathrm{Pr}^{\mathrm{L}}_{\mathcal A}.
   \]
 \end{defn}
 For the sake of exposition, the definition given here is more restrictive than the one in~\cite{Mann2022}, since we require $\mathcal D$ to take values in presentable categories.
@@ -148,7 +154,7 @@ Furthermore, this data satisfies
 
 \medskip
 
-At first glance, it may seem that a six-functor formalism involves so much structure that it would be hard to construct one in practice. Nevertheless, \cite{Mann2022} gives a recipe (already implicit in \cite{Liu_Zheng2012}) for bootstrapping a six-functor formalism from a feasible amount of structure.
+At first glance, it may seem that a six-functor formalism involves so much structure that it would be hard to construct one in practice. Nevertheless, \cite{Mann2022} gives a recipe (already implicit in \cite{Liu_Zheng2012}) for bootstrapping a six-functor formalism from a feasible amount of structure.\todo{This does not seem relevant to me}
 
 Consider a geometric setup $(\mathcal C, \mathcal E)$, and suppose we are further given subclasses $\mathcal I, \mathcal P \subset \mathcal E$ such that
 \begin{enumerate}[label=(\roman*)]
@@ -186,6 +192,7 @@ Geometrically, we think of $\mathcal I$ as a class of ``open immersions'' and $\
 
 \medskip
 
+\todo{This is completely irrelevant}
 It is often desirable to work with an $(\infty ,2)$-categorical enhancement of~\cref{defn:six-func}. Let $(\mathcal C,\mathcal E)$ be a geometric setup, and let $\mathcal I$ and $\mathcal P$ be subclasses of $\mathcal E$ satisfying conditions (i), (ii), and (iii) from the discussion preceding~\cref{thm:construction-IP}.
 We can define an $(\infty ,2)$-category of spans $\sSpan{\mathcal C}_{\mathcal E,\mathcal I,\mathcal P}$ with the same objects and 1-morphisms as $\Span{\mathcal C}_{\mathcal E}$, and with 2-morphisms from $X\leftarrow Z\to Y$ to  $X\leftarrow Z'\to Y$ given by spans of spans
 \[
@@ -214,33 +221,40 @@ where $i\in\mathcal I$ and $f\in\mathcal P$. The symmetric monoidal structure on
 \subsection{The categorical Lefschetz trace formula}
 Let $(\mathcal C,\mathcal E)$ be a geometric setup equipped with a six-functor formalism $\mathcal D$. We assume further that
 \begin{itemize}
-\item[(M)] The lax symmetric monoidal structure on $\mathcal D\colon\Span{\mathcal C}_{\mathcal E}\to\mathrm{Pr}^{\mathrm{L},\otimes_{\mathcal A}}_{\mathcal A}$ exhibits $\mathcal D$ as a (strong) symmetric monoidal functor.
+\item[(M)]\label{ass: monoidal} The lax symmetric monoidal structure on $\mathcal D\colon\Span{\mathcal C}_{\mathcal E}\to\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}$ exhibits $\mathcal D$ as a (strong) symmetric monoidal functor.
 \end{itemize}
 We also fix an object $X\in\mathcal C$, and assume that
 \begin{itemize}
-\item[(S)] The projection to the terminal object $X\to\pt$ is admissible.
+\item[(S)]\label{ass: seperated} The projection to the terminal object $X\to\pt$ is admissible.
 \end{itemize}
-We refer to an object satisfying (S) as \tdef{separated}. Since admissible morphisms are stable under base-change, the diagonal morphism $\Delta\colon X\to X\times X$ of a separated object is also admissible. This implies that $X$ is self-dual as an object of $\Span{\mathcal C}_{\mathcal E}$, with coevaluation and evaluation given by the spans
-\[
-  \begin{tikzpicture}[baseline=(current bounding box.center)]
-    \node (X) at (0,1){$X$};
-    \node (pt) at (-1,0){$\pt $};
-    \node (XX) at (1,0){$X\times X$};
+We refer to an object satisfying (S) as \tdef{separated}.
+\\
+Since admissible morphisms are stable under base-change, the diagonal morphism $\Delta\colon X\to X\times X$ of a separated object is also admissible. This implies that $X$ is self-dual as an object of $\Span{\mathcal C}_{\mathcal E}$ \todo{REF, universality of spans?}, with evaluation and unit given by the spans
+% $X\xleftarrow{\id} X \xrightarrow{\Delta} X\times X$ and 
+$X\times X \xleftarrow{\Delta} X \xrightarrow{\id} X$ and $\pt \xleftarrow{} X \xrightarrow{\id} X$ respectively and conuit and coevaluation
+given by the flipped spans.
+% \[
+%   \begin{tikzpicture}[baseline=(current bounding box.center)]
+%     \node (X) at (0,1){$X$};
+%     \node (pt) at (-1,0){$\pt $};
+%     \node (XX) at (1,0){$X\times X$};
 
-    \draw (X) edge[->] (pt);
-    \draw (X) edge[->] node[very near start,right=3pt]{{\small $\Delta$}}(XX);
-  \end{tikzpicture}
-  \qquad\text{and}\qquad
-  \begin{tikzpicture}[baseline=(current bounding box.center)]
-    \node (X) at (0,1){$X$};
-    \node (pt) at (1,0){$\pt .$};
-    \node (XX) at (-1,0){$X\times X$};
+%     \draw (X) edge[->] (pt);
+%     \draw (X) edge[->] node[very near start,right=3pt]{{\small $\Delta$}}(XX);
+%   \end{tikzpicture}
+%   \qquad\text{and}\qquad
+%   \begin{tikzpicture}[baseline=(current bounding box.center)]
+%     \node (X) at (0,1){$X$};
+%     \node (pt) at (1,0){$X .$};
+%     \node (XX) at (-1,0){$X\times X$};
 
-    \draw (X) edge[->] (pt);
-    \draw (X) edge[->] node[very near start,left=3pt]{{\small $\Delta$}}(XX);
-  \end{tikzpicture}
-\]
-Together with condition (M) on $\mathcal D$, this implies that $\mathcal D (X)$ is self-dual as an object of $\mathrm{Pr}^{\mathrm{L},\otimes_{\mathcal A}}_{\mathcal A}$. In particular, we can make sense of the trace of an endomorphism of $\mathcal D (X)$.
+%     \draw (X) edge[->] (pt);
+%     \draw (X) edge[->] node[very near start,left=3pt]{{\small $\Delta$}}(XX);
+%   \end{tikzpicture}
+% \]
+Since the functor $\cD$ is symmetric monoidal by assumption \eqref{ass: monoidal}, we learn that $\mathcal D (X)$ is dualizable, and in fact 
+self-dual, as an object of $\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}$.
+In particular, we can make sense of the trace of an endomorphism of $\mathcal D (X)$.
 \begin{thm}[Categorical Lefschetz trace formula]\label{thm:categorical-fixed-pts}
   Let $X$ and $\mathcal D$ be as above. For every endomorphism $f\curvearrowright X$, there is an equivalence
   \begin{equation}
