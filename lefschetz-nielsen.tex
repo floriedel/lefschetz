@@ -1,4 +1,5 @@
 \subsection{Local systems and the Reidemeister trace}
+
 Let $g\colon X\to X$ be a self-map of a compact anima $X$. Consider again the lax commutative square~\eqref{eq:lax-comm-square-lefschetz} from~\cref{sec: lefschetz theory}, which we viewed as a morphism in the category of traceable endomorphisms $\Endtrl(\Prlstf)$. If $g\colon X\to X$ happened to be induced by a self-map $f\colon\tset\to\tset$ for some well-behaved space $\tset$, we recovered the Lefschetz fixed point theorem for $f$ by factoring~\eqref{eq:lax-comm-square-lefschetz} through the object $(\D{\tset },f_!)\in\Endtrl(\Prlstf)$.
 
 Putting topology aside for now, a more obvious factorization of~\eqref{eq:lax-comm-square-lefschetz} is through the category of local systems (aka parametrized spectra) $\Sp^X$:
@@ -87,11 +88,37 @@ Combining~\cref{lem: reidemeister trace computation} with~\cref{cor: reidemeiste
 \end{proof}
 We have constructed a homotopy invariant for self-maps that refines the Lefschetz trace:
 \begin{defn}
-  The map $\SS\to\SS\lbrack\cL^{g}X\rbrack$ in~\eqref{eq:reidemeister-lefschetz-triangle-with-identification} is the \tdef{Reidemeister trace} of $g$.
+  The map $\mdef{\rho_g}\colon \SS\to\SS\lbrack\cL^{g}X\rbrack$ in~\eqref{eq:reidemeister-lefschetz-triangle-with-identification} is the
+  \tdef{Reidemeister trace} of $g$.
 \end{defn}
+
 \subsection{Factoring the Reidemeister trace using cosheaves}
-Let $\tset$ be a compact Hausdorff space that is locally of singular shape,
-and let $f\colon\tset\to\tset$ be some self-map. We will also let $X$ denote the underlying anima of $\tset$ and let $g\colon X\to X$ denote the map induced by $f$. In the spirit of fixed point theory, we would like to relate the Reidemeister trace of $g$ to the actual fixed point space $\tset^f$. We do so by following the pattern of~\cref{sec: lefschetz theory}. First, then, we should factor the square
+
+Let $\tset\in \Top$ be compact and locally of singular shape with
+associated anima $\ani{\tset}\tset$. Given some self map
+$f\colon\tset\to\tset$, we can now associated two different invariants
+to this datum, namely the topological Reidemeister trace
+\[ \lambda_f\colon \SS \to \Sections{\tset;\omega_\tset}\,,\]
+as well as its homotopical counterpart:
+\[ \rho_{f}\colon \SS \to \SS [\cL^{f}\ani{\tset}]\,.\]
+The insight is that the Lefschetz--Nielsen theorem \todo{Add ref},
+will be an immediate consequence of relating these two invariants.
+More precisely, we show:
+
+\begin{thm}
+    Let $\tset \in \Top$ be compact and locally of singular shape. 
+    Then we have a commutative diagram in the category of spectra:
+    \[\begin{tikzcd}
+	& {\Sections{\tset,omega_{\tset}}} \\
+	\SS & {\SS[\cL^f\ani{\tset}]}
+	\arrow["{\mathfrak{a}}", from=1-2, to=2-2]
+	\arrow["{\lambda_f}", from=2-1, to=1-2]
+	\arrow["{\rho_f}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+which is natural in intertwining maps.
+\end{thm}
+
+In the spirit of fixed point theory, we would like to relate the Reidemeister trace of $g$ to the actual fixed point space $\tset^f$. We do so by following the pattern of~\cref{sec: lefschetz theory}. First, then, we should factor the square
 \begin{equation}
   \label{eq:lax-comm-square-reidemeister}
   \begin{tikzcd}[column sep=large]

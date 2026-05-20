@@ -42,8 +42,8 @@ We find it useful to take the following definition as our starting point:
 
 \begin{defn}\label{defn: lefschetz trace}
   For a compact anima $X$, the \tdef{Lefschetz trace} of a self-map $g\colon X\to X$ is the map
-  \[ \mdef{L(g)}\coloneq \tr{g^*\SS^X\to \SS^X}{\Sp}\colon\SS\to\SS.\]
-  If $X$ is the underlying anima of a topological space $\tset$ and $g$ is induced by a self-map $f\colon\tset\to\tset$, then we will also refer to $L(f)\coloneq L(f)$ as the Lefschetz trace of $f$.
+  \[ \mdef{L(g)}\coloneq \tr{g^*\colon \SS^X\to \SS^X}{\Sp}\colon\SS\to\SS.\]
+  If $X=\ani{\tset}$ is the underlying anima of a topological space $\tset$ and $g$ is induced by a self-map $f\colon\tset\to\tset$, then we will also refer to $L(f)\coloneq L(g)$ as the Lefschetz trace of $f$.
 \end{defn}
 
 % Note that the trace $\tr{g^*\curvearrowright\SS^X}{\Sp}$ is defined due to Spanier--Whitehead duality, which asserts that the spherical cochains $\SS^X$ and the suspension spectrum $\SS\lbrack X\rbrack$ are dual to each other for a compact anima $X$.
@@ -52,7 +52,7 @@ We claim that~\cref{defn: lefschetz trace} recovers the usual definition of the 
 \begin{lem}
   For a compact anima $X$ and a self-map $g\colon X\to X$ we have that:
   \[
-    \sum_{i\geq 0}(-1)^{i} \tr{(H^{i}(g)\curvearrowright H^{i}(\tset;\QQ )}{} = L(f)\,.
+    \sum_{i\geq 0}(-1)^{i} \tr{(H^{i}(g)\curvearrowright H^{i}(\tset;\QQ )}{} = L(g)\,.
   \]
 %   is an integer, and there is a homotopy
 %   \begin{equation}
@@ -77,27 +77,22 @@ $E\in \Sp$ to the endomorphism $E\otimes-\colon \Sp \to \Sp$.
 Moreover, under this equivalence,
 for any self map of a compact anima $g\colon X \to X$ the induced map
 of spectra $g^{\ast}\colon \SS^X\to \SS^X$ is identified with a map 
-\[ g^{\ast}\colon (\Sp, -\otimes \SS^X)\to (\Sp, -\otimes \SS^X) \in \Endtrl(\Prlstf) \]
-Under this identification, we write
+\[ g^{\ast}\colon (\Sp, \SS^X)\to (\Sp, \SS^X) \in \Endtrl(\Prlstf) \]
+We write
 \[
   \mdef{\TrcL}\colon \Endtrl(\Prlstf)\too \Sp\,.
 \]
 for the symmetric monoidal trace functor of \cref{thm: trace functor}. 
-
-We then have:
-
+Unwinding the naturality of the functor $\TrcL$, we learn that 
+$\TrcL{(\Sp,\SS^X)}= \SS$ and moreover:
 % \begin{prop}
 %   For a compact anima $X$ and a self-map $g\colon X\to X$, there is a homotopy
-%   \begin{equation}
-%     \label{eq:trace-lax-comm}
-%     \tr{g^*\curvearrowright\SS^X}{\Sp} \simeq
-%     \TrcL\left(
-%       \begin{tikzcd}[column sep=large]
-%         \Sp \arrow[r,"\SS^X\otimes {-}"] \arrow[d,equal] & \Sp \arrow[d,equal]\\
-%         \Sp \arrow[r,swap,"\SS^X\otimes {-}"] \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt,"g^*"] & \Sp
-%       \end{tikzcd}
-%     \right).
-%   \end{equation}
+   \begin{equation}
+     \label{eq:trace-lax-comm}
+     \tr{g^*\colon \SS^X \to \SS^X}{\Sp} \simeq
+     \TrcL\left(g^\ast\colon (\Sp,\SS^X)\to (\Sp,\SS^X)
+     \right)\in \pi_0\SS.
+   \end{equation}
 % \end{prop}
 % \begin{proof}
 %   Morita theory supplies an equivalence of monoidal categories
@@ -107,6 +102,7 @@ We then have:
 %   given informally by $E\mapsto E\otimes {-}$. Here the monoidal structure on the left-hand side is the tensor product of spectra, and the monoidal structure on the right-hand side is composition. It follows that the trace of $g^*\colon\SS^X\to\SS^X$ can be computed as the trace of the natural transformation $g^*\otimes{-}\colon\left(\SS^X\otimes {-}\right)\to \left(\SS^X\otimes {-}\right)$. Unfolding definitions equates this with the right-hand side of~\eqref{eq:trace-lax-comm}, see~\cref{rmk:compatibility-of-fancy-trace-with-normal-trace}.
 % \end{proof}
 \subsection{Factoring the Lefschetz trace using sheaves}
+
 Above we showed that the Lefschetz trace of a self-map of a compact anima $X$ can be calculated in terms of the lax commutative diagram
 \begin{equation}
   \label{eq:lax-comm-square-lefschetz}
@@ -183,11 +179,10 @@ The category $\D{\tset}$ contains topological information about $\tset$.\footnot
 Using the functoriality of $\TrcL$, we thus get
 \begin{cor}\label{cor:lefschetz-triangle}
   Let $\tset$ be a compact Hausdorff space that is locally of singular shape, and let $f\colon\tset\to\tset$ be some self-map. There is a commutative diagram
-  \begin{equation}
-    \label{eq:lefschetz-triangle}
+  \begin{equation}\label{eq:lefschetz-triangle}
     \begin{tikzcd}[column sep=tiny]
       & \tr{f_!\curvearrowright\D{\tset}}{}\arrow[dr] \\
-      \SS\arrow[rr]\arrow[ru] && \SS,
+      \SS\arrow["L(f)",rr]\arrow[ru] && \SS,
     \end{tikzcd}
   \end{equation}
   where the bottom arrow is the Lefschetz trace of $f$.
@@ -405,14 +400,15 @@ where the $2$-cell is the Beck--Chevalley morphism.\todo{Find the right things t
   \]
   where the middle vertical arrow is the restriction of $h$ to $\tset^f$.
 \end{proof}
+
 Combining this with~\cref{cor:lefschetz-triangle}, we thus find
+
 \begin{thm}[Lefschetz fixed point formula]\label{thm: fancy lefschetz formula}
   Let $\tset$ be a compact Hausdorff space that is locally of singular shape, and let $f\colon\tset\to\tset$ be a self-map. There is a commutative diagram
-  \begin{equation}
-    \label{eq:lefschetz-triangle}
+  \begin{equation}\label{eq: lefschetz-triangle-identified}
     \begin{tikzcd}[column sep=tiny]
       & \cptSections{\tset^f}\arrow[dr] \\
-      \SS\arrow[rr]\arrow[ru] && \SS,
+      \SS\arrow["L(f)", rr]\arrow[ru] && \SS,
     \end{tikzcd}
   \end{equation}
   where the bottom arrow is the Lefschetz trace of $f$ and the arrow $\SS\to\cptSections{\tset^f }$ is the one induced by the projection $\tset^f\to\pt$, or in other words the unit in the sheaf cohomology ring $\cptSections{\tset^f}\simeq\Sections{\tset^f}$.
@@ -420,6 +416,7 @@ Combining this with~\cref{cor:lefschetz-triangle}, we thus find
 \begin{proof}
   It remains only to justify the statement about the map $\SS\to\cptSections{\tset^f}$. Recall that~\eqref{eq:lefschetz-triangle} is induced by the factorization~\eqref{eq:lax-composition-lefschetz} of the lax commutative square~\eqref{eq:lax-comm-square-lefschetz}. In this factorization, the first factor is precisely the lax square induced by the proper morphism $(\tset ,f)\to (\pt ,\id )$ as in~\eqref{eq:square-induced-by-proper-morphism}. The desired conclusion now follows from the naturality statement in~\cref{lem: trace computation}.
 \end{proof}
+
 We immediately get:
 \begin{cor}[Lefschetz fixed point theorem]
   Let $A$ and $f$ be as in the previous theorem. If the Lefschetz trace of $f$ is nonzero, then $f$ has a fixed point.
@@ -427,11 +424,19 @@ We immediately get:
 \begin{proof}
   If $\tset^f$ is empty, then $\cptSections{\tset^f}\simeq 0$, whence the Lefschetz trace must be null.
 \end{proof}
+
+\begin{defn}
+    Let $\tset \in \Top$ be compact and locally of singular shape. For
+    any self map $f\colon \tset\to \tset$, we call the map
+    \[ \mdef{\lambda_f}\colon \cptSections{\tset^f}\to \SS\,, \]
+    appearing as the right hand diagonal arrow in \cref{eq: lefschetz-triangle-identified}, the \tdef{topological Reidemeister trace} of $f$.
+\end{defn}
+
 Finally, we show how to recover~\cref{thm: lefschetz formula} from~\cref{thm: fancy lefschetz formula}. Base changing~\eqref{eq:lefschetz-triangle} along the Hurewicz map $\SS\to\QQ$ and using the projection formula $\QQ\otimes\Gamma_c(\tset^f)\simeq \Gamma_c(\tset^f;\QQ )$, we get a commutative diagram
 \[
   \begin{tikzcd}
     & \Gamma_c(\tset^f;\QQ ) \arrow[dr]\\
-    \QQ\arrow[rr]\arrow[ru] &&\QQ,
+    \QQ\arrow["L(f)",rr]\arrow[ru] &&\QQ,
   \end{tikzcd}
 \]
 in the derived category of $\QQ$-modules, where the bottom horizontal map is the Lefschetz trace and the map $\QQ\to\Gamma_c(\tset^f;\QQ )\simeq\Gamma (\tset^f;\QQ )$ is the unit of the sheaf cohomology ring.
