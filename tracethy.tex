@@ -9,7 +9,7 @@ $f,g\colon \1_{\cC} \to \1_{\cC}$ is simply given by the map $f\otimes g\colon \
   An object $X\in \cC$ is said to be \tdef{dualizable}
   if the functor $X\otimes - \colon \cC \to \cC$ admits an adjoint of the form
   $Y\otimes - \colon \cC \to \cC$. In this case, we write $Y= X^{\vee}$ and refer to $X^{\vee}$ as
-  the \tdef{dual} $X$. We denote by $\cC^{\dual}\subseteq \cC$ the full subcategory
+  the \tdef{dual} of $X$. We denote by $\mdef{\cC^{\dual}}\subseteq \cC$ the full subcategory
   spanned by the dualizable objects.
 \end{defn}
 
@@ -30,13 +30,21 @@ equivalence
 \begin{defn}
   A \tdef{generalized endomorphism} of an object $X\in \cC$ is a map
   \[ f\colon Y\otimes X  \to X \otimes Z,\]
-  for some $Y,Z\in \cC$. 
-  The \tdef{trace} of $f$ is defined to be the composite
-  \[ \tr{f}{\cC} \colon  Y \rar{Y \otimes \coev_X} Y\otimes X \otimes X^{\vee} \rar{f \otimes \id} Z\otimes X \otimes X^{\vee} \rar{Z\otimes \tau} Z\otimes  X^{\vee} \otimes X \rar{Z\otimes \ev_X} Z .\]
+  for some $Y,Z\in \cC$. If $X\in \cC^{\dual}$,
+  the \tdef{trace} of $f$ is defined to be the composite
+  \[ \mdef{\tr{f}{\cC}} \colon  Y \rar{Y \otimes \coev_X} Y\otimes X \otimes X^{\vee} \rar{f \otimes \id} Z\otimes X \otimes X^{\vee} \rar{Z\otimes \tau} Z\otimes  X^{\vee} \otimes X \rar{Z\otimes \ev_X} Z .\]
   We refer to $\tr{\id_X}{\cC}\colon \1_{\cC} \to \1_{\cC}$ as the \tdef{dimension} of
-  $X$ and denote it by $\dim{X}{\cC}$.
+  $X$ and denote it by $\mathrm{dim}_{\cC}(X)$.
 \end{defn}
 
+\begin{lem}\label{lem: sym mon preserve trace}
+    Let $F\colon \cC\to \cD$ be a symmetric monoidal $(\infty,2)$-functor
+    and let $f\colon Y\otimes X \to X\otimes Z$ be a generalized
+    endomorphism of some dualizable object $X\in \cC^{\dual}$.  
+    We have a natural equivalence 
+    \[ F(\tr{f}{\cC})\simeq \tr{F(f)}{\cD}\,, \]
+    in the $(\infty,1)$ category of maps $F(Y)\to F(Z)$. 
+\end{lem}
 In~\cite{Hoyois_Scherotzke_Sibilla2017} Hoyois--Scherotzke--Sibilla construct an $(\infty,1)$-category $\Endtrl(\cC)$
 of \textit{traceable endomorphisms} in $\cC$ as follows:
 

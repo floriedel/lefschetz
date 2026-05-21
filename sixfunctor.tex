@@ -1,18 +1,21 @@
 \subsection{Recollection on six-functor formalisms}
 For the reader's convenience, we briefly review the abstract theory of six-functor formalisms following \cite{Liu_Zheng2012, Mann2022, Scholze2025, Cnossen_Lenz_Linskens2026}.
 
-Fix a commutative algebra object $\mathcal A \in \operatorname{CAlg}(\Prlst)$. We denote by $\mathrm{Pr}^{\mathrm{L}}_{\mathcal A} \coloneq \operatorname{Mod}_{\mathcal A}(\Prlst)$ the symmetric monoidal $\infty$-category of $\mathcal A$-linear presentable stable $\infty$-categories, where the monoidal product is given by the relative tensor product over $\mathcal A$. Morphisms in $\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}$ are colimit-preserving functors equipped with a compatible $\mathcal A$-linear structure. 
+Fix a presentably symmetric monoidal $\infty$-category $\mathcal A \in \operatorname{CAlg}(\Prlst)$. We denote by $\mathrm{Pr}^{\mathrm{L}}_{\mathcal A} \coloneq \operatorname{Mod}_{\mathcal A}(\Prlst)$ the symmetric monoidal $\infty$-category of $\mathcal A$-linear presentable stable $\infty$-categories, where the monoidal product is given by the relative tensor product over $\mathcal A$. 
+%Morphisms in $\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}$ are colimit-preserving functors equipped with a compatible $\mathcal A$-linear structure. 
 
 \begin{defn}
-A \tdef{geometric setup} is a pair $(\mathcal C, \mathcal E)$ where $\mathcal C$ is an $\infty$-category with finite limits
+A \tdef{geometric setup} is a pair $(\mathcal C, \mathcal E)$ where $\mathcal C$ is an $\infty$-category with admits all finite limits
 % \footnote{\cite{Mann2022} only asks that pullbacks along morphisms in $\mathcal E$ exist. For the sake of exposition (and because it suffices for our purposes), we require all finite limits to exist in $\mathcal C$. This also means that we do not have to mention $\infty$-operads later.}
-and $\mathcal E \subseteq \Map (\mathcal C)$ is a class of morphisms satisfying the following conditions:
+and $\mathcal E \subseteq \Map (\mathcal C)$ is a class of morphisms
+in $\cC$, satisfying the following conditions:
 \begin{enumerate}[label=(\roman*)]
     \item $\mathcal E$ contains all equivalences and is closed under composition.
     \item $\mathcal E$ is stable under base change in $\mathcal C$.
 \end{enumerate}
-Morphisms in $\mathcal E$ are called \tdef{admissible}. Given a geometric
-setup $(\cC,\cE)$, we write $\mdef{\Span{\cC}_{\cE}}$ for the associated
+Morphisms in $\mathcal E$ are called \tdef{admissible} and we also call
+an object $X\in \cC$ admissible whenever the terminal map $X\to \pt$ is.
+Given a geometric setup $(\cC,\cE)$, we write $\mdef{\Span{\cC}_{\cE}}$ for the associated
 symmetric monoidal $\infty$-category of \tdef{spans}, see \todo{Add Ref}. 
 \end{defn}
 % The pair $(\mathcal C, \mathcal E)$ determines an $\infty$-category of spans $\Span{\mathcal C}_{\mathcal E}$, which has the following informal description:
@@ -77,7 +80,9 @@ setup $(\cC,\cE)$ admits the following informal description:
 \end{itemize}
 Furthermore, the span category $\Span{\mathcal C}_{\mathcal E}$ has a symmetric monoidal structure, given informally by the categorical product on the underlying category $\mathcal C$. We refer to~\cites[][Definition 6.1.1]{Liu_Zheng2012}[][Definition~A.5.2 and Remark A.5.5]{Mann2022} for a precise construction of the span category and its symmetric monoidal structure.
 \begin{defn}\label{defn:six-func}
-  Let $(\mathcal C, \mathcal E)$ be a geometric setup. An \tdef{($\mathcal A$-linear) six-functor formalism} on $(\mathcal C,\mathcal E)$ is a lax symmetric monoidal functor
+  Let $(\mathcal C, \mathcal E)$ be a geometric setup and $\cA\in \CAlg(\Prlst)$ be some stable presentably monoidal category. 
+  An \tdef{($\mathcal A$-linear) six-functor formalism} on 
+  $(\mathcal C,\mathcal E)$ is a lax symmetric monoidal functor
   \[
     \mdef{\cD}\colon\Span{\mathcal C}_{\mathcal E}\longrightarrow
     \mathrm{Pr}^{\mathrm{L}}_{\mathcal A}.
@@ -111,7 +116,7 @@ and multiplication
 \]
 see~\cite[Remark 3.13]{Scholze2025}. Unwinding the definition, we then see that a six-functor formalism on a geometric setup $(\mathcal C,\mathcal E)$ packages the following data:
 \begin{itemize}
-\item Since lax symmetric monoidal functors take commutative algebras to commutative algebras, we get a stable $\mathcal A$-linearly symmetric monoidal category $\mathcal D(X)\in\CAlg (\mathrm{Pr}^{\mathrm{L},\otimes_{\mathcal A}}_{\mathcal A})$ for each object $X\in\mathcal C$;
+\item Since lax symmetric monoidal functors take commutative algebras to commutative algebras, we get a stable $\mathcal A$-linearly symmetric monoidal category $\mathcal D(X)\in\CAlg (\pPrl{\cA})$ for each object $X\in\mathcal C$;
 \item By applying $\mathcal D$ to the span
   \[
     \begin{tikzpicture}[baseline=(current bounding box.center)]
@@ -166,7 +171,7 @@ Geometrically, we think of $\mathcal I$ as a class of ``open immersions'' and $\
 \begin{thm}[Liu--Zheng~\cite{Liu_Zheng2012}, Mann~\cite{Mann2022}]\label{thm:construction-IP}
   Let $(\mathcal C, \mathcal E)$ be a geometric setup, and let $\mathcal I$ and $\mathcal P$ be as above. Suppose we are given a functor
   \[
-    \mathcal D_0\colon\mathcal C^{\mathrm{op}}\longrightarrow\CAlg (\mathrm{Pr}^{\mathrm{L},\otimes_{\mathcal A}}_{\mathcal A}).
+    \mathcal D_0\colon\mathcal C^{\mathrm{op}}\longrightarrow\CAlg (\pPrl{\cA}).
   \]
   If also
   \begin{enumerate}[label=(\roman*)]
@@ -186,7 +191,7 @@ Geometrically, we think of $\mathcal I$ as a class of ``open immersions'' and $\
   \end{enumerate}
   then $\mathcal D_0$ admits a canonical extension to a six-functor formalism
   \[
-    \mathcal D\colon\Span{\mathcal C}_{\mathcal E}\longrightarrow\mathrm{Pr}^{\mathrm{L},\otimes_{\mathcal A}}_{\mathcal A}.
+    \mathcal D\colon\Span{\mathcal C}_{\mathcal E}\longrightarrow \pPrl{\cA}.
   \]
 \end{thm}
 
@@ -218,21 +223,30 @@ where $i\in\mathcal I$ and $f\in\mathcal P$. The symmetric monoidal structure on
     \mathcal D\colon\sSpan{\mathcal C}_{\mathcal E,\mathcal I,\mathcal P}^{\otimes}\too\mathcal P\mathrm r_{\mathcal A}^{L,\otimes_{\mathcal A}}.
   \]
 \end{thm}
-\subsection{The categorical Lefschetz trace formula}
-Let $(\mathcal C,\mathcal E)$ be a geometric setup equipped with a six-functor formalism $\mathcal D$. We assume further that
-\begin{itemize}
-\item[(M)]\label{ass: monoidal} The lax symmetric monoidal structure on $\mathcal D\colon\Span{\mathcal C}_{\mathcal E}\to\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}$ exhibits $\mathcal D$ as a (strong) symmetric monoidal functor.
-\end{itemize}
-We also fix an object $X\in\mathcal C$, and assume that
-\begin{itemize}
-\item[(S)]\label{ass: seperated} The projection to the terminal object $X\to\pt$ is admissible.
-\end{itemize}
-We refer to an object satisfying (S) as \tdef{separated}.
-\\
-Since admissible morphisms are stable under base-change, the diagonal morphism $\Delta\colon X\to X\times X$ of a separated object is also admissible. This implies that $X$ is self-dual as an object of $\Span{\mathcal C}_{\mathcal E}$ \todo{REF, universality of spans?}, with evaluation and unit given by the spans
-% $X\xleftarrow{\id} X \xrightarrow{\Delta} X\times X$ and 
-$X\times X \xleftarrow{\Delta} X \xrightarrow{\id} X$ and $\pt \xleftarrow{} X \xrightarrow{\id} X$ respectively and conuit and coevaluation
-given by the flipped spans.
+
+\subsection{The categorified Lefschetz trace formula}
+
+The starting point is the following observation about dualizable
+objects in span categories:
+\begin{lem}
+    Let $(\cC,\cE)$ be a geometric setup. If $X\in \cC$ is admissible,
+    then the span $(\pt \xleftarrow{} X \xrightarrow{} \pt) \in \Span{\cC}_{\cE}$
+    is dualizable and self dual, with evaluation and unit given by the spans
+ \[X\xleftarrow{\id} X \xrightarrow{\Delta} X\times X\,, \quad
+ \pt \xleftarrow{} X \xrightarrow{\id} X\,\]
+ respectively and counit and coevaluation given by the flipped spans.
+\end{lem}
+% We assume further that
+% \begin{itemize}
+% \item[(M)]\label{ass: monoidal} The lax symmetric monoidal structure on $\mathcal D\colon\Span{\mathcal C}_{\mathcal E}\to\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}$ exhibits $\mathcal D$ as a (strong) symmetric monoidal functor.
+% \end{itemize}
+% We also fix an object $X\in\mathcal C$, and assume that
+% \begin{itemize}
+% \item[(S)]\label{ass: seperated} The projection to the terminal object $X\to\pt$ is admissible.
+% \end{itemize}
+% We refer to an object satisfying (S) as \tdef{separated}.
+% \\
+% Since admissible morphisms are stable under base-change, the diagonal morphism $\Delta\colon X\to X\times X$ of a separated object is also admissible. This implies that $X$ is self-dual as an object of $\Span{\mathcal C}_{\mathcal E}$ \todo{REF, universality of spans?}, 
 % \[
 %   \begin{tikzpicture}[baseline=(current bounding box.center)]
 %     \node (X) at (0,1){$X$};
@@ -252,14 +266,18 @@ given by the flipped spans.
 %     \draw (X) edge[->] node[very near start,left=3pt]{{\small $\Delta$}}(XX);
 %   \end{tikzpicture}
 % \]
-Since the functor $\cD$ is symmetric monoidal by assumption \eqref{ass: monoidal}, we learn that $\mathcal D (X)$ is dualizable, and in fact 
-self-dual, as an object of $\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}$.
-In particular, we can make sense of the trace of an endomorphism of $\mathcal D (X)$.
-\begin{thm}[Categorical Lefschetz trace formula]\label{thm:categorical-fixed-pts}
-  Let $X$ and $\mathcal D$ be as above. For every endomorphism $f\curvearrowright X$, there is an equivalence
+
+Now, given a six-functor formalism $\cD\colon \Span{\cC}_{\cE}\to \pPrl{\cA}$ that is symmetric monoidal, we can reduce computing the
+trace of a pullback functor to computed the trace of the map in the
+span category. More precisely:
+
+\begin{prop}[Categorified trace formula]\label{thm:categorical-fixed-pts}
+Let $\cD\colon \Span{\cC}_{\cE}\to \pPrl{\cA}$ be a symmetric monoidal,
+$\cA$-linear six-functor formalism and let $X\in \cC$ be admissible.
+  For every endomorphism $f\colon X\to X$, we have that
   \begin{equation}
     \label{eq:categorical-trace-formula}
-    \tr{f^*\curvearrowright\mathcal D (X)}{\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}}\simeq (X^f)_!(X^f)^*,
+    \tr{f^*\curvearrowright\mathcal D (X)}{\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}}\simeq (X^f)_!(X^f)^* \in \Map_{\pPrl{\cA}}(\cA,\cA)\,,
   \end{equation}
   where $X^f\in\mathcal C$ is defined by the pullback
   \begin{equation}
@@ -274,14 +292,14 @@ In particular, we can make sense of the trace of an endomorphism of $\mathcal D 
       \arrow["{(\id ,f)}"', from=2-1, to=2-2]
     \end{tikzcd}
   \end{equation}
-  If $f$ is admissible, we also have
+  If additionally $f\colon X\to X$ is admissible, we moreover have
     \begin{equation}
     \label{eq:categorical-trace-formula-exceptional}
     \tr{f_!\curvearrowright\mathcal D (X)}{\mathrm{Pr}^{\mathrm{L}}_{\mathcal A}}\simeq (X^f)_!(X^f)^*.
   \end{equation}
-\end{thm}
+\end{prop}
 \begin{proof}
-  Recall that $f^*$ is the result of applying the symmetric monoidal functor $\mathcal D\colon \Span{\mathcal C}_{\mathcal E} \too \mathrm{Pr}^{\mathrm{L}}_{\mathcal A}$ to the span
+  Recall that $f^*$ is the result of applying the symmetric monoidal functor $\mathcal D\colon \Span{\mathcal C}_{\mathcal E} \to \pPrl{\cA}$ to the span
   \begin{equation}
     \label{eq:pullback-in-correspondence}
     \begin{tikzpicture}[baseline=(current bounding box.center)]
@@ -293,31 +311,31 @@ In particular, we can make sense of the trace of an endomorphism of $\mathcal D 
       \draw (Z) edge[double equal sign distance] (Xprime);
     \end{tikzpicture}
   \end{equation}
-  Since symmetric monoidal functors preserve traces, we get a (canonical) equivalence
+  Since symmetric monoidal functors preserve traces by \cref{lem: sym mon preserve trace}, we get a natural equivalence
   \[
     \tr{f^*\colon \D{X}\to \D{X}}{}\simeq\D{\tr{X\xleftarrow{f} X\xrightarrow{\id} X}{}},
   \]
-  where the trace of $X\xleftarrow{\id} X\xrightarrow{f} X$ is taken in the span category $\Span{\mathcal C}_{\mathcal E}$. Using the description of the evaluation and coevaluation on $X$ from the discussion preceding the theorem, we then find that the trace of the morphism~\eqref{eq:pullback-in-correspondence} in the span category is given by the outer span in the diagram
-  \[
-    \begin{tikzpicture}[baseline=(current bounding box.center)]
-      \node (X) at (0,1){$X$};
-      \node (pt) at (-1,0){$\pt $};
-      \node (XX) at (1,0){$X\times X$};
+  where the trace of $X\xleftarrow{\id} X\xrightarrow{f} X$ is taken in the span category $\Span{\mathcal C}_{\mathcal E}$. Using the description of the evaluation and coevaluation on $X$ from the discussion preceding the theorem, we then find that the trace of the morphism~\eqref{eq:pullback-in-correspondence} in the span category is given by the outer span in the diagram:
+  % \[
+  %   \begin{tikzpicture}[baseline=(current bounding box.center)]
+  %     \node (X) at (0,1){$X$};
+  %     \node (pt) at (-1,0){$\pt $};
+  %     \node (XX) at (1,0){$X\times X$};
 
-      \draw (X) edge[->] (pt);
-      \draw (X) edge[->] node[very near start,right=3pt]{{\small $\Delta$}}(XX);
-    \end{tikzpicture}
-    \qquad\text{and}\qquad
-    \begin{tikzpicture}[baseline=(current bounding box.center)]
-      \node (X) at (0,1){$X$};
-      \node (pt) at (1,0){$\pt $,};
-      \node (XX) at (-1,0){$X\times X$};
+  %     \draw (X) edge[->] (pt);
+  %     \draw (X) edge[->] node[very near start,right=3pt]{{\small $\Delta$}}(XX);
+  %   \end{tikzpicture}
+  %   \qquad\text{and}\qquad
+  %   \begin{tikzpicture}[baseline=(current bounding box.center)]
+  %     \node (X) at (0,1){$X$};
+  %     \node (pt) at (1,0){$\pt $,};
+  %     \node (XX) at (-1,0){$X\times X$};
 
-      \draw (X) edge[->] (pt);
-      \draw (X) edge[->] node[very near start,left=3pt]{{\small $\Delta$}}(XX);
-    \end{tikzpicture}
-  \]
-  respectively. The trace of $X\xleftarrow{\id} X\xrightarrow{f} X$ is therefore the outer span in the diagram
+  %     \draw (X) edge[->] (pt);
+  %     \draw (X) edge[->] node[very near start,left=3pt]{{\small $\Delta$}}(XX);
+  %   \end{tikzpicture}
+  % \]
+  % respectively. The trace of $X\xleftarrow{\id} X\xrightarrow{f} X$ is therefore the outer span in the diagram
   \begin{equation}
     \label{eq:trace-in-span-category}
     \begin{tikzpicture}[baseline=(current bounding box.center),scale=2]
