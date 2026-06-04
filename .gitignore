@@ -1,0 +1,14 @@
+**/out/
+**/svg-inkscape/
+
+*.el
+*.aux
+*.log
+*.blg
+*.bbl
+*.out
+*~
+*.pdf
+*.synctex.gz
+*.toc
+ltximg
