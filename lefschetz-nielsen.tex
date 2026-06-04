@@ -118,19 +118,20 @@ More precisely, we show:
 which is natural in intertwining maps.
 \end{thm}
 
-In the spirit of fixed point theory, we would like to relate the Reidemeister trace of $g$ to the actual fixed point space $\tset^f$. We do so by following the pattern of~\cref{sec: lefschetz theory}. First, then, we should factor the square
+ We prove this by following the pattern of~\cref{sec: lefschetz theory}. First, then, we factor the square
 \begin{equation}
   \label{eq:lax-comm-square-reidemeister}
   \begin{tikzcd}[column sep=large]
-    \Sp \arrow[r,"X^*"] \arrow[d,equal] & \Sp^X \arrow[d,"g^*"]\\
+    \Sp \arrow[r,"\tset^*"] \arrow[d,equal] & \Sp^\tset \arrow[d,"g^*"]\\
     \Sp \arrow[r,swap,"X^*"] & \Sp^X
   \end{tikzcd}
 \end{equation}
-through an object in $\Endtrl(\Prlstf)$ that has access to actual topological information about the pair $(A,f)$. Such a factorization is achieved by the {\em assembly functor} of Bartels and Nikolaus. Although this work is the subject of a still unpublished article, an expository account can be found in the lecture notes~\cite{Nikolaus2024}.
+through an object in $\Endtrl(\Prlstf)$ that has access to actual topological information about the pair $(\tset,f)$. Such a factorization is achieved by the {\em assembly functor} of Bartels and Nikolaus. Although this work is the subject of a still unpublished article, an expository account can be found in the lecture notes~\cite{Nikolaus2024}.
+
 \begin{defn}[Bartels--Nikolaus]\label{defn: abstract assembly}
-  Let $(\mathcal C,\otimes ,1)$ be a closed symmetric monoidal category with internal mapping object $\Hom_{\mathcal C}({-},{-})$. Given objects $A$ and $B$ in $\mathcal C$ together with a map 
+  Let $(\mathcal C,\otimes ,\1)$ be a closed symmetric monoidal category with internal mapping object $\Hom_{\mathcal C}({-},{-})$. Given objects $A$ and $B$ in $\mathcal C$ together with a map 
   \[
-    \delta\colon 1\to A\otimes B,
+    \delta\colon \1\to A\otimes B,
   \]
   the associated {\em $\delta$-assembly map}, denoted $a_\delta$, is defined by the following string diagram 
   \begin{equation*}
