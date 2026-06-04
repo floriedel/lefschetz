@@ -1,0 +1,19 @@
+\contentsline {section}{\numberline {1}Fixed point theory and six-functor formalisms}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}The categorified Lefschetz trace formula}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Naturality}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Decategorification}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Examples}{4}{subsection.1.4}%
+\contentsline {paragraph}{Locally compact Hausdorff spaces}{4}{section*.3}%
+\contentsline {paragraph}{Anima}{4}{section*.4}%
+\contentsline {paragraph}{Sheaves of anima}{4}{section*.5}%
+\contentsline {section}{\numberline {2}The Lefschetz fixed point formula}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The Lefschetz trace}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Factoring the Lefschetz trace using sheaves}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Local indices}{9}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Lefschetz--Nielsen theory}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Local systems and the Reidemeister trace}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Factoring the Reidemeister trace using cosheaves}{12}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Another trace ``calculation''}{15}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Parametrized Lefschetz--Nielsen theory}{15}{section.4}%
+\contentsline {section}{\numberline {A}Trace theory}{15}{appendix.A}%
+\contentsline {section}{\numberline {B}Verdier duality}{17}{appendix.B}%
