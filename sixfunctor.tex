@@ -187,15 +187,144 @@ $\cA$-linear six-functor formalism and let $X\in \cC$ be admissible.
 
   Assume for simplicity that $\cA = \Sp$, as in the case of sheaves on locally compact Hausdorff spaces or local systems on anima. The naive approach to decategorification here is to apply topological Hochschild homology
   \[
-    \THH\colon\Prdual\to\Sp
+    \THH\colon\Prdual\too\Sp
   \]
-  on both sides of the formula. On the left-hand side, one would then want to relate $\THH$ of $\tr{f^*\curvearrowright\cD (X)}{}$ to the trace of map induced by $f$ on $\THH(\cD (X))\simeq\Gamma_c(X;\SS )$. If $\cD (X)$ were dualizable \emph{as an object of $\Prdual$}, this would be formal, since $\THH$ is symmetric monoidal and thus preserves traces of endomorphisms of dualizable objects. However, for a dualizable category to be dualizable in dualizable categories (aka \tdef{fully dualizable} or \tdef{fully saturated}) is very restrictive. Indeed,~\cite{Harr2026} shows that the category of sheaves $\Shv (\tset ;\Sp )$ on a locally compact Hausdorff space $\tset$ is fully dualizable if and only if $\tset$ is a finite set of points. Similar subtleties surrounding decategorification and commuting $\THH$ with trace also play a central role in~\cite{Beraldo_Pippi2024}.
+  on both sides of the formula. On the left-hand side, one would then want to relate $\THH$ of $\tr{f^*\curvearrowright\cD (X)}{}$ to the trace of map induced by $f$ on $\THH(\cD (X))\simeq\Gamma_c(X;\SS )$. If $\cD (X)$ were dualizable \emph{as an object of $\Prdual$}, this would be formal, since $\THH$ is symmetric monoidal and thus preserves traces of endomorphisms of dualizable objects. However, for a dualizable category to be dualizable \emph{in} dualizable categories (aka \tdef{fully dualizable} or \tdef{fully saturated}) is very restrictive. Indeed,~\cite{Harr2026} shows that the category of sheaves $\Shv (\tset ;\Sp )$ on a locally compact Hausdorff space $\tset$ is fully dualizable if and only if $\tset$ is a finite set of points. The failure of $\cD (X)$ to be fully dualizable also means that there is no formal reason to expect the trace of $f^*$ to be strongly continuous, even if $f^*$ is; and hence no reason for $\THH$ to even be \emph{defined} for the (equivalent) functors appearing in~\labelcref{eq:categorical-trace-formula}. Indeed, a generic self-homeomorphism of a manifold is known to have a Cantor set of fixed points~\cite{Craciun2013}, in which case the functor $(X^f)_!(X^f)^*\simeq\SS^{\oplus\aleph_0}\otimes{-}$ will fail very badly to be strongly continuous. Similar subtleties surrounding decategorification and commuting $\THH$ with trace also play a central role in~\cite{Beraldo_Pippi2024}.
 \end{rmk}
 \subsection{Naturality}
-It will be useful to know that~\labelcref{eq:categorical-trace-formula} is a natural equivalence in the situations that we care about. For this to make sense, we must have a functoriality in mind for both the left and right sides of the equation. This functoriality is brought to you by 2-categorical enhancements of the six-functor formalism $\cD$ \`a la \cite{Cnossen_Lenz_Linskens2026}, as we now explain.
+It will be useful to know that~\labelcref{eq:categorical-trace-formula} is a \emph{natural} equivalence in the situations that we care about. For this to make sense, we must have a functoriality in mind for both the left and right sides of the equation. This functoriality is brought to you by 2-categorical enhancements of the six-functor formalism $\cD$ \`a la \cite{Cnossen_Lenz_Linskens2026} and the higher trace machinery of~\cite{Hoyois_Scherotzke_Sibilla2017}, as we now explain.
 
-Let $(\cI,\cP)$ be a suitable decomposition of $\cE$ \cite[Def~A.5.9]{Mann2022}.
+Suppose that $\cD '$ is (equivalent to the six-functor formalism) constructed as in~\cite{Liu_Zheng2012,Mann2022} from the data of a suitable decomposition $(\cI,\cP)$ of $\cE$ \cite[Def~A.5.9]{Mann2022} and a lax symmetric monoidal functor $\cD ''\colon\cC^{\op}\to\Prlst$, such that the tuple $(\cC ,\cE ,\cI ,\cP ,\cD '')$ satisfies the conditions of~\cite[Prop~A.5.10]{Mann2022}. \cite{Cnossen_Lenz_Linskens2026} define a symmetric monoidal $(\infty ,2)$-categorical enhancement of the span category $\Span{\cC}_{\cE}$, denoted $\mdef{\sSpan{\cC}_{\cE,\cI,\cP}}$, with 2-morphisms from $X\leftarrow Z\to Y$ to  $X\leftarrow Z'\to Y$ given by spans of spans
+\begin{equation}
+  \label{eq:span-of-spans}
+  \begin{tikzpicture}[baseline=(current bounding box.center)]
+    \node (X) at (-1.5,0){$X$};
+    \node (Z) at (0,1.5){$Z$};
+    \node (Zprime) at (0,-1.5){$Z',$};
+    \node (W) at (0,0){$W$};
+    \node (Y) at (1.5,0){$Y$};
 
+    \draw (Z) edge[->] (Y);
+    \draw (Z) edge[->] (X);
+    \draw (Zprime) edge[->] (Y);
+    \draw (Zprime) edge[->] (X);
+    \draw (W) edge[->] node[near start,left=1.5pt]{{\footnotesize $f$}}(Z);
+    \draw (W) edge[->] node[near start,left=1.5pt]{{\footnotesize $i$}}(Zprime);
+  \end{tikzpicture}
+\end{equation}
+where $i\in\cI$ and $f\in\cP$. (See Definition 4.10 and the discussion on page 50 of op.~cit.~for a formal construction of $\sSpan{\cC}_{\cE ,\cI ,\cP}$ and its symmetric monoidal structure.) The main theorem of op.~cit.~promotes $\cD '$ to a lax symmetric monoidal 2-functor
+\begin{equation*}
+  \widetilde\cD'\colon\sSpan{\cC}_{\cE,\cI,\cP}^{\otimes}\too\Prlstf,
+\end{equation*}
+which on $(\infty ,1)$-categorical cores is equivalent to $\cD '$. Our assumption~\labelcref{monoidality-assumption} implies that $\widetilde\cD '$ factors through a symmetric monoidal functor
+\begin{equation}
+  \label{eq:2-categorical-sixff}
+  \widetilde\cD'\colon\sSpan{\cC}_{\cE,\cI,\cP}\too\pPrlf\cA,
+\end{equation}
+where $\pPrlf\cA$ is the $(\infty ,2)$-category of $\cA$-linear stable categories. It follows from~\cite[Thm~1.7]{Hoyois_Scherotzke_Sibilla2017} that there is a commutative diagram
+\begin{equation}
+  \label{eq:naturality-of-lefschetz}
+  \begin{tikzcd}
+    \Endtrl (\sSpan{\cC}_{\cE,\cI,\cP})\arrow[d,"\Trc"]\arrow[r]
+    & \Endtrl (\pPrlf\cA )\arrow[d,"\TrcL"]\\
+    \Omega_{\pt} \sSpan{\cC}_{\cE,\cI,\cP}\arrow[r]
+    & \Omega_{\cA} \pPrlf\cA.
+  \end{tikzcd}
+\end{equation}
+On \emph{objects}, the commutativity of this diagram recovers the equivalence~\labelcref{eq:categorical-trace-formula}. That is, the counterclockwise composition sends a span of the form
+\[X\xleftarrow fX\xrightarrow{\id}X
+\]to $(X^f)_!(X^f)^*\colon\cA\to\cA$, whereas the clockwise composition spits out $\tr{f^*\curvearrowright\cD (X)}{}$. The counterclockwise resp.~clockwise composition in the diagram therefore implement the functoriality for the left-hand side resp. right-hand side of~\labelcref{eq:categorical-trace-formula}, and the invertible 2-cell filling the commutative diagram implements a natural equivalence between these functors.
+
+We already know how the clockwise composition in~\labelcref{eq:naturality-of-lefschetz} behaves on morphisms, see~\cref{sec: trace theory}. As for the counterclockwise composition, we first observe
+\begin{prop}
+  Let
+  \[
+    \Lambda =
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \node (X) at (1,0){$X$};
+      \node (Z) at (0,1){$Z$};
+      \node (Y) at (-1,0){$Y$};
+
+      \draw (Z) edge[->] node[near start,left=1.5pt]{{\footnotesize $g$}} (Y);
+      \draw (Z) edge[->] node[near start,right=1.5pt]{{\footnotesize $f$}} (X);
+    \end{tikzpicture}
+  \]
+  be a 1-morphism in $\sSpan{\cC}_{\cE ,\cI ,\cP}$ with both $f$ and $g$ admissible, and suppose that
+  \begin{enumerate}[label=(\roman*)]
+  \item $f$ is \'etale and the diagonal map $\Delta_f\colon Z\to Z\times_XZ$ is proper; and
+  \item $g$ is proper and the diagonal map $\Delta_g\colon Z\to Z\times_YZ$ is \'etale.
+  \end{enumerate}
+  Then
+    \[
+    \Lambda '=
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \node (X) at (-1,0){$X$};
+      \node (Z) at (0,1){$Z$};
+      \node (Y) at (1,0){$Y$};
+
+      \draw (Z) edge[->] node[near start,right=1.5pt]{{\footnotesize $g$}} (Y);
+      \draw (Z) edge[->] node[near start,left=1.5pt]{{\footnotesize $f$}} (X);
+    \end{tikzpicture}
+  \]
+  is an internal right adjoint to $\Lambda$.
+\end{prop}
+\begin{proof}
+  Note that
+  \[
+    \Lambda \circ\Lambda '=
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \node (X) at (1,0){$X$};
+      \node (Z) at (0,1){$Z\times_YZ$};
+      \node (Y) at (-1,0){$X$};
+
+      \draw (Z) edge[->] node[near start,left=1.5pt]{{\footnotesize $f\circ\pi_1$}} (Y);
+      \draw (Z) edge[->] node[near start,right=1.5pt]{{\footnotesize $f\circ\pi_2$}} (X);
+    \end{tikzpicture}
+    \qquad\text{and}\qquad
+    \Lambda '\circ\Lambda =
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \node (X) at (1,0){$Y.$};
+      \node (Z) at (0,1){$Z\times_XZ$};
+      \node (Y) at (-1,0){$Y$};
+
+      \draw (Z) edge[->] node[near start,left=1.5pt]{{\footnotesize $g\circ\pi_1$}} (Y);
+      \draw (Z) edge[->] node[near start,right=1.5pt]{{\footnotesize $g\circ \pi_2$}} (X);
+    \end{tikzpicture}
+  \]
+  By assumption, we have the following 2-morphisms in $\sSpan{\cC}_{\cE ,\cI ,\cP}$.
+  \[
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+    \node (X) at (-1.5,0){$X$};
+    \node (Z) at (0,1.5){$Z\times_YZ$};
+    \node (Zprime) at (0,-1.5){$X$};
+    \node (W) at (0,0){$Z$};
+    \node (Y) at (1.5,0){$X$};
+
+    \draw (Z) edge[->] (Y);
+    \draw (Z) edge[->] (X);
+    \draw (Zprime) edge[double distance=1.5pt] (Y);
+    \draw (Zprime) edge[double distance=1.5pt] (X);
+    \draw (W) edge[->] node[near start,left=1.5pt]{{\footnotesize $\Delta_g$}}(Z);
+    \draw (W) edge[->] node[near start,left=1.5pt]{{\footnotesize $f$}}(Zprime);
+  \end{tikzpicture}
+  \qquad\text{and}\qquad
+  \begin{tikzpicture}[baseline=(current bounding box.center)]
+    \node (X) at (-1.5,0){$Y$};
+    \node (Z) at (0,-1.5){$Z\times_XZ$};
+    \node (Zprime) at (0,1.5){$Y$};
+    \node (W) at (0,0){$Z$};
+    \node (Y) at (1.5,0){$Y$};
+
+    \draw (Z) edge[->] (Y);
+    \draw (Z) edge[->] (X);
+    \draw (Zprime) edge[double distance=1.5pt] (Y);
+    \draw (Zprime) edge[double distance=1.5pt] (X);
+    \draw (W) edge[->] node[near start,left=1.5pt]{{\footnotesize $\Delta_f$}}(Z);
+    \draw (W) edge[->] node[near start,left=1.5pt]{{\footnotesize $g$}}(Zprime);
+  \end{tikzpicture}
+\]
+from $\Lambda \circ\Lambda '$ to $\id$ and $\id$ to $\Lambda '\circ\Lambda $, respectively. It is straightforward to check that these 2-morphisms satisfy the triangle equality, and hence witness an adjunction $\Lambda \circ\Lambda '\dashv \Lambda '\circ\Lambda$ as desired.
+\end{proof}
 \subsection{Decategorification}
 
 \subsection{Examples}
