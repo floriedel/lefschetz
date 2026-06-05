@@ -325,13 +325,47 @@ We already know how the clockwise composition in~\labelcref{eq:naturality-of-lef
 \]
 from $\Lambda \circ\Lambda '$ to $\id$ and $\id$ to $\Lambda '\circ\Lambda $, respectively. It is straightforward to check that these 2-morphisms satisfy the triangle equality, and hence witness an adjunction $\Lambda \circ\Lambda '\dashv \Lambda '\circ\Lambda$ as desired.
 \end{proof}
-\begin{cor}
+\begin{prop}
   Let $X\in\cC$ be an admissible object.
   \begin{enumerate}[label=(\alph*)]
-  \item The 1-morphism $Y\xleftarrow f X\xrightarrow\id X$ has an internal right adjoint if $f$ is proper and $\Delta_f\colon X\to X\times_Y X$ is \'etale.
-  \item The 1-morphism $X\xleftarrow{\id} X\xrightarrow f Y$ has an internal right adjoint if $X$ is \'etale and $\Delta_f\colon X\to X\times_Y X$ is proper.
+  \item The 1-morphism $\pt\leftarrow X\xrightarrow\id X$ has an internal right adjoint if $X$ is \'etale.
+  \item The 1-morphism $X\xleftarrow{\id} X\to \pt$ has an internal right adjoint if $X$ is proper.
   \end{enumerate}
-\end{cor}
+\end{prop}
+\begin{proof}
+  In the case of (a), the adjunction is witnessed by the 2-morphisms
+  \[
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \node (X) at (-1.5,0){$\pt$};
+      \node (Z) at (0,1.5){$X\times X$};
+      \node (Zprime) at (0,-1.5){$\pt$};
+      \node (W) at (0,0){$X\times X$};
+      \node (Y) at (1.5,0){$\pt$};
+
+      \draw (Z) edge[->] (Y);
+      \draw (Z) edge[->] (X);
+      \draw (Zprime) edge[double distance=1.5pt] (Y);
+      \draw (Zprime) edge[double distance=1.5pt] (X);
+      \draw (W) edge[double distance=1.5pt] (Z);
+      \draw (W) edge[->] (Zprime);
+    \end{tikzpicture}
+    \qquad\text{and}\qquad
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \node (X) at (-1.5,0){$X$};
+      \node (Z) at (0,-1.5){$X\times X.$};
+      \node (Zprime) at (0,1.5){$X$};
+      \node (W) at (0,0){$X$};
+      \node (Y) at (1.5,0){$X$};
+
+      \draw (Z) edge[->] (Y);
+      \draw (Z) edge[->] (X);
+      \draw (Zprime) edge[double distance=1.5pt] (Y);
+      \draw (Zprime) edge[double distance=1.5pt] (X);
+      \draw (W) edge[->] node[near start,left=1.5pt]{{\footnotesize $\Delta$}}(Z);
+      \draw (W) edge[double distance=1.5pt] (Zprime);
+    \end{tikzpicture}
+  \]
+\end{proof}
 \Onote{Write that the map on traces induced by a lax comm square in span-category with internally left adjoint horizontal arrows (i.e.~a map in traceable endos) is induced by the associated map on fixed points.}
 \subsection{Decategorification}
 Following~\cite{Kondyrev_Prikhodko2020,Ben-Zvi_Nadler2021}, we decategorify~\cref{thm:categorical-fixed-pts} by using the functoriality of trace in traceable endomorphisms to produce for a suitable endomorphism $f\curvearrowright X$ in $\cC$ a commutative triangle in $\cA$ whose base implements the ``Lefschetz trace'' of $f$, and whose legs implement fixed point indices for $f$, c.f.~\cref{rmk:utopian-lefschetz}. For this we will make the following additional assumption about our six-functor formalism:
@@ -353,9 +387,34 @@ Following~\cite{Kondyrev_Prikhodko2020,Ben-Zvi_Nadler2021}, we decategorify~\cre
   \end{equation}
   Furthermore,
   \begin{enumerate}[label=(\alph*)]
-  \item \Onote{Identify legs if assumptions are satisfied}
+  \item If $X$ is cohomologically proper, then $(X^f)_!(X^f)^*\mathbf 1\to\mathbf 1$ is induced by the projection $X^f\to\pt$.
+  \item If $X$ is cohomologically \'etale, then $\mathbf 1\to (X^f)_!(X^f)^*\mathbf 1$ is induced by the projection $X^f\to\pt$.
   \end{enumerate}
 \end{prop}
+\begin{proof}
+  $\ch{}f$ is the result of applying $\TrcL$ to the morphism
+  \[
+    \begin{tikzcd}[column sep=huge]
+      \cA\arrow[d,equal]
+      \arrow[r,"X_*X^*"]
+      & \cA\arrow[d,equal]\\
+      \cA\arrow[r,"X_*X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt ,"f^*"]
+      & \cA
+    \end{tikzcd}
+  \]
+  in $\Endtrl (\pPrlf\cA )$.
+  We can factor this diagram as the composition
+  \[
+    \begin{tikzcd}[column sep=huge]
+      \cA\arrow[d,equal]
+      \arrow[r,"X_*X^*"]
+      & \cA\arrow[d,equal]\\
+      \cA\arrow[r,"X_*X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt ,"f^*"]
+      & \cA
+    \end{tikzcd}
+  \]
+  \Onote{write out diagram, finish writing proof.}
+\end{proof}
 \begin{exam}[The topological Lefschetz formula]
   Consider the six-functor formalism 
 \end{exam}
