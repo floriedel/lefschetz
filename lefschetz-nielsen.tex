@@ -1,48 +1,60 @@
 \subsection{Local systems and the Reidemeister trace}
 
-Let $g\colon X\to X$ be a self-map of a compact anima $X$. Consider again the lax commutative square~\eqref{eq:lax-comm-square-lefschetz} from~\cref{sec: lefschetz theory}, which we viewed as a morphism in the category of traceable endomorphisms $\Endtrl(\Prlstf)$. If $g\colon X\to X$ happened to be induced by a self-map $f\colon\tset\to\tset$ for some well-behaved space $\tset$, we recovered the Lefschetz fixed point theorem for $f$ by factoring~\eqref{eq:lax-comm-square-lefschetz} through the object $(\D{\tset },f_!)\in\Endtrl(\Prlstf)$.
+Let $g\colon \anima\to \anima$ be a self-map of a compact anima $\anima$. Consider again the lax commutative square~\eqref{eq:lax-comm-square-lefschetz} from~\cref{sec: lefschetz theory}, which we viewed as a morphism in the category of traceable endomorphisms $\Endtrl(\Prlstf)$. If $g\colon \anima\to \anima$ happened to be induced by a self-map $f\colon\tset\to\tset$ for some well-behaved space $\tset$, we recovered the Lefschetz fixed point theorem for $f$ by factoring~\eqref{eq:lax-comm-square-lefschetz} through the object $(\D{\tset },f_!)\in\Endtrl(\Prlstf)$.
 
-Putting topology aside for now, a more obvious factorization of~\eqref{eq:lax-comm-square-lefschetz} is through the category of local systems (aka parametrized spectra) $\Sp^X$:
+Putting topology aside for now, a more obvious factorization of~\eqref{eq:lax-comm-square-lefschetz} is through the category of local systems (aka parametrized spectra) $\Sp^\anima$:
 \begin{prop}
-  Let $g\colon X\to X$ be a self-map of a compact anima $X$. Considered as a morphism in $\Endtrl(\Prlstf)$, the lax commutative square~\eqref{eq:lax-comm-square-lefschetz} factors as
-  \begin{equation}
-    \label{eq:lax-composition-reidemeister}
-    \left(
-      \begin{tikzcd}[column sep=large]
-        \Sp^X \arrow[r,"X_\sharp"] \arrow[d,"g^*"] & \Sp \arrow[d,equal]\\
-        \Sp^X \arrow[r,swap,"X_\sharp"]  \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]  & \Sp
-      \end{tikzcd}
-    \right)
-    \circ
-    \left(
-      \begin{tikzcd}[column sep=large]
-        \Sp \arrow[r,"X^*"] \arrow[d,equal] & \Sp^X \arrow[d,"g^*"]\\
-        \Sp \arrow[r,swap,"X^*"] & \Sp^X
-      \end{tikzcd}
-    \right),
+  Let $g\colon \anima\to \anima$ be a self-map of a compact anima $\anima$. Considered as a morphism in $\Endtrl(\Prlstf)$, the lax commutative square~\eqref{eq:lax-comm-square-lefschetz} factors as
+  \begin{equation}\label{eq:lax-composition-reidemeister}
+\begin{tikzcd}
+	\Sp & {\Sp^{\anima}} & \Sp \\
+	\Sp & {\Sp^{\anima}} & \Sp
+	\arrow["{\anima^{\ast}}", from=1-1, to=1-2]
+	\arrow["\id"', from=1-1, to=2-1]
+	\arrow["{\anima_\sharp}", from=1-2, to=1-3]
+	\arrow["{g^{\ast}}", from=1-2, to=2-2]
+	\arrow["\id", from=1-3, to=2-3]
+	\arrow[Rightarrow, from=2-2, to=1-3]
+	\arrow["{\anima^{\ast}}"', from=2-1, to=2-2]
+    \arrow[Rightarrow, from=2-1, to=1-2]
+	\arrow["{\anima_{\sharp}}"', from=2-2, to=2-3]
+\end{tikzcd}
+    % \left(
+    %   \begin{tikzcd}[column sep=large]
+    %     \Sp^X \arrow[r,"X_\sharp"] \arrow[d,"g^*"] & \Sp \arrow[d,equal]\\
+    %     \Sp^X \arrow[r,swap,"X_\sharp"]  \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]  & \Sp
+    %   \end{tikzcd}
+    % \right)
+    % \circ
+    % \left(
+    %   \begin{tikzcd}[column sep=large]
+    %     \Sp \arrow[r,"X^*"] \arrow[d,equal] & \Sp^X \arrow[d,"g^*"]\\
+    %     \Sp \arrow[r,swap,"X^*"] & \Sp^X
+    %   \end{tikzcd}
+    % \right),
   \end{equation}
-  where the rightmost square $2$-cell is the invertible one coming from functoriality of pullback, and the leftmost $2$-cell is the counit transformation $X_\sharp g^*\simeq X_\sharp g_\sharp g^*\to X_\sharp$.
+  where the left hand $2$-cell is the invertible one coming from functoriality of pullback, and the right hand $2$-cell is the counit transformation $\anima_\sharp g^*\simeq \anima_\sharp g_\sharp g^*\to \anima_\sharp$.
 \end{prop}
 \begin{proof}
-  Aside from the usual adjunctions $X_\sharp\dashv X^*\dashv X_*$, the fact that $X$ is compact furnishes an additional adjunction $X_*\dashv \Hom_{\Sp^X} (D_X,X^*({-}))$, where $D_X$ is the dualizing object of $X$. It follows that the horizontal morphisms in both squares are strongly continuous, and hence that they define morphisms in $\Endtrl(\Prlstf)$. Concatenating the two $2$-cells recovers the one in~\eqref{eq:lax-comm-square-lefschetz} on the nose.
+  Aside from the usual adjunctions $\anima_\sharp\dashv \anima^*\dashv \anima_*$, the fact that $\anima$ is compact furnishes an additional adjunction $\anima_*\dashv \Hom_{\Sp^\anima} (D_\anima,\anima^*({-}))$, where $D_\anima$ is the dualizing object of $\anima$. It follows that the horizontal morphisms in both squares are strongly continuous, and hence that they define morphisms in $\Endtrl(\Prlstf)$. Concatenating the two $2$-cells recovers the one in~\eqref{eq:lax-comm-square-lefschetz} on the nose.
 \end{proof}
 As in the previous section, we then get
 \begin{cor}\label{cor: reidemeister lefschetz triangle}
-  For a self-map $g\colon X\to X$ of a compact anima $X$, there is a commutative diagram
+  For a self-map $g\colon \anima\to \anima$ of a compact anima $\anima$, there is a commutative diagram
   \begin{equation}
     \label{eq:reidemeister-lefschetz-triangle}
     \begin{tikzcd}[column sep=tiny]
-      & \tr{g^*\curvearrowright\Sp^X}{}\arrow[dr] \\
+      & \tr{g^*\curvearrowright\Sp^\anima}{}\arrow[dr] \\
       \SS\arrow[rr]\arrow[ru] && \SS,
     \end{tikzcd}
   \end{equation}
   where the bottom arrow is the Lefschetz trace of $g$.
 \end{cor}
-Just as in the previous section, the axioms of six-functor formalisms allow us to quickly compute the trace $\tr{g^*\curvearrowright\Sp^X}{}$ with the suspension spectrum of a space of ``fixed points'' for the map $g$. Here fixed points must be interpreted in a homotopy-invariant way; we let $\cL^gX$ denote the homotopical fixed point space defined to be the homotopy pullback
+Just as in the previous section, the axioms of six-functor formalisms allow us to quickly compute the trace $\tr{g^*\curvearrowright\Sp^\anima}{}$ with the suspension spectrum of a space of ``fixed points'' for the map $g$. Here fixed points must be interpreted in a homotopy-invariant way; we let $\cL^g\anima$ denote the homotopical fixed point space defined to be the homotopy pullback
 \[
   \begin{tikzcd}
-    \cL^{g}X  & X \\
-    X & X\times X\,.
+    \cL^{g}\anima  & \anima \\
+    \anima & \anima \times \anima\,.
     \arrow[from=1-1, to=1-2]
     \arrow["\lrcorner",phantom,very near start, from=1-1, to=2-2]
     \arrow[from=1-1, to=2-1]
@@ -52,50 +64,50 @@ Just as in the previous section, the axioms of six-functor formalisms allow us t
 \]
 That is, we have
 \begin{lem}\label{lem: reidemeister trace computation}
-  Let $g\colon X\to X$ be a self-map of a compact anima. There is an equivalence of spectra
+  Let $g\colon \anima\to \anima$ be a self-map of a compact anima. There is an equivalence of spectra
   \[
-    \tr{g^*\curvearrowright\Sp^X}{}\simeq\SS\lbrack\cL^{g}X\rbrack,
+    \tr{g^*\curvearrowright\Sp^\anima}{}\simeq\SS\lbrack\cL^{g}\anima\rbrack,
   \]
-  natural in intertwining maps $h\colon (X,g)\to (X',g')$. 
+  natural in intertwining maps $h\colon (\anima,g)\to (\anima',g')$. 
 \end{lem}
 \begin{proof}
   The identification comes about exactly as in the proof of~\cref{lem: trace computation}. Unlike in the topological setting, we do not need to require anything of $h$ beyond being an intertwining map, since any intertwining map induces a morphism
   \begin{equation}
     \label{eq:square-induced-by-proper-morphism}
     \begin{tikzcd}
-      \Sp^{X}\arrow[r,"h_\sharp"]\arrow[d,"g^*"]
-      & \Sp^{X' }\arrow[d,"(g')^*"]\\
-      \Sp^{X}\arrow[r,"h_\sharp"]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]
-      & \Sp^{X'}
+      \Sp^{\anima}\arrow[r,"h_\sharp"]\arrow[d,"g^*"]
+      & \Sp^{\anima' }\arrow[d,"(g')^*"]\\
+      \Sp^{\anima}\arrow[r,"h_\sharp"]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]
+      & \Sp^{\anima'}
     \end{tikzcd}
   \end{equation}
   in $\Endtrl(\Prlstf)$, where the $2$-cell is the Beck--Chevalley morphism.
 \end{proof}
 Combining~\cref{lem: reidemeister trace computation} with~\cref{cor: reidemeister lefschetz triangle}, we find
 \begin{thm}
-  Let $g\colon X\to X$ be a self-map of a compact anima. There is a commutative triangle
+  Let $g\colon \anima\to \anima$ be a self-map of a compact anima. There is a commutative triangle
   \begin{equation}
     \label{eq:reidemeister-lefschetz-triangle-with-identification}
     \begin{tikzcd}[column sep=tiny]
-      & \SS\lbrack\cL^{g}X\rbrack\arrow[dr] \\
+      & \SS\lbrack\cL^{g}\anima \rbrack\arrow[dr] \\
       \SS\arrow[rr]\arrow[ru] && \SS,
     \end{tikzcd}
   \end{equation}
-  in which the bottom arrow is the Lefschetz trace and the arrow $\SS\lbrack\cL^{g}X\rbrack\to\SS$ is induced by the projection $\cL^{g}X\to\pt$.
+  in which the bottom arrow is the Lefschetz trace and the arrow $\SS\lbrack\cL^{g}\anima \rbrack\to\SS$ is induced by the projection $\cL^{g}\anima \to\pt$.
 \end{thm}
 \begin{proof}
   The second statement follows from the naturality of the identification in~\cref{lem: reidemeister trace computation}.
 \end{proof}
 We have constructed a homotopy invariant for self-maps that refines the Lefschetz trace:
 \begin{defn}
-  The map $\mdef{\rho_g}\colon \SS\to\SS\lbrack\cL^{g}X\rbrack$ in~\eqref{eq:reidemeister-lefschetz-triangle-with-identification} is the
+  The map $\mdef{\rho_g}\colon \SS\to\SS\lbrack\cL^{g}\anima\rbrack$ in~\eqref{eq:reidemeister-lefschetz-triangle-with-identification} is the
   \tdef{Reidemeister trace} of $g$.
 \end{defn}
 
 \subsection{Factoring the Reidemeister trace using cosheaves}
 
 Let $\tset\in \Top$ be compact and locally of singular shape with
-associated anima $\ani{\tset}\tset$. Given some self map
+associated anima $\ani{\tset}$. Given some self map
 $f\colon\tset\to\tset$, we can now associated two different invariants
 to this datum, namely the topological Reidemeister trace
 \[ \lambda_f\colon \SS \to \Sections{\tset;\omega_\tset}\,,\]
@@ -122,8 +134,8 @@ which is natural in intertwining maps.
 \begin{equation}
   \label{eq:lax-comm-square-reidemeister}
   \begin{tikzcd}[column sep=large]
-    \Sp \arrow[r,"\tset^*"] \arrow[d,equal] & \Sp^\tset \arrow[d,"g^*"]\\
-    \Sp \arrow[r,swap,"X^*"] & \Sp^X
+    \Sp \arrow[r,"\ani{\tset}^*"] \arrow[d,equal] & \Sp^{\ani{\tset}} \arrow[d,"g^*"]\\
+    \Sp \arrow[r,swap,"\ani{\tset} ^*"] & \Sp^{\ani{\tset}}
   \end{tikzcd}
 \end{equation}
 through an object in $\Endtrl(\Prlstf)$ that has access to actual topological information about the pair $(\tset,f)$. Such a factorization is achieved by the {\em assembly functor} of Bartels and Nikolaus. Although this work is the subject of a still unpublished article, an expository account can be found in the lecture notes~\cite{Nikolaus2024}.
@@ -215,30 +227,42 @@ the \tdef{Bartels--Nikolaus assembly functor}.
 Part (ii) means that we can factor $(\fundgroupoid\tset )^*\colon\Sp\to\Sp^{\fundgroupoid\tset}$ through the Bartels--Nikolaus assembly functor. Better, we have
 \begin{prop}
   Let $f\colon \tset\to \tset$ be a self-map of a compact Hausdorff space that is locally of singular shape. Considered as a morphism in $\Endtrl(\Prlstf)$, the lax commutative square~\eqref{eq:lax-comm-square-reidemeister} factors as
-  \begin{equation}
-    \label{eq:lax-composition-cosheaves}
-    \left(
-      \begin{tikzcd}[column sep=large]
-        \coShat (\tset ) \arrow[r,"a_\delta"] \arrow[d,"f^?"] & \Sp^{\fundgroupoid (\tset )} \arrow[d,"f^*"]\\
-        \coShat (\tset ) \arrow[r,swap,"a_\delta"] \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]  & \Sp^{\fundgroupoid (\tset )}
-      \end{tikzcd}
-    \right)
-    \circ
-    \left(
-      \begin{tikzcd}[column sep=large]
-        \Sp \arrow[r,"w_\tset"] \arrow[d,equal] & \coShat (\tset ) \arrow[d,"f^?"]\\
-        \Sp \arrow[r,swap,"w_\tset"]  \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]  & \coShat (\tset )
-      \end{tikzcd}
-    \right),
+  \begin{equation}\label{eq:lax-composition-cosheaves}
+\begin{tikzcd}
+	\Sp & {\coShat(\tset)} & \Sp^{\ani{\tset}} \\
+	\Sp & {\coShat(\tset)} & \Sp^{\ani{\tset}} 
+	\arrow["{w_{\tset}}", from=1-1, to=1-2]
+	\arrow["\id"', from=1-1, to=2-1]
+	\arrow["{a_{\delta}}", from=1-2, to=1-3]
+	\arrow["{f^?}", from=1-2, to=2-2]
+	\arrow["f^{\ast}", from=1-3, to=2-3]
+	\arrow[Rightarrow, from=2-2, to=1-3]
+	\arrow["{w_{\tset}}"', from=2-1, to=2-2]
+    \arrow[Rightarrow, from=2-1, to=1-2]
+	\arrow["{a_{\delta}}"', from=2-2, to=2-3]
+\end{tikzcd}
+    % \left(
+    %   \begin{tikzcd}[column sep=large]
+    %     \coShat (\tset ) \arrow[r,"a_\delta"] \arrow[d,"f^?"] & \Sp^{\fundgroupoid (\tset )} \arrow[d,"f^*"]\\
+    %     \coShat (\tset ) \arrow[r,swap,"a_\delta"] \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]  & \Sp^{\fundgroupoid (\tset )}
+    %   \end{tikzcd}
+    % \right)
+    % \circ
+    % \left(
+    %   \begin{tikzcd}[column sep=large]
+    %     \Sp \arrow[r,"w_\tset"] \arrow[d,equal] & \coShat (\tset ) \arrow[d,"f^?"]\\
+    %     \Sp \arrow[r,swap,"w_\tset"]  \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]  & \coShat (\tset )
+    %   \end{tikzcd}
+    % \right),
   \end{equation}
-  in which the leftmost $2$-cell is the transpose of the commutative diagram
+  in which the left hand $2$-cell is the transpose of the commutative diagram
   \[
     \begin{tikzcd}[column sep=large]
       \coShat (\tset ) \arrow[r,"a_\delta"] \arrow[d,"f_?"] & \Sp^{\fundgroupoid (\tset )} \arrow[d,"f_!"]\\
       \coShat (\tset ) \arrow[r,swap,"a_\delta"]   & \Sp^{\fundgroupoid (\tset )}
     \end{tikzcd},
   \]
-  and the rightmost $2$-cell is the transpose of the $2$-cell
+  and the right hand $2$-cell is the transpose of the $2$-cell
   \[
     \begin{tikzcd}[column sep=large]
       \Sp \arrow[r,"w_\tset"] \arrow[d,equal] & \coShat (\tset ) \arrow[d,"f_?"]\\

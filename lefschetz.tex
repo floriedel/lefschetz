@@ -114,23 +114,22 @@ $$
 $$
 The category $\D{\tset}$ contains topological information about $\tset$.\footnote{In fact, Aoki has shown that the homeomorphism type of a sober topological space can be reconstructed from its category of spectrum-valued sheaves together with the pointwise symmetric monoidal structure, see \cite{Aoki2024}.} We will use this to relate the Lefschetz trace to the fixed points $\tset^f\subseteq\tset$.
 \begin{prop}
-  Let $\tset$ be a compact Hausdorff space that is locally of singular shape, and let $f\colon\tset\to\tset$ be a self-map. Denote the underlying anima of $\tset$ by $X$ and the induced self-map on $X$ by $g\colon X\to X$.
+  Let $\tset$ be a compact Hausdorff space that is locally of singular shape, and let $f\colon\tset\to\tset$ be a self-map. Denote the underlying anima of $\tset$ by $\anima$ and the induced self-map on $\anima$ by $g\colon \anima\to \anima$.
   Considered as a morphism in $\Endtrl(\Prlstf)$, the lax commutative square~\eqref{eq:lax-comm-square-lefschetz} factors as
   \begin{equation}
     \label{eq:lax-composition-lefschetz}
-    \left(
-      \begin{tikzcd}[column sep=large]
-        \D{\tset} \arrow[r,"\tset_*"] \arrow[d,"f_!"] & \Sp \arrow[d,equal]\\
-        \D{\tset} \arrow[r,swap,"\tset_*"]  & \Sp
-      \end{tikzcd}
-    \right)
-    \circ
-    \left(
-      \begin{tikzcd}[column sep=large]
-        \Sp \arrow[r,"\tset^*"] \arrow[d,equal] & \D{\tset} \arrow[d,"f_!"]\\
-        \Sp \arrow[r,swap,"\tset^*"] \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt] & \D{\tset}
-      \end{tikzcd}
-    \right),
+\begin{tikzcd}
+	\Sp & {\D{\tset}} & \Sp \\
+	\Sp & {\D{\tset}} & \Sp
+	\arrow["{\tset^{\ast}}", from=1-1, to=1-2]
+	\arrow["\id"', from=1-1, to=2-1]
+	\arrow["{X_!}", from=1-2, to=1-3]
+	\arrow["{f_!}", from=1-2, to=2-2]
+	\arrow["\id"', from=1-3, to=2-3]
+	\arrow[between={0.3}{0.8}, Rightarrow, from=2-1, to=1-2]
+	\arrow["{\tset^{\ast}}"', from=2-1, to=2-2]
+	\arrow["{X_!}"', from=2-2, to=2-3]
+\end{tikzcd}
   \end{equation}
   where $\tset^*\to f_!f^*\tset^*\simeq f_!\tset^*$ comes from the unit transformation of the adjunction $f^*\dashv f_!$.
 \end{prop}
