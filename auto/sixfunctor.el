@@ -43,8 +43,11 @@
     "eq:categorical-trace-formula-exceptional"
     "eq:pullback-in-correspondence"
     "eq:trace-in-span-category"
+    "rmk:utopian-lefschetz"
     "eq:span-of-spans"
     "eq:2-categorical-sixff"
-    "eq:naturality-of-lefschetz"))
+    "eq:naturality-of-lefschetz"
+    "locally-rigid-assumption"
+    "eq:abstract-lefschetz-triangle"))
  :latex)
 

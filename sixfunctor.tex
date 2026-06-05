@@ -17,7 +17,7 @@ in the sense of~\cite[App~A.5]{Mann2022}. We assume for simplicity that $\cC$ co
 \begin{notation}
   For the remainder of this section, we let $\mdef{\cA} = \cD (\pt )$.
 \end{notation}
-Assumption~\labelcref{monoidality-assumption} is satisfied for the six-functor formalisms that interest us in this paper, such as the six-functor of sheaves of on locally compact Hausdorff spaces and of local systems on anima.\todo{Find reference for the fact that it fails for \'etale sheaves}
+Assumption~\labelcref{monoidality-assumption} is satisfied for the six-functor formalisms that interest us in this paper, such as the six-functor of sheaves of on locally compact Hausdorff spaces and of local systems on anima.\Onote{Find reference for the fact that it fails for \'etale sheaves}
 \subsection{The categorified Lefschetz trace formula}
 
 The starting point is the following observation about dualizable
@@ -182,8 +182,8 @@ $\cA$-linear six-functor formalism and let $X\in \cC$ be admissible.
   If $f$ is admissible, the equation~\eqref{eq:categorical-trace-formula-exceptional} follows by dualizing~\eqref{eq:categorical-trace-formula}, which interchanges $({-})^*$ and $({-})_!$.
 \end{proof}
 
-\begin{rmk}
-  Note that \cref{thm:categorical-fixed-pts} looks like a utopian version of the Lefschetz trace formula from topology; it says that for any map $f\curvearrowright X$, the trace of the induced map on the categorified cohomology $\mathcal D(X)$ is isomorphic to the compactly-supported cohomology of the fixed points $X^f$. This lacks several subtleties that are present in the actual Lefschetz trace formula. For instance, the theorem neither has a transversality assumption on $f$ nor local fixed point indices to correct for the lack of transversality, and there is no compactness/properness assumption on $X$. These subtleties arise from the failure of~\labelcref{eq:categorical-trace-formula} to decategorify nicely.
+\begin{rmk}\label{rmk:utopian-lefschetz}
+  Note that \cref{thm:categorical-fixed-pts} looks like a utopian version of the Lefschetz trace formula from topology; it says that for any map $f\curvearrowright X$, the trace of the induced map on the categorified cohomology $\mathcal D(X)$ is isomorphic to the compactly-supported cohomology of the fixed points $X^f$. This lacks several subtleties that are present in the actual Lefschetz trace formula. For instance, the theorem neither has a transversality assumption on $f$ nor fixed point indices to correct for the lack of transversality, and there is no compactness/properness assumption on $X$. These subtleties arise from the failure of~\labelcref{eq:categorical-trace-formula} to decategorify nicely.
 
   Assume for simplicity that $\cA = \Sp$, as in the case of sheaves on locally compact Hausdorff spaces or local systems on anima. The naive approach to decategorification here is to apply topological Hochschild homology
   \[
@@ -325,13 +325,54 @@ We already know how the clockwise composition in~\labelcref{eq:naturality-of-lef
 \]
 from $\Lambda \circ\Lambda '$ to $\id$ and $\id$ to $\Lambda '\circ\Lambda $, respectively. It is straightforward to check that these 2-morphisms satisfy the triangle equality, and hence witness an adjunction $\Lambda \circ\Lambda '\dashv \Lambda '\circ\Lambda$ as desired.
 \end{proof}
+\begin{cor}
+  Let $X\in\cC$ be an admissible object.
+  \begin{enumerate}[label=(\alph*)]
+  \item The 1-morphism $Y\xleftarrow f X\xrightarrow\id X$ has an internal right adjoint if $f$ is proper and $\Delta_f\colon X\to X\times_Y X$ is \'etale.
+  \item The 1-morphism $X\xleftarrow{\id} X\xrightarrow f Y$ has an internal right adjoint if $X$ is \'etale and $\Delta_f\colon X\to X\times_Y X$ is proper.
+  \end{enumerate}
+\end{cor}
+\Onote{Write that the map on traces induced by a lax comm square in span-category with internally left adjoint horizontal arrows (i.e.~a map in traceable endos) is induced by the associated map on fixed points.}
 \subsection{Decategorification}
-
-\subsection{Examples}
-For each of the fixed point theorems contained in this article, the first step is applying~\cref{thm:categorical-fixed-pts} to a concrete six-functor formalism.
-\paragraph{Locally compact Hausdorff spaces}
-\paragraph{Anima}
-\paragraph{Sheaves of anima}
+Following~\cite{Kondyrev_Prikhodko2020,Ben-Zvi_Nadler2021}, we decategorify~\cref{thm:categorical-fixed-pts} by using the functoriality of trace in traceable endomorphisms to produce for a suitable endomorphism $f\curvearrowright X$ in $\cC$ a commutative triangle in $\cA$ whose base implements the ``Lefschetz trace'' of $f$, and whose legs implement fixed point indices for $f$, c.f.~\cref{rmk:utopian-lefschetz}. For this we will make the following additional assumption about our six-functor formalism:
+\begin{enumerate}[label=(\Alph*)]
+  \setcounter{enumi}{1}
+\item\label{locally-rigid-assumption} $\cA$ is locally rigid.
+\end{enumerate}
+\begin{defn}[Lefschetz trace]
+  Let $X\in\cC$ be an admissible object, and suppose that $X_*X^*\mathbf 1\in\cA$ is dualizable. The \tdef{Lefschetz trace} of an endomorphism $f\curvearrowright X$, denoted $\mdef{\ch{}{f}}$, is the trace of the induced map $f^*\curvearrowright X_*X^*\mathbf 1$ in $\cA$.
+\end{defn}
+\begin{prop}[The Lefschetz trace formula]
+  Let $X\in\cC$ be an admissible object, and suppose that $X$ is suave and prim. Then the Lefschetz trace $\ch {} f$ is defined, and there is a commutative diagram
+  \begin{equation}
+    \label{eq:abstract-lefschetz-triangle}
+    \begin{tikzcd}[column sep=small]
+      & (X^f)_!(X^f)^*\mathbf 1\arrow[dr]\\
+      \mathbf 1\arrow[rr,swap,"\ch {} f"]\arrow[ru] & & \mathbf 1.
+    \end{tikzcd}
+  \end{equation}
+  Furthermore,
+  \begin{enumerate}[label=(\alph*)]
+  \item \Onote{Identify legs if assumptions are satisfied}
+  \end{enumerate}
+\end{prop}
+\begin{exam}[The topological Lefschetz formula]
+  Consider the six-functor formalism 
+\end{exam}
+\begin{exam}[The homotopical Reidemeister trace]
+  
+\end{exam}
+\begin{exam}[The parametrized homotopical Reidemeister trace]
+  Let $B$ be a locally compact Hausdorff space such that the $\infty$-topos $\Shv (B)$ is hypercomplete. There is a symmetric monoidal functor
+  \[
+    \Shv (B)^\op\too\Prlst
+  \]
+  given informally by
+  \[
+    F\mapsto \Shv (\Shv (B)_{/F};\Sp ).
+  \]
+  \Onote{In fact such a functor exists for any $\infty$-topos; there should be plently of places to cite for the slice $\infty$-topos defining a functor from $\cB$ into topoi, and then we are just post-composing this with the usual sheaf functor. The hypercompleteness is used to check the conditions for construction a six-functor formalism stalkwise.}
+\end{exam}
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-master: "main"
