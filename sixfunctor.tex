@@ -495,7 +495,7 @@ Following~\cite{Kondyrev_Prikhodko2020,Ben-Zvi_Nadler2021}, we decategorify~\cre
     \label{eq:abstract-reidemeister-triangle}
     \begin{tikzcd}[column sep=small]
       & (X^f)_!(X^f)^*\mathbf 1\arrow[dr]\\
-      \mathbf 1\arrow[rr,swap,"\ch {} f"]\arrow[ru] & & \mathbf 1.
+      \mathbf 1\arrow[rr,swap,"\chr {} f"]\arrow[ru] & & \mathbf 1.
     \end{tikzcd}
   \end{equation}
   Furthermore, if $X$ is cohomologically \'etale, then $(X^f)_!(X^f)^*\mathbf 1\simeq (X^f)_!(X^f)^!\mathbf 1\to\mathbf 1$ is the unit of the adjunction induced by the projection $X^f\to\pt$.
@@ -539,15 +539,31 @@ Fix a finitely-dominated $\infty$-groupoid $\anima$ and a self-map $f\curvearrow
   \end{equation}
   The Reidemeister cocharacter $\SS\to\SS\lbrack L^f\anima\rbrack$ is the invariant usually referred to as the ``Reidemeister trace'' of $f$.
 \paragraph{Parametrized $\infty$-groupoids}
-  Let $B$ be a locally compact Hausdorff space such that the $\infty$-topos $\Shv (B)$ is hypercomplete. There is a symmetric monoidal functor
+  Let $\tset$ be a locally compact Hausdorff space such that the $\infty$-topos $\Shv (\tset )$ is hypercomplete. There is a symmetric monoidal functor
   \[
-    \Shv (B)^\op\too\Prlst
+    \Shv (\tset )^\op\too\etaletopoi\too\Prlst,
   \]
-  given informally by
+  where the first functor is as in~\cite[Rem~6.3.5.10]{Lurie2009} and the second functor is $\Shv ({-};\Sp )$. The composition sends a map of sheaves $f\colon G\to F$ to the pullback functor induced as in Remark 6.3.5.18 of op.~cit.~by the \'etale geometric morphism $f^*=G\times_F{-}\colon\Shv (\tset )_{/F}\to\Shv (\tset )_{/G}$. We will abuse notation by denoting the induced pullback functor by $f^*\colon\Shv (\Shv (\tset )_{/F};\Sp)\to\Shv (\Shv (\tset )_{/G};\Sp )$ also. Since this functor is induced by an \'etale geometric morphism, it has both a left adjoint $f_!$ and a right adjoint $f_*$. 
+  \todo{In fact such a functor exists for any $\infty$-topos (find ref), but generally does not extend to a 6FF.}
+  
+  We claim that the geometric setup $(\Shv (\tset ),\textrm{all})$, the functor $\Shv (\Shv (\tset )_{/{-}};\Sp )$, and the the suitable decomposition $(\cI ,\cP ) = (\textrm{all maps},\textrm{equivalences})$ satisfy the conditions of~\cite[Prop~A.5.10]{Mann2022}. All of these are immediate, except condition (a), i.e.~\'etale base change. That is, we must show that for a commutative square
   \[
-    F\mapsto \Shv (\Shv (B)_{/F};\Sp ).
+    \begin{tikzcd}
+      F\arrow[r,"f"]\arrow[d,"h"] & F'\arrow[d,"h'"]\\
+      G\arrow[r,"g"] & G',
+    \end{tikzcd}
   \]
-  \Onote{In fact such a functor exists for any $\infty$-topos; there should be plently of places to cite for the slice $\infty$-topos defining a functor from $\cB$ into topoi, and then we are just post-composing this with the usual sheaf functor. The hypercompleteness is used to check the conditions for construction a six-functor formalism stalkwise.}
+  the Beck--Chevalley map $f_!h^*\to (h')^*g_!$ in $\Shv (\Shv (\tset )_{/F'};\Sp )$ is an equivalence. We do this by inspecting stalks \todo{do this argument}
+  
+  Let $F$ be a locally constant sheaf of finitely-dominated anima on $\tset$. Then $F$ is \'etale (as all objects are) and prim with respect to the six-functor formalism described above.\todo{Prove local systems of finitely-dominated anima are prim.} Let $f\curvearrowright F$ be an endomorphism. We then get a commutative triangle
+  \begin{equation}
+    \label{eq:homotopical-lefschetz-trace}
+    \begin{tikzcd}
+      & \SS\lbrack L^fF\rbrack\arrow[dr]\\
+      \SS_\tset\arrow[rr,"\chr {}f"] \arrow[ru]&&\SS_\tset,
+    \end{tikzcd}
+  \end{equation}
+  \todo{work out what this looks like on stalks.}
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-master: "main"
