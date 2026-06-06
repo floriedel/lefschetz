@@ -189,7 +189,7 @@ $\cA$-linear six-functor formalism and let $X\in \cC$ be admissible.
   \[
     \THH\colon\Prdual\too\Sp
   \]
-  on both sides of the formula. On the left-hand side, one would then want to relate $\THH$ of $\tr{f^*\curvearrowright\cD (X)}{}$ to the trace of map induced by $f$ on $\THH(\cD (X))\simeq\Gamma_c(X;\SS )$. If $\cD (X)$ were dualizable \emph{as an object of $\Prdual$}, this would be formal, since $\THH$ is symmetric monoidal and thus preserves traces of endomorphisms of dualizable objects. However, for a dualizable category to be dualizable \emph{in} dualizable categories (aka \tdef{fully dualizable} or \tdef{fully saturated}) is very restrictive. Indeed,~\cite{Harr2026} shows that the category of sheaves $\Shv (\tset ;\Sp )$ on a locally compact Hausdorff space $\tset$ is fully dualizable if and only if $\tset$ is a finite set of points. The failure of $\cD (X)$ to be fully dualizable also means that there is no formal reason to expect the trace of $f^*$ to be strongly continuous, even if $f^*$ is; and hence no reason for $\THH$ to even be \emph{defined} for the (equivalent) functors appearing in~\labelcref{eq:categorical-trace-formula}. Indeed, a generic self-homeomorphism of a manifold is known to have a Cantor set of fixed points~\cite{Craciun2013}, in which case the functor $(X^f)_!(X^f)^*\simeq\SS^{\oplus\aleph_0}\otimes{-}$ will fail very badly to be strongly continuous. Similar subtleties surrounding decategorification and commuting $\THH$ with trace also play a central role in~\cite{Beraldo_Pippi2024}.
+  on both sides of the formula. On the left-hand side, one would then want to relate $\THH$ of $\tr{f^*\curvearrowright\cD (X)}{}$ to the trace of map induced by $f$ on $\THH(\cD (X))\simeq\Gamma_c(X;\SS )$. If $\cD (X)$ were dualizable \emph{as an object of $\Prdual$}, this would be formal, since $\THH$ is symmetric monoidal and thus preserves traces of endomorphisms of dualizable objects. However, for a dualizable category to be dualizable \emph{in} dualizable categories (aka \tdef{fully dualizable} or \tdef{fully saturated}~\cite{Kontsevich2005}) is very restrictive. Indeed,~\cite{Harr2026} shows that the category of sheaves $\Shv (\tset ;\Sp )$ on a locally compact Hausdorff space $\tset$ is fully dualizable if and only if $\tset$ is a finite set of points. The failure of $\cD (X)$ to be fully dualizable also means that there is no formal reason to expect the trace of $f^*$ to be strongly continuous, even if $f^*$ is; and hence no reason for $\THH$ to even be \emph{defined} for the (equivalent) functors appearing in~\labelcref{eq:categorical-trace-formula}. Indeed, a generic self-homeomorphism of a manifold is known to have a Cantor set of fixed points~\cite{Craciun2013}, in which case the functor $(X^f)_!(X^f)^*\simeq\SS^{\oplus\aleph_0}\otimes{-}$ will fail very badly to be strongly continuous. Similar subtleties surrounding decategorification and commuting $\THH$ with trace also play a central role in~\cite{Beraldo_Pippi2024}.
 \end{rmk}
 \subsection{Naturality}
 It will be useful to know that~\labelcref{eq:categorical-trace-formula} is a \emph{natural} equivalence in the situations that we care about. For this to make sense, we must have a functoriality in mind for both the left and right sides of the equation. This functoriality is brought to you by 2-categorical enhancements of the six-functor formalism $\cD$ \`a la \cite{Cnossen_Lenz_Linskens2026} and the higher trace machinery of~\cite{Hoyois_Scherotzke_Sibilla2017}, as we now explain.
@@ -236,6 +236,7 @@ On \emph{objects}, the commutativity of this diagram recovers the equivalence~\l
 \]to $(X^f)_!(X^f)^*\colon\cA\to\cA$, whereas the clockwise composition spits out $\tr{f^*\curvearrowright\cD (X)}{}$. The counterclockwise resp.~clockwise composition in the diagram therefore implement the functoriality for the left-hand side resp. right-hand side of~\labelcref{eq:categorical-trace-formula}, and the invertible 2-cell filling the commutative diagram implements a natural equivalence between these functors.
 
 We already know how the clockwise composition in~\labelcref{eq:naturality-of-lefschetz} behaves on morphisms, see~\cref{sec: trace theory}. As for the counterclockwise composition, we first observe
+\Onote{actually, we dont have any use for this proposition (so maybe we should just delete it); the proposition that's actually useful is the one that comes after it.}
 \begin{prop}
   Let
   \[
@@ -427,9 +428,42 @@ Following~\cite{Kondyrev_Prikhodko2020,Ben-Zvi_Nadler2021}, we decategorify~\cre
   \]
   in $\Endtrl (\sSpan{\cC}_{\cE,\cI,\cP})$ by~\cref{prop:internal-left-adjoints}, and it follows from the commutativity of~\labelcref{eq:naturality-of-lefschetz} that the induced map on traces is induced by the projection $X^f\to\pt$.
 \end{proof}
-\begin{exam}[The topological Lefschetz formula]
-  Consider the six-functor formalism 
-\end{exam}
+\paragraph{The topological trace Lefschetz formula}
+  Consider the six-functor formalism on locally compact Hausdorff spaces induced via the Liu--Zheng construction by the symmetric monoidal functor
+  \[
+    \begin{tikzcd}
+      \lchaus^\op\arrow r & \Prlst\\[-20pt]
+      \tset\arrow[r,mapsto] & \Shv (\tset ;\Sp ),
+    \end{tikzcd}
+  \]
+  which sends a map $f\colon Y\to \tset$ to the pullback functor $f^*\colon\Shv (X;\Sp )\to\Shv (Y;\Sp )$. That is, we take $(\cC ,\cE ) = (\lchaus ,\textrm{all maps})$ and $(\cI ,\cP ) = (\textrm{open immersions}, \textrm{proper maps})$.
+
+  Fix a compact Hausdorff space $X$ and a self-map $f\curvearrowright X$ (which is automatically proper). We assume that $X$ is suave with respect to the six-functor formalism described in the preceding paragraph; this holds, for instance, if $X$ is locally of constant shape, or more specifically if $X$ is an absolute neighborhood retract. Under these assumptions, \cref{prop:lefschetz-trace} then supplies a commutative triangle
+  \begin{equation}
+    \label{eq:topological-lefschetz-trace}
+    \begin{tikzcd}
+      & \Gamma_c(X^f;\SS )\arrow[dr]\\
+      \SS\arrow[rr,"\ch {}f"] \arrow[ru]&&\SS,
+    \end{tikzcd}
+  \end{equation}
+  in which $\SS\to\Gamma_c(X^f;\SS )\simeq\Gamma (X^f;\SS )$ is the unit for the sheaf cohomology ring $\Gamma (X^f;\SS )\in\CAlg (\Sp )$ and $\ch {}f\in\pi_0\SS\simeq\ZZ$ is the trace of the map induced by $f$ on sheaf cohomology $\Gamma (X;\SS )$. If $X$ is locally of constant shape, then $(\Gamma (X;\SS ),f\curvearrowright \Gamma (X;\SS ))$ is equivalent to the map induced on (singular) spherical cochains $(\SS^{\ani X},f\curvearrowright \SS^{\ani X})$. This is the usual Lefschetz trace, as one may deduce from the symmetric monoidality of the functors
+  \[
+    \Sp\xrightarrow{\QQ\otimes_{\SS}{-}}
+    \Mod_{\QQ}\xrightarrow{\pi_*}
+    \grVect_\QQ,
+  \]
+  where $\grVect_\QQ$ is given the Koszul rule symmetric monoidal structure. In particular, we deduce
+  \begin{cor}[Lefschetz fixed point theorem]
+    Let $X$ be a compact Hausdorff space that is locally of constant shape, and let $f\curvearrowright X$ be some self-map. If
+    \[
+      \ch {}f = \sum_i (-1)^i\tr{f^*\curvearrowright H^i(X;\QQ )}{}\neq 0,
+    \]
+    then $f$ has a fixed point.
+  \end{cor}
+  \begin{proof}
+    If $X^f = \varnothing$ then $\Gamma_c(X^f;\SS )\simeq 0$, so commutativity of~\labelcref{eq:topological-lefschetz-trace} implies that $\ch {}f\simeq 0$.
+  \end{proof}
+  \Onote{Maybe say something brief about fixed point indices here}
 \subsubsection{Reidemeister}
 In order to be consistent with standard terminology, we must introduce our own awkward terminology:
 \begin{defn}
@@ -479,7 +513,7 @@ In order to be consistent with standard terminology, we must introduce our own a
 \begin{defn}
   Let $f\curvearrowright X$ be as in the preceding proposition. The map $\mathbf 1\to (X^f)_!(X^f)^*\mathbf 1$ from~\labelcref{eq:abstract-lefschetz-triangle} is called the \tdef{Reidemeister trace} of $f$.
 \end{defn}
-\begin{exam}[The classical Reidemeister trace]
+\begin{exam}[The Reidemeister trace for $\infty$-groupoids]
   
 \end{exam}
 \begin{exam}[The parametrized homotopical Reidemeister trace]

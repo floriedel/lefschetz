@@ -19,6 +19,7 @@
     "Volpe2023"
     "Efimov2025"
     "Ramzi2024"
+    "Kontsevich2005"
     "Krause_Nikolaus_Putzstuck2024"
     "Nikolaus2024"))
  '(or :bibtex :latex))

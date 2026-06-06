@@ -46,6 +46,7 @@
     "bmH"
     "bcat"
     "freeondual"
+    "lchaus"
     "can"
     "all"
     "Yo"
