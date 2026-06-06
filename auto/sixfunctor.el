@@ -54,6 +54,8 @@
     "eq:lefschetz-square-factorization"
     "eq:topological-lefschetz-trace"
     "eq:abstract-prereidemeister-trace"
-    "prop:reidemeister-trace"))
+    "prop:reidemeister-trace"
+    "eq:abstract-reidemeister-triangle"
+    "eq:homotopical-lefschetz-trace"))
  :latex)
 
