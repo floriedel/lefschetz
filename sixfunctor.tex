@@ -251,8 +251,8 @@ We already know how the clockwise composition in~\labelcref{eq:naturality-of-lef
   \]
   be a 1-morphism in $\sSpan{\cC}_{\cE ,\cI ,\cP}$ with both $f$ and $g$ admissible, and suppose that
   \begin{enumerate}[label=(\roman*)]
-  \item $f$ is \'etale and the diagonal map $\Delta_f\colon Z\to Z\times_XZ$ is proper; and
-  \item $g$ is proper and the diagonal map $\Delta_g\colon Z\to Z\times_YZ$ is \'etale.
+  \item $f$ is cohomologically \'etale and the diagonal map $\Delta_f\colon Z\to Z\times_XZ$ is cohomologically proper; and
+  \item $g$ is cohomologically proper and the diagonal map $\Delta_g\colon Z\to Z\times_YZ$ is cohomologically \'etale.
   \end{enumerate}
   Then
     \[
@@ -325,15 +325,15 @@ We already know how the clockwise composition in~\labelcref{eq:naturality-of-lef
 \]
 from $\Lambda \circ\Lambda '$ to $\id$ and $\id$ to $\Lambda '\circ\Lambda $, respectively. It is straightforward to check that these 2-morphisms satisfy the triangle equality, and hence witness an adjunction $\Lambda \circ\Lambda '\dashv \Lambda '\circ\Lambda$ as desired.
 \end{proof}
-\begin{prop}
+\begin{prop}\label{prop:internal-left-adjoints}
   Let $X\in\cC$ be an admissible object.
   \begin{enumerate}[label=(\alph*)]
-  \item The 1-morphism $\pt\leftarrow X\xrightarrow\id X$ has an internal right adjoint if $X$ is \'etale.
-  \item The 1-morphism $X\xleftarrow{\id} X\to \pt$ has an internal right adjoint if $X$ is proper.
+  \item The 1-morphism $\pt\leftarrow X\xrightarrow\id X$ has an internal right adjoint if $X$ is cohomologically proper.
+  \item The 1-morphism $X\xleftarrow{\id} X\to \pt$ has an internal right adjoint if $X$ is cohomologically \'etale.
   \end{enumerate}
 \end{prop}
 \begin{proof}
-  In the case of (a), the adjunction is witnessed by the 2-morphisms
+  In the case of (a), there is an adjunction between $\pt\leftarrow X\xrightarrow\id X$ and $X\xleftarrow{\id} X\to \pt$ which is witnessed by the 2-morphisms
   \[
     \begin{tikzpicture}[baseline=(current bounding box.center)]
       \node (X) at (-1.5,0){$\pt$};
@@ -365,19 +365,31 @@ from $\Lambda \circ\Lambda '$ to $\id$ and $\id$ to $\Lambda '\circ\Lambda $, re
       \draw (W) edge[double distance=1.5pt] (Zprime);
     \end{tikzpicture}
   \]
+  As for (b), simply mirror the diagrams above along the horizontal axis.
 \end{proof}
 \Onote{Write that the map on traces induced by a lax comm square in span-category with internally left adjoint horizontal arrows (i.e.~a map in traceable endos) is induced by the associated map on fixed points.}
 \subsection{Decategorification}
-Following~\cite{Kondyrev_Prikhodko2020,Ben-Zvi_Nadler2021}, we decategorify~\cref{thm:categorical-fixed-pts} by using the functoriality of trace in traceable endomorphisms to produce for a suitable endomorphism $f\curvearrowright X$ in $\cC$ a commutative triangle in $\cA$ whose base implements the ``Lefschetz trace'' of $f$, and whose legs implement fixed point indices for $f$, c.f.~\cref{rmk:utopian-lefschetz}. For this we will make the following additional assumption about our six-functor formalism:
-\begin{enumerate}[label=(\Alph*)]
-  \setcounter{enumi}{1}
-\item\label{locally-rigid-assumption} $\cA$ is locally rigid.
-\end{enumerate}
-\begin{defn}[Lefschetz trace]
-  Let $X\in\cC$ be an admissible object, and suppose that $X_*X^*\mathbf 1\in\cA$ is dualizable. The \tdef{Lefschetz trace} of an endomorphism $f\curvearrowright X$, denoted $\mdef{\ch{}{f}}$, is the trace of the induced map $f^*\curvearrowright X_*X^*\mathbf 1$ in $\cA$.
+Following~\cite{Kondyrev_Prikhodko2020,Ben-Zvi_Nadler2021}, we decategorify~\cref{thm:categorical-fixed-pts} by using the functoriality of trace in traceable endomorphisms. That is, for a suitable object $X\in\cC$ and a proper endomorphism $f\curvearrowright X$, we produce a commutative triangle in $\cA$ whose base implements the Lefschetz trace of $f$, and whose right leg implements fixed point indices for $f$, c.f.~\cref{rmk:utopian-lefschetz}. We will also describe a dual theory of Reidemeister traces, generalizing the classical notion of the Reidemeister trace of a self-map of an $\infty$-groupoid.
+\subsubsection{Lefschetz}
+\begin{defn}
+  Suppose that $X\in\cC$ is suave and prim. The \tdef{Lefschetz trace} of a cohomologically proper endomorphism $f\curvearrowright X$, denoted $\mdef{\ch{}{f}}$, is the $\cA$-linear trace of the induced morphism
+  \begin{equation}
+    \label{eq:abstract-lefschetz-trace}
+    \begin{tikzcd}[column sep=huge]
+      \cA\arrow[d,equal]
+      \arrow[r,"X_!X^*"]
+      & \cA\arrow[d,equal]\\
+      \cA\arrow[r,"X_!X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt ,"f"]
+      & \cA
+    \end{tikzcd}
+  \end{equation}
+  in $\Endtrl (\pPrlf\cA )$, where the 2-cell is the composition
+  \[
+    X_!X^*\simeq X_!f_!f^*X^*\mathbf 1\xrightarrow{\mathrm{counit}} X_!X^*,
+  \]
 \end{defn}
-\begin{prop}[The Lefschetz trace formula]
-  Let $X\in\cC$ be an admissible object, and suppose that $X$ is suave and prim. Then the Lefschetz trace $\ch {} f$ is defined, and there is a commutative diagram
+\begin{prop}[The Lefschetz trace formula]\label{prop:lefschetz-trace}
+  Suppose that $X\in\cC$ is suave and prim and that $f\curvearrowright X$ is a cohomologically proper endomorphism. There is a commutative diagram
   \begin{equation}
     \label{eq:abstract-lefschetz-triangle}
     \begin{tikzcd}[column sep=small]
@@ -385,40 +397,89 @@ Following~\cite{Kondyrev_Prikhodko2020,Ben-Zvi_Nadler2021}, we decategorify~\cre
       \mathbf 1\arrow[rr,swap,"\ch {} f"]\arrow[ru] & & \mathbf 1.
     \end{tikzcd}
   \end{equation}
-  Furthermore,
-  \begin{enumerate}[label=(\alph*)]
-  \item If $X$ is cohomologically proper, then $(X^f)_!(X^f)^*\mathbf 1\to\mathbf 1$ is induced by the projection $X^f\to\pt$.
-  \item If $X$ is cohomologically \'etale, then $\mathbf 1\to (X^f)_!(X^f)^*\mathbf 1$ is induced by the projection $X^f\to\pt$.
-  \end{enumerate}
+  Furthermore, if $X$ is cohomologically proper, then $\mathbf 1\to (X^f)_*(X^f)^*\mathbf 1\simeq (X^f)_!(X^f)^*\mathbf 1$ is the unit of the adjunction induced by the projection $X^f\to\pt$.
 \end{prop}
 \begin{proof}
-  $\ch{}f$ is the result of applying $\TrcL$ to the morphism
-  \[
+  We can factor~\labelcref{eq:abstract-lefschetz-trace} in $\Endtrl (\pPrlf\cA )$ as the composition
+  \begin{equation}
+    \label{eq:lefschetz-square-factorization}
     \begin{tikzcd}[column sep=huge]
       \cA\arrow[d,equal]
-      \arrow[r,"X_*X^*"]
+      \arrow[r,"X^*"]
+      &\cD (X)\arrow[d,"f_!"]\arrow[r,"X_!"]
       & \cA\arrow[d,equal]\\
-      \cA\arrow[r,"X_*X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt ,"f^*"]
-      & \cA
+      \cA\arrow[r,"X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt]
+      &\cD(X)\arrow[r,"X_!"]
+      & \cA,
     \end{tikzcd}
-  \]
-  in $\Endtrl (\pPrlf\cA )$.
-  We can factor this diagram as the composition
+  \end{equation}
+  where the 2-cell in the left-hand square is $X^*\xrightarrow{\mathrm{unit}} f_!f^*X^*\simeq f_!X^*$.  Applying $\TrcL$ to the composition~\labelcref{eq:lefschetz-square-factorization} and invoking~\cref{thm:categorical-fixed-pts}, we get~\labelcref{eq:abstract-lefschetz-triangle}. If $X$ is cohomologically proper, the right-hand square is the image of the morphism
   \[
-    \begin{tikzcd}[column sep=huge]
-      \cA\arrow[d,equal]
-      \arrow[r,"X_*X^*"]
-      & \cA\arrow[d,equal]\\
-      \cA\arrow[r,"X_*X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt ,"f^*"]
-      & \cA
+    \begin{tikzcd}
+      \pt\arrow[r,leftarrow]\arrow[dd,equal]
+      & X\arrow[r,equal]
+      & X\arrow[d,equal]\\
+       & & X \arrow[d,"f"]\\
+      \pt\arrow[r,leftarrow]
+      & X\arrow[r,equal]
+      & X
     \end{tikzcd}
   \]
-  \Onote{write out diagram, finish writing proof.}
+  in $\Endtrl (\sSpan{\cC}_{\cE,\cI,\cP})$ by~\cref{prop:internal-left-adjoints}, and it follows from the commutativity of~\labelcref{eq:naturality-of-lefschetz} that the induced map on traces is induced by the projection $X^f\to\pt$.
 \end{proof}
 \begin{exam}[The topological Lefschetz formula]
   Consider the six-functor formalism 
 \end{exam}
-\begin{exam}[The homotopical Reidemeister trace]
+\subsubsection{Reidemeister}
+In order to be consistent with standard terminology, we must introduce our own awkward terminology:
+\begin{defn}
+  Suppose that $X\in\cC$ is suave and prim. The \tdef{pre-Reidemeister trace} of a cohomologically \'etale endomorphism $f\curvearrowright X$, denoted $\mdef{\chr{}{f}}$, is the $\cA$-linear trace of the induced morphism
+  \begin{equation}
+    \label{eq:abstract-prereidemeister-trace}
+    \begin{tikzcd}[column sep=huge]
+      \cA\arrow[d,equal]
+      \arrow[r,"X_!X^*"]
+      & \cA\arrow[d,equal]\\
+      \cA\arrow[r,"X_!X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt ,"f"]
+      & \cA
+    \end{tikzcd}
+  \end{equation}
+  in $\Endtrl (\pPrlf\cA )$, where the 2-cell is the composition
+  \[
+    X_!X^*\xrightarrow{\mathrm{unit}} X_!f_!f^*X^*\simeq X_!X^*.
+  \]
+\end{defn}
+\begin{prop}\label{prop:reidemeister-trace}
+    Suppose that $X\in\cC$ is suave and prim and that $f\curvearrowright X$ is a cohomologically \'etale endomorphism. There is a commutative diagram
+  \begin{equation}
+    \label{eq:abstract-lefschetz-triangle}
+    \begin{tikzcd}[column sep=small]
+      & (X^f)_!(X^f)^*\mathbf 1\arrow[dr]\\
+      \mathbf 1\arrow[rr,swap,"\ch {} f"]\arrow[ru] & & \mathbf 1.
+    \end{tikzcd}
+  \end{equation}
+  Furthermore, if $X$ is cohomologically \'etale, then $(X^f)_!(X^f)^*\mathbf 1\simeq (X^f)_!(X^f)^!\mathbf 1\to\mathbf 1$ is the unit of the adjunction induced by the projection $X^f\to\pt$.
+\end{prop}
+\begin{proof}
+  The proof is analogous to the proof of~\cref{prop:lefschetz-trace}, using the factorization
+  \begin{equation}
+    \label{eq:lefschetz-square-factorization}
+    \begin{tikzcd}[column sep=huge]
+      \cA\arrow[d,equal]
+      \arrow[r,"X^*"]
+      &\cD (X)\arrow[d,"f^*"]\arrow[r,"X_!"]
+      & \cA\arrow[d,equal]\\
+      \cA\arrow[r,"X^*"]
+      &\cD(X)\arrow[r,"X_!"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt]
+      & \cA,
+    \end{tikzcd}
+  \end{equation}
+  of~\labelcref{eq:abstract-prereidemeister-trace}.
+\end{proof}
+\begin{defn}
+  Let $f\curvearrowright X$ be as in the preceding proposition. The map $\mathbf 1\to (X^f)_!(X^f)^*\mathbf 1$ from~\labelcref{eq:abstract-lefschetz-triangle} is called the \tdef{Reidemeister trace} of $f$.
+\end{defn}
+\begin{exam}[The classical Reidemeister trace]
   
 \end{exam}
 \begin{exam}[The parametrized homotopical Reidemeister trace]

@@ -47,7 +47,12 @@
     "eq:span-of-spans"
     "eq:2-categorical-sixff"
     "eq:naturality-of-lefschetz"
-    "locally-rigid-assumption"
-    "eq:abstract-lefschetz-triangle"))
+    "prop:internal-left-adjoints"
+    "eq:abstract-lefschetz-trace"
+    "prop:lefschetz-trace"
+    "eq:abstract-lefschetz-triangle"
+    "eq:lefschetz-square-factorization"
+    "eq:abstract-prereidemeister-trace"
+    "prop:reidemeister-trace"))
  :latex)
 
