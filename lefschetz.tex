@@ -35,16 +35,16 @@ We are by no means the first to use sheaf categories and trace functoriality to 
 
 \subsection{The Lefschetz trace}
 
-The first item on our agenda is to reinterpret the right-hand side of the Lefschetz fixed point formula~\eqref{eq:lefschetz-formula} at the level of categories. For $h\colon Y\to Z$ some map of anima, we write 
-$g^{\ast}\colon \SS^Z\to \SS^Y$ for the induced map on spherical cochains.
-Recall that if $X$ is some compact anima, then by Spanier--Whitehead duality the spectrum $\SS^X$ is dualizable, with dual given by the
-spherical chains $\SS[X]$.
+The first item on our agenda is to reinterpret the right-hand side of the Lefschetz fixed point formula~\eqref{eq:lefschetz-formula} at the level of categories. For $h\colon B \to C$ some map of anima, we write 
+$g^{\ast}\colon \SS^C\to \SS^B$ for the induced map on spherical cochains.
+Recall that if $\anima$ is some compact anima, then by Spanier--Whitehead duality the spectrum $\SS^\anima$ is dualizable, with dual given by the
+spherical chains $\SS[\anima]$.
 We find it useful to take the following definition as our starting point:
 
 \begin{defn}\label{defn: lefschetz trace}
-  For a compact anima $X$, the \tdef{Lefschetz trace} of a self-map $g\colon X\to X$ is the map
-  \[ \mdef{L(g)}\coloneq \tr{g^*\colon \SS^X\to \SS^X}{\Sp}\colon\SS\to\SS.\]
-  If $X=\ani{\tset}$ is the underlying anima of a topological space $\tset$ and $g$ is induced by a self-map $f\colon\tset\to\tset$, then we will also refer to $L(f)\coloneq L(g)$ as the Lefschetz trace of $f$.
+  For a compact anima $\anima$, the \tdef{Lefschetz trace} of a self-map $g\colon \anima\to \anima$ is the map
+  \[ \mdef{L(g)}\coloneq \tr{g^*\colon \SS^\anima\to \SS^\anima}{\Sp}\colon\SS\to\SS.\]
+  If $\anima=\ani{\tset}$ is the underlying anima of a topological space $\tset$ and $g$ is induced by a self-map $f\colon\tset\to\tset$, then we will also refer to $L(f)\coloneq L(g)$ as the Lefschetz trace of $f$.
 \end{defn}
 
 % Note that the trace $\tr{g^*\curvearrowright\SS^X}{\Sp}$ is defined due to Spanier--Whitehead duality, which asserts that the spherical cochains $\SS^X$ and the suspension spectrum $\SS\lbrack X\rbrack$ are dual to each other for a compact anima $X$.
@@ -54,22 +54,22 @@ We find it useful to take the following definition as our starting point:
 Following~\cite{Kondyrev_Prikhodko2020}, we will rewrite the Lefschetz trace using the machinery of higher traces provided by~\cite{Hoyois_Scherotzke_Sibilla2017} (see~\cref{sec: trace theory} for a brief overview). That is, let $\Prlstf$ denote the natural $(\infty,2)$-categorical enhancement of $\Prlst$. Morita theory provides a natural equivalence $\Omega \Prlstf \simeq \Sp$, whose inverse takes a spectrum
 $E\in \Sp$ to the endomorphism $E\otimes-\colon \Sp \to \Sp$. 
 Moreover, under this equivalence,
-for any self map of a compact anima $g\colon X \to X$ the induced map
-of spectra $g^{\ast}\colon \SS^X\to \SS^X$ is identified with a map 
-\[ g^{\ast}\colon (\Sp, \SS^X)\to (\Sp, \SS^X) \in \Endtrl(\Prlstf) \]
+for any self map of a compact anima $g\colon \anima \to \anima$ the induced map
+of spectra $g^{\ast}\colon \SS^\anima\to \SS^\anima$ is identified with a map 
+\[ g^{\ast}\colon (\Sp, \SS^\anima)\to (\Sp, \SS^\anima) \in \Endtrl(\Prlstf) \]
 We write
 \[
   \mdef{\TrcL}\colon \Endtrl(\Prlstf)\too \Sp\,.
 \]
 for the symmetric monoidal trace functor of \cref{thm: trace functor}. 
 Unwinding the naturality of the functor $\TrcL$, we learn that 
-$\TrcL{(\Sp,\SS^X)}= \SS$ and moreover:
+$\TrcL{(\Sp,\SS^\anima)}= \SS$ and moreover:
 % \begin{prop}
 %   For a compact anima $X$ and a self-map $g\colon X\to X$, there is a homotopy
    \begin{equation}
      \label{eq:trace-lax-comm}
-     L(g)=\tr{g^*\colon \SS^X \to \SS^X}{\Sp} \simeq
-     \TrcL\left(g^\ast\colon (\Sp,\SS^X)\to (\Sp,\SS^X)
+     L(g)=\tr{g^*\colon \SS^\anima \to \SS^\anima}{\Sp} \simeq
+     \TrcL\left(g^\ast\colon (\Sp,\SS^\anima)\to (\Sp,\SS^X)
      \right)\in \pi_0\SS.
    \end{equation}
 % \end{prop}
@@ -81,7 +81,7 @@ $\TrcL{(\Sp,\SS^X)}= \SS$ and moreover:
 %   given informally by $E\mapsto E\otimes {-}$. Here the monoidal structure on the left-hand side is the tensor product of spectra, and the monoidal structure on the right-hand side is composition. It follows that the trace of $g^*\colon\SS^X\to\SS^X$ can be computed as the trace of the natural transformation $g^*\otimes{-}\colon\left(\SS^X\otimes {-}\right)\to \left(\SS^X\otimes {-}\right)$. Unfolding definitions equates this with the right-hand side of~\eqref{eq:trace-lax-comm}, see~\cref{rmk:compatibility-of-fancy-trace-with-normal-trace}.
 % \end{proof}
 With this in hand, our strategy for factoring the map $L(g)$ is to
-instead show that the map $g^{\ast}\colon (\Sp,\SS^X) \to (\Sp,\SS^X)$
+instead show that the map $g^{\ast}\colon (\Sp,\SS^\anima) \to (\Sp,\SS^\anima)$
 in the category $\Endtrl(\Prlstf)$. 
 
 \subsection{Factoring the Lefschetz trace using sheaves}
@@ -90,11 +90,11 @@ Above we showed that the Lefschetz trace of a self-map of a compact anima $\anim
 \begin{equation}
   \label{eq:lax-comm-square-lefschetz}
   \begin{tikzcd}[column sep=large]
-    \Sp \arrow[r,"\SS^X\otimes {-}"] \arrow[d,equal] & \Sp \arrow[d,equal]\\
-    \Sp \arrow[r,swap,"\SS^X\otimes {-}"] \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt ,"g^*"] & \Sp
+    \Sp \arrow[r,"\SS^\anima\otimes {-}"] \arrow[d,equal] & \Sp \arrow[d,equal]\\
+    \Sp \arrow[r,swap,"\SS^\anima \otimes {-}"] \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt ,"g^*"] & \Sp
   \end{tikzcd}.
 \end{equation}
-Suppose now that $X$ is the underlying anima of a topological space $\tset$, and that $f\colon\tset\to\tset$ is some representative of the map $g$. We wish to express the trace of the diagram~\eqref{eq:lax-comm-square-lefschetz} in terms of the actual topological space $A$ and the actual continuous map $f$. The basic idea is that sheaf theory accomplishes this under some mild assumptions on $A$.
+Suppose now that $\anima=\ani{\tset}$ is the underlying anima of a topological space $\tset$, and that $f\colon\tset\to\tset$ is some representative of the map $g$. We wish to express the trace of the diagram~\eqref{eq:lax-comm-square-lefschetz} in terms of the actual topological space $A$ and the actual continuous map $f$. The basic idea is that sheaf theory accomplishes this under some mild assumptions on $A$.
 
 \todo{The following paragraph should maybe go in a notation and conventions section.} Let $\Top$ denote the category of locally compact Hausdorff spaces. For any $\tset\in \Top$, we denote by
 \[\mdef{\D{\tset}}\coloneq \Shv(\tset;\Sp) \in \Prlst\]
@@ -126,9 +126,10 @@ The category $\D{\tset}$ contains topological information about $\tset$.\footnot
 	\arrow["{X_!}", from=1-2, to=1-3]
 	\arrow["{f_!}", from=1-2, to=2-2]
 	\arrow["\id"', from=1-3, to=2-3]
-	\arrow[between={0.3}{0.8}, Rightarrow, from=2-1, to=1-2]
+	\arrow[Rightarrow, from=2-1, to=1-2]
 	\arrow["{\tset^{\ast}}"', from=2-1, to=2-2]
 	\arrow["{X_!}"', from=2-2, to=2-3]
+	\arrow[Rightarrow, from=2-2, to=1-3]
 \end{tikzcd}
   \end{equation}
   where $\tset^*\to f_!f^*\tset^*\simeq f_!\tset^*$ comes from the unit transformation of the adjunction $f^*\dashv f_!$.
