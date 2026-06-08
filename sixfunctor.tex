@@ -326,6 +326,14 @@ We already know how the clockwise composition in~\labelcref{eq:naturality-of-lef
 \]
 from $\Lambda \circ\Lambda '$ to $\id$ and $\id$ to $\Lambda '\circ\Lambda $, respectively. It is straightforward to check that these 2-morphisms satisfy the triangle equality, and hence witness an adjunction $\Lambda \circ\Lambda '\dashv \Lambda '\circ\Lambda$ as desired.
 \end{proof}
+
+\begin{defn}\label{defn: cohom traceable}
+  Let $\Lambda = Y\xleftarrow{f} X \xrightarrow{g} Y$ be an endomorphism
+  of some $Y\in \cC$ in $\Span{\cC}_{\cE,\cI,\cP}$. Say that $\Lambda$
+  is \tdef{cohomologically traceable} if it satisfies the assumptions of 
+  \cref{prop:internal-left-adjoints}. 
+\end{defn}
+
 \begin{prop}\label{prop:internal-left-adjoints}
   Let $X\in\cC$ be an admissible object.
   \begin{enumerate}[label=(\alph*)]
@@ -369,52 +377,92 @@ from $\Lambda \circ\Lambda '$ to $\id$ and $\id$ to $\Lambda '\circ\Lambda $, re
   As for (b), simply mirror the diagrams above along the horizontal axis.
 \end{proof}
 \Onote{Write that the map on traces induced by a lax comm square in span-category with internally left adjoint horizontal arrows (i.e.~a map in traceable endos) is induced by the associated map on fixed points.}
+
 \subsection{Decategorification}
+
 Following~\cite{Kondyrev_Prikhodko2020,Ben-Zvi_Nadler2021}, we decategorify~\cref{thm:categorical-fixed-pts} by using the functoriality of trace in traceable endomorphisms. That is, for a suitable object $X\in\cC$ and a proper endomorphism $f\curvearrowright X$, we produce a commutative triangle in $\cA$ whose base implements the Lefschetz trace of $f$, and whose right leg implements fixed point indices for $f$, c.f.~\cref{rmk:utopian-lefschetz}. We will also describe a dual theory of Reidemeister traces, generalizing the classical notion of the Reidemeister trace of a self-map of an $\infty$-groupoid.
-\subsubsection{Lefschetz}
-\begin{defn}
-  Suppose that $X\in\cC$ is suave and prim. The \tdef{Lefschetz trace} of a cohomologically proper endomorphism $f\curvearrowright X$, denoted $\mdef{\ch{}{f}}$, is the $\cA$-linear trace of the induced morphism
-  \begin{equation}
-    \label{eq:abstract-lefschetz-trace}
-    \begin{tikzcd}[column sep=huge]
-      \cA\arrow[d,equal]
-      \arrow[r,"X_!X^*"]
-      & \cA\arrow[d,equal]\\
-      \cA\arrow[r,"X_!X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt ,"f"]
-      & \cA
-    \end{tikzcd}
-  \end{equation}
-  in $\Endtrl (\pPrlf\cA )$, where the 2-cell is the composition
-  \[
-    X_!X^*\simeq X_!f_!f^*X^*\mathbf 1\xrightarrow{\mathrm{counit}} X_!X^*,
-  \]
-\end{defn}
-\begin{prop}[The Lefschetz trace formula]\label{prop:lefschetz-trace}
-  Suppose that $X\in\cC$ is suave and prim and that $f\curvearrowright X$ is a cohomologically proper endomorphism. There is a commutative diagram
-  \begin{equation}
-    \label{eq:abstract-lefschetz-triangle}
+
+\begin{cons}\label{cons: pb tf and trc}
+Let $f\colon X\to Y\in \cC$ be a morphism.
+\begin{enumerate}
+    \item  If $f$ is $\cD$-proper, we define the \tdef{pullback} 
+        along $f$ to be the composite natural transformation
+         \[ \mdef{\pb{f}}\colon Y_!Y^{\ast} \xrightarrow{\epsilon} Y_!f_{\ast}f^{\ast}Y^{\ast} = Y_!f_!f^{\ast}Y^{\ast} \simeq X_! X^{\ast}\,,\]
+         where $\epsilon$ is the unit of the adjunction $f^{\ast}\dashv f_{\ast}$.
+    \item If $f$ is $\cD$-\'etale, we define the \tdef{transfer}
+          along $f$ to be the composite natural transformation 
+          \[ \mdef{\tf{f}}\colon X_!X^{\ast}\simeq Y_!f_!f^{\ast}Y^{\ast}
+          \xrightarrow{\eta} Y_!Y^{\ast}\]
+          where $\eta$ is the counit of the adjunction $f_!\dashv f^{\ast}$.
+    \item If $\Lambda= \left( Y \xleftarrow{g} X \xrightarrow{f} Y\right)$
+          is $\cD$-traceable, the functor $Y_!Y^{\ast}$ admits an internal
+          right adjoint in $\pPrlf{\cA}$ and hence the composite 
+          \[  Y_!Y^{\ast} \xrightarrow{\pb{f}} X_!X^{\ast}\xrightarrow{\tf{g}} Y_!Y^\ast \]
+          refines to an endomorphism of the unit $(\cA,\id)$ in
+          $\Endtrl(\pPrlf{\cA})$. We define the $\cA$-linear trace 
+  \[ \mdef{\tr{\Lambda}{\cA}} \colon \1_{\cA} \to \1_{\cA} \]
+  as the image of this morphism under the symmetric monoidal functor 
+  $\Trc\colon \Endtrl(\pPrlf{\cA})\to \Omega\cA$ of REF. 
+    \end{enumerate}
+\end{cons}
+
+\begin{rmk}\label{rmk: about pb tf and trc}
+Some remarks:\todo{Finish this rmk}
+    \begin{enumerate}
+        \item What happens when one of the legs is identity.
+        \item If $\1_\cA\in \cA^{\omega}$ then $X_!X^{\ast}\1_{\cA}$
+        is dualizable and $\tr{\pb{f}}{\cA}$ is actually the trace
+        of $\pb{f}(\1_\cA)$. 
+        \item This is precisely the Lefschetz trace.
+    \end{enumerate}
+\end{rmk}
+
+\begin{prop}\label{prop: coincidence triangle}
+    Let $\Lambda= \left( Y \xleftarrow{g} X \xrightarrow{f} Y\right)$ be
+    a cohomologically traceable span with coincidence locus $X^{\Lambda}$. 
+    There is a commutative diagram:
+    \begin{equation}\label{eq: coincidence triangle}
     \begin{tikzcd}[column sep=small]
-      & (X^f)_!(X^f)^*\mathbf 1\arrow[dr]\\
-      \mathbf 1\arrow[rr,swap,"\ch {} f"]\arrow[ru] & & \mathbf 1.
+      & (X^\Lambda)_!(X^\Lambda)^*\1_{\cA} \arrow[dr]\\
+      \1_{\cA}\arrow[rr,swap,"\tr{\Lambda}{\cA}"]\arrow[ru] & & \mathbf \1_{\cA}\,.
     \end{tikzcd}
-  \end{equation}
-  Furthermore, if $X$ is cohomologically proper, then $\mathbf 1\to (X^f)_*(X^f)^*\mathbf 1\simeq (X^f)_!(X^f)^*\mathbf 1$ is the unit of the adjunction induced by the projection $X^f\to\pt$.
+    \end{equation}
+   Additionally, in the case that $X=Y$, the following are true:
+   \begin{enumerate}
+       \item If $g= \id$, then the map $\1_{\cA}\to (X^{\Lambda})_!(X^{\Lambda})^{\ast}\1_{\cA}$ naturally identifies with the
+       unit map $\1_{\cA}\to (X^f)_!(X^f)^{\ast}\1_{\cA}$.
+       \item If $f=\id$, then the map $(X^{\Lambda})_!(X^{\Lambda})^{\ast}\1_{\cA}\to \1_{\cA}$ naturally identifies
+       with the counit map $(X^g)_!(X^g)^{\ast}\1_{\cA}\to \1_{\cA}$
+   \end{enumerate}
 \end{prop}
 \begin{proof}
-  We can factor~\labelcref{eq:abstract-lefschetz-trace} in $\Endtrl (\pPrlf\cA )$ as the composition
-  \begin{equation}
-    \label{eq:lefschetz-square-factorization}
-    \begin{tikzcd}[column sep=huge]
-      \cA\arrow[d,equal]
-      \arrow[r,"X^*"]
-      &\cD (X)\arrow[d,"f_!"]\arrow[r,"X_!"]
-      & \cA\arrow[d,equal]\\
-      \cA\arrow[r,"X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt]
-      &\cD(X)\arrow[r,"X_!"]
-      & \cA,
-    \end{tikzcd}
-  \end{equation}
-  where the 2-cell in the left-hand square is $X^*\xrightarrow{\mathrm{unit}} f_!f^*X^*\simeq f_!X^*$.  Applying $\TrcL$ to the composition~\labelcref{eq:lefschetz-square-factorization} and invoking~\cref{thm:categorical-fixed-pts}, we get~\labelcref{eq:abstract-lefschetz-triangle}. If $X$ is cohomologically proper, the right-hand square is the image of the morphism
+   Indeed, the morphism $\tf{g}\pb{f}$ factors in $\Endtrl(\pPrlf{\cA})$
+   as:
+   \[
+  \begin{tikzcd}
+	\cA & {\D{Y}} & \cA \\
+	\cA & {\D{Y}} & \cA
+	\arrow["{Y^{\ast}}", from=1-1, to=1-2]
+	\arrow[equals, from=1-1, to=2-1]
+	\arrow["{Y_!}", from=1-2, to=1-3]
+	\arrow["{f_!g^{\ast}}", from=1-2, to=2-2]
+	\arrow[equals, from=1-3, to=2-3]
+	\arrow[Rightarrow, from=2-1, to=1-2]
+	\arrow["{Y^{\ast}}"', from=2-1, to=2-2]
+	\arrow[Rightarrow, from=2-2, to=1-3]
+	\arrow["{Y_!}"', from=2-2, to=2-3]
+\end{tikzcd} 
+\]
+where the left hand two-cell is given by the composite
+\[ Y^{*} \xrightarrow{\epsilon} g_{*}g^{*} Y^{*} =g_!g^{*}Y^* \simeq g_!X^*
+ \simeq g_! f^* Y^*\,, \]
+ and the right hand two-cell is the composite
+ \[ Y_! f_!g^* \simeq X_!g^{*} \simeq Y_!g_!g^*= Y_!g_{\sharp}g^*
+ \xrightarrow{\eta} Y_!\,.\]
+Applying the functor $\TrcL$, we obtain the desired factorization
+from the identification $\TrcL(f_!g^*)\simeq (X^{\Lambda})_!(X^{\Lambda})^{\ast}$ of \todo{Add REF in correct generality}. 
+
+If $X=Y$ and $g=\id$, the right-hand square is the image of the morphism
   \[
     \begin{tikzcd}
       \pt\arrow[r,leftarrow]\arrow[dd,equal]
@@ -426,144 +474,156 @@ Following~\cite{Kondyrev_Prikhodko2020,Ben-Zvi_Nadler2021}, we decategorify~\cre
       & X
     \end{tikzcd}
   \]
-  in $\Endtrl (\sSpan{\cC}_{\cE,\cI,\cP})$ by~\cref{prop:internal-left-adjoints}, and it follows from the commutativity of~\labelcref{eq:naturality-of-lefschetz} that the induced map on traces is induced by the projection $X^f\to\pt$.
+  in $\Endtrl (\sSpan{\cC}_{\cE,\cI,\cP})$ by~\cref{prop:internal-left-adjoints}, and it follows from the commutativity of~\labelcref{eq:naturality-of-lefschetz} that the induced map on traces is induced by the projection $X^f\to\pt$. The case of $f=\id$ is completely
+  analogous.
 \end{proof}
-  \begin{defn}
-  Let $f\curvearrowright X$ be as in the preceding proposition. The map $(X^f)_!(X^f)^*\mathbf 1\to\mathbf 1$ from~\labelcref{eq:abstract-lefschetz-triangle} is called the \tdef{Lefschetz character} of $f$.
-\end{defn}
 
-\paragraph{The topological trace Lefschetz formula}
-  Consider the six-functor formalism on locally compact Hausdorff spaces induced via the Liu--Zheng construction by the symmetric monoidal functor
-  \[
-    \begin{tikzcd}
-      \lchaus^\op\arrow r & \Prlst\\[-20pt]
-      \tset\arrow[r,mapsto] & \Shv (\tset ;\Sp ),
-    \end{tikzcd}
-  \]
-  which sends a map $f\colon Y\to \tset$ to the pullback functor $f^*\colon\Shv (X;\Sp )\to\Shv (Y;\Sp )$. That is, we take $(\cC ,\cE ) = (\lchaus ,\textrm{all maps})$ and $(\cI ,\cP ) = (\textrm{open immersions}, \textrm{proper maps})$.
-
-  Fix a compact Hausdorff space $X$ and a self-map $f\curvearrowright X$ (which is automatically proper). We assume that $X$ is suave with respect to the six-functor formalism described in the preceding paragraph; this holds, for instance, if $X$ is locally of constant shape, or more specifically if $X$ is an absolute neighborhood retract. Under these assumptions, \cref{prop:lefschetz-trace} then supplies a commutative triangle
-  \begin{equation}
-    \label{eq:topological-lefschetz-trace}
-    \begin{tikzcd}
-      & \Gamma_c(X^f;\SS )\arrow[dr]\\
-      \SS\arrow[rr,"\ch {}f"] \arrow[ru]&&\SS,
-    \end{tikzcd}
-  \end{equation}
-  in which $\SS\to\Gamma_c(X^f;\SS )\simeq\Gamma (X^f;\SS )$ is the unit for the sheaf cohomology ring $\Gamma (X^f;\SS )\in\CAlg (\Sp )$ and $\ch {}f\in\pi_0\SS\simeq\ZZ$ is the trace of the map induced by $f$ on sheaf cohomology $\Gamma (X;\SS )$. If $X$ is locally of constant shape, then $(\Gamma (X;\SS ),f\curvearrowright \Gamma (X;\SS ))$ is equivalent to the map induced on (singular) spherical cochains $(\SS^{\ani X},f\curvearrowright \SS^{\ani X})$. This is the usual Lefschetz trace, as one may deduce from the symmetric monoidality of the functors
-  \[
-    \Sp\xrightarrow{\QQ\otimes_{\SS}{-}}
-    \Mod_{\QQ}\xrightarrow{\pi_*}
-    \grVect_\QQ,
-  \]
-  where $\grVect_\QQ$ is given the Koszul rule symmetric monoidal structure. In particular, we deduce
-  \begin{cor}[Lefschetz fixed point theorem]
-    Let $X$ be a compact Hausdorff space that is locally of constant shape, and let $f\curvearrowright X$ be some self-map. If
-    \[
-      \ch {}f = \sum_i (-1)^i\tr{f^*\curvearrowright H^i(X;\QQ )}{}\neq 0,
-    \]
-    then $f$ has a fixed point.
-  \end{cor}
-  \begin{proof}
-    If $X^f = \varnothing$ then $\Gamma_c(X^f;\SS )\simeq 0$, so commutativity of~\labelcref{eq:topological-lefschetz-trace} implies that $\ch {}f\simeq 0$.
-  \end{proof}
-  \Onote{Maybe say something brief about fixed point indices here}
-\subsubsection{Reidemeister}
 \begin{defn}
-  Suppose that $X\in\cC$ is suave and prim. The \tdef{Reidemeister trace} of a cohomologically \'etale endomorphism $f\curvearrowright X$, denoted $\mdef{\chr{}{f}}$, is the $\cA$-linear trace of the induced morphism
-  \begin{equation}
-    \label{eq:abstract-prereidemeister-trace}
-    \begin{tikzcd}[column sep=huge]
-      \cA\arrow[d,equal]
-      \arrow[r,"X_!X^*"]
-      & \cA\arrow[d,equal]\\
-      \cA\arrow[r,"X_!X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt ,"f"]
-      & \cA
-    \end{tikzcd}
-  \end{equation}
-  in $\Endtrl (\pPrlf\cA )$, where the 2-cell is the composition
-  \[
-    X_!X^*\xrightarrow{\mathrm{unit}} X_!f_!f^*X^*\simeq X_!X^*.
-  \]
+    Let $\Lambda=\left( X= X \xrightarrow{f} X\right)$ and
+    $\Lambda^{\prime} = \left(Y\xleftarrow{g} Y =Y\right)$ be two 
+    $\cD$-traceable spans. 
+    We define the \tdef{Lefschetz character} of $f$ as the morphism 
+    \[ \mdef{\lambda_f}\colon (X^f)_!(X^f)^*\1_{\cA}\to \1_{\cA} \]
+    given by the right hand diagonal map in \eqref{eq: coincidence triangle}. 
+    Moreover, we define the \tdef{Reidemeister character} of $g$ as
+    the morphism
+    \[ \mdef{\rho_g}\colon \1_{\cA}\to (Y^g)_!(Y^g)^*\1_{\cA}\]
+    given by the left hand diagonal map in \eqref{eq: coincidence triangle}.
 \end{defn}
+
 \begin{war}
-  Usually, the term ``Reidemeister trace'' refers to a map $\mathbf 1\to (X^f)_!(X^f)^*\mathbf 1$. This is not what we are calling the Reidemeister trace. In order to emphasize the parallels with the previous subsection, we will instead refer to the classical invariant as a cocharacter, see below.
+    Something about the terminology goes here \todo{Write it}.
 \end{war}
-\begin{prop}\label{prop:reidemeister-trace}
-    Suppose that $X\in\cC$ is suave and prim and that $f\curvearrowright X$ is a cohomologically \'etale endomorphism. There is a commutative diagram
-  \begin{equation}
-    \label{eq:abstract-reidemeister-triangle}
-    \begin{tikzcd}[column sep=small]
-      & (X^f)_!(X^f)^*\mathbf 1\arrow[dr]\\
-      \mathbf 1\arrow[rr,swap,"\chr {} f"]\arrow[ru] & & \mathbf 1.
-    \end{tikzcd}
-  \end{equation}
-  Furthermore, if $X$ is cohomologically \'etale, then $(X^f)_!(X^f)^*\mathbf 1\simeq (X^f)_!(X^f)^!\mathbf 1\to\mathbf 1$ is the unit of the adjunction induced by the projection $X^f\to\pt$.
-\end{prop}
-\begin{proof}
-  The proof is analogous to the proof of~\cref{prop:lefschetz-trace}, using the factorization
-  \begin{equation}
-    \label{eq:lefschetz-square-factorization}
-    \begin{tikzcd}[column sep=huge]
-      \cA\arrow[d,equal]
-      \arrow[r,"X^*"]
-      &\cD (X)\arrow[d,"f^*"]\arrow[r,"X_!"]
-      & \cA\arrow[d,equal]\\
-      \cA\arrow[r,"X^*"]
-      &\cD(X)\arrow[r,"X_!"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt]
-      & \cA,
-    \end{tikzcd}
-  \end{equation}
-  of~\labelcref{eq:abstract-prereidemeister-trace}.
-\end{proof}
-\begin{defn}
-  Let $f\curvearrowright X$ be as in the preceding proposition. We refer to the map $\mathbf 1\to (X^f)_!(X^f)^*\mathbf 1$ from~\labelcref{eq:abstract-reidemeister-triangle} as the \tdef{Reidemeister cocharacter} of $f$.
-\end{defn}
-\paragraph{$\infty$-groupoids}
-Consider the six-functor formalism of parametrized spectra on the $\infty$-category of $\infty$-groupoids, induced via the Liu--Zheng construction by the symmetric monoidal functor
-\[
-  \begin{tikzcd}
-    \spaces^\op\arrow r & \Prlst\\[-20pt]
-    \anima\arrow[r,mapsto] & \Fun (\anima ,\Sp ),
-  \end{tikzcd}
-\]
-which sends a map $f\colon B\to\anima$ to the pullback functor $f^*\colon\Fun (\anima ,\Sp )\to\Fun (B,\Sp )$. That is, we take $(\cC ,\cE ) = (\spaces ,\textrm{all maps})$ and $(\cI ,\cP ) = (\textrm{all maps}, \textrm{equivalences})$.
 
-Fix a finitely-dominated $\infty$-groupoid $\anima$ and a self-map $f\curvearrowright X$ (which, like all maps between $\infty$-groupoids, is \'etale). In this case, we write $\mdef{L^f\anima } = \anima^f$. Informally, points in $L^f\anima$ are pairs $(x,\gamma )$, where $a$ is a point in $\anima$ and $\gamma\colon a\to\gamma (a)$. \cref{prop:reidemeister-trace} supplies a commutative triangle
-  \begin{equation}
-    \label{eq:homotopical-lefschetz-trace}
-    \begin{tikzcd}
-      & \SS\lbrack L^f\anima\rbrack\arrow[dr]\\
-      \SS\arrow[rr,"\chr {}f"] \arrow[ru]&&\SS,
-    \end{tikzcd}
-  \end{equation}
-  The Reidemeister cocharacter $\SS\to\SS\lbrack L^f\anima\rbrack$ is the invariant usually referred to as the ``Reidemeister trace'' of $f$.
-\paragraph{Parametrized $\infty$-groupoids}
-  Let $\tset$ be a locally compact Hausdorff space such that the $\infty$-topos $\Shv (\tset )$ is hypercomplete. There is a symmetric monoidal functor
-  \[
-    \Shv (\tset )^\op\too\etaletopoi\too\Prlst,
-  \]
-  where the first functor is as in~\cite[Rem~6.3.5.10]{Lurie2009} and the second functor is $\Shv ({-};\Sp )$. The composition sends a map of sheaves $f\colon G\to F$ to the pullback functor induced as in Remark 6.3.5.18 of op.~cit.~by the \'etale geometric morphism $f^*=G\times_F{-}\colon\Shv (\tset )_{/F}\to\Shv (\tset )_{/G}$. We will abuse notation by denoting the induced pullback functor by $f^*\colon\Shv (\Shv (\tset )_{/F};\Sp)\to\Shv (\Shv (\tset )_{/G};\Sp )$ also. Since this functor is induced by an \'etale geometric morphism, it has both a left adjoint $f_!$ and a right adjoint $f_*$. 
-  \todo{In fact such a functor exists for any $\infty$-topos (find ref), but generally does not extend to a 6FF.}
+\begin{exam}
+    The extreme case where $f=g=\id$ tells us something
+    about the Euler characteristic \todo{Maybe remark this later?}
+\end{exam}
+
+%\subsubsection{Lefschetz}
+
+% \begin{cons}
+% Let $X \in \cC$ be suave and prim and let $f\colon X\to X$
+% be a self map that is cohomologically proper. 
+% Then the functor $X_!X^{\ast}\colon \cA\to \cA$
+% is strongly continuous and hence the pullback 
+% $\pb{f}\colon X_!X^{\ast}\to X_!X^{\ast}$ along
+% $f$ defines a morphism
+%   \begin{equation}
+%     \label{eq:abstract-lefschetz-trace}
+%     \begin{tikzcd}[column sep=huge]
+%       \cA \arrow[d,equal] \arrow[r,"X_!X^*"] & \cA\arrow[d,equal]\\
+%       \cA \arrow[r,swap, "X_!X^*"] \arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt ,"\pb{f}"] & \cA
+%     \end{tikzcd}
+%   \end{equation}
+%   in the category $\Endtrl (\pPrlf\cA )$. Applying the symmetric monoidal functor 
+%   $\Trc\colon \Endtrl (\pPrlf\cA ) \to \Omega_{\1_{\cA}}\cA$ of REF,
+%   we obtain an endomorphism which we denote:
+%   \[ \mdef{\tr{\pb{f}}{\cA}}\colon \1_{\cA}\to \1_{\cA}\,.\]
+% \end{cons} 
+
+
+%  The trick to factoring the map $\tr{\pb{f}}{\cA}$
+%  to factor the map $(\pb{f}, X_!X^{\ast})$ in the category 
+%  $\Endtrl(\pPrlf{\cA})$.
+   
+% \begin{prop}[The Lefschetz trace formula]\label{prop:lefschetz-trace}
+%   Suppose that $X\in\cC$ is suave and prim and that $f\curvearrowright X$ is a cohomologically proper endomorphism. There is a commutative diagram
+%   \begin{equation}
+%     \label{eq:abstract-lefschetz-triangle}
+%     \begin{tikzcd}[column sep=small]
+%       & (X^f)_!(X^f)^*\mathbf 1\arrow[dr]\\
+%       \mathbf 1\arrow[rr,swap,"\ch {} f"]\arrow[ru] & & \mathbf 1.
+%     \end{tikzcd}
+%   \end{equation}
+%   Furthermore, if $X$ is cohomologically proper, then $\mathbf 1\to (X^f)_*(X^f)^*\mathbf 1\simeq (X^f)_!(X^f)^*\mathbf 1$ is the unit of the adjunction induced by the projection $X^f\to\pt$.
+% \end{prop}
+% \begin{proof}
+%   We can factor~\labelcref{eq:abstract-lefschetz-trace} in $\Endtrl (\pPrlf\cA )$ as the composition
+%   \begin{equation}
+%     \label{eq:lefschetz-square-factorization}
+%     \begin{tikzcd}[column sep=huge]
+%       \cA\arrow[d,equal]
+%       \arrow[r,"X^*"]
+%       &\cD (X)\arrow[d,"f_!"]\arrow[r,"X_!"]
+%       & \cA\arrow[d,equal]\\
+%       \cA\arrow[r,"X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt]
+%       &\cD(X)\arrow[r,"X_!"]
+%       & \cA,
+%     \end{tikzcd}
+%   \end{equation}
+%   where the 2-cell in the left-hand square is $X^*\xrightarrow{\mathrm{unit}} f_!f^*X^*\simeq f_!X^*$.  Applying $\TrcL$ to the composition~\labelcref{eq:lefschetz-square-factorization} and invoking~\cref{thm:categorical-fixed-pts}, we get~\labelcref{eq:abstract-lefschetz-triangle}. If $X$ is cohomologically proper, the right-hand square is the image of the morphism
+%   \[
+%     \begin{tikzcd}
+%       \pt\arrow[r,leftarrow]\arrow[dd,equal]
+%       & X\arrow[r,equal]
+%       & X\arrow[d,equal]\\
+%        & & X \arrow[d,"f"]\\
+%       \pt\arrow[r,leftarrow]
+%       & X\arrow[r,equal]
+%       & X
+%     \end{tikzcd}
+%   \]
+%   in $\Endtrl (\sSpan{\cC}_{\cE,\cI,\cP})$ by~\cref{prop:internal-left-adjoints}, and it follows from the commutativity of~\labelcref{eq:naturality-of-lefschetz} that the induced map on traces is induced by the projection $X^f\to\pt$.
+% \end{proof}
+%   \begin{defn}
+%   Let $f\curvearrowright X$ be as in the preceding proposition. The map $(X^f)_!(X^f)^*\mathbf 1\to\mathbf 1$ from~\labelcref{eq:abstract-lefschetz-triangle} is called the \tdef{Lefschetz character} of $f$.
+% \end{defn}
+
   
-  We claim that the geometric setup $(\Shv (\tset ),\textrm{all})$, the functor $\Shv (\Shv (\tset )_{/{-}};\Sp )$, and the the suitable decomposition $(\cI ,\cP ) = (\textrm{all maps},\textrm{equivalences})$ satisfy the conditions of~\cite[Prop~A.5.10]{Mann2022}. All of these are immediate, except condition (a), i.e.~\'etale base change. That is, we must show that for a commutative square
-  \[
-    \begin{tikzcd}
-      F\arrow[r,"f"]\arrow[d,"h"] & F'\arrow[d,"h'"]\\
-      G\arrow[r,"g"] & G',
-    \end{tikzcd}
-  \]
-  the Beck--Chevalley map $f_!h^*\to (h')^*g_!$ in $\Shv (\Shv (\tset )_{/F'};\Sp )$ is an equivalence. We do this by inspecting stalks \todo{do this argument}
+% \subsubsection{Reidemeister}
+
+% \begin{cons}
+%   Suppose that $X\in\cC$ is suave and prim and that $f\colon X\to X$
+%   is a cohomologically \'etale endomorphism. Then the transfer
+%   along $f$ defines a morphism
+%   \begin{equation}
+%     \label{eq:abstract-prereidemeister-trace}
+%     \begin{tikzcd}[column sep=huge]
+%       \cA\arrow[d,equal] \arrow[r,"X_!X^*"] & \cA\arrow[d,equal]\\
+%       \cA\arrow[r,swap,"X_!X^*"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt ,"\tf{f}"] & \cA
+%     \end{tikzcd}
+%   \end{equation}
+%   in $\Endtrl (\pPrlf\cA )$. Applying the 
   
-  Let $F$ be a locally constant sheaf of finitely-dominated anima on $\tset$. Then $F$ is \'etale (as all objects are) and prim with respect to the six-functor formalism described above.\todo{Prove local systems of finitely-dominated anima are prim.} Let $f\curvearrowright F$ be an endomorphism. We then get a commutative triangle
-  \begin{equation}
-    \label{eq:homotopical-lefschetz-trace}
-    \begin{tikzcd}
-      & \SS\lbrack L^fF\rbrack\arrow[dr]\\
-      \SS_\tset\arrow[rr,"\chr {}f"] \arrow[ru]&&\SS_\tset,
-    \end{tikzcd}
-  \end{equation}
-  \todo{work out what this looks like on stalks.}
+%   % The \tdef{Reidemeister trace} of a cohomologically \'etale endomorphism $f\curvearrowright X$, denoted $\mdef{\chr{}{f}}$, is the $\cA$-linear trace of the induced morphism
+% \end{cons}
+
+% \begin{war}
+%   Usually, the term ``Reidemeister trace'' refers to a map $\mathbf 1\to (X^f)_!(X^f)^*\mathbf 1$. This is not what we are calling the Reidemeister trace. In order to emphasize the parallels with the previous subsection, we will instead refer to the classical invariant as a character
+% \end{war}
+
+% \begin{prop}\label{prop:reidemeister-trace}
+%     Suppose that $X\in\cC$ is suave and prim and that $f\curvearrowright X$ is a cohomologically \'etale endomorphism. There is a commutative diagram
+%   \begin{equation}
+%     \label{eq:abstract-reidemeister-triangle}
+%     \begin{tikzcd}[column sep=small]
+%       & (X^f)_!(X^f)^*\mathbf 1\arrow[dr]\\
+%       \mathbf 1\arrow[rr,swap,"\chr {} f"]\arrow[ru] & & \mathbf 1.
+%     \end{tikzcd}
+%   \end{equation}
+%   Furthermore, if $X$ is cohomologically \'etale, then $(X^f)_!(X^f)^*\mathbf 1\simeq (X^f)_!(X^f)^!\mathbf 1\to\mathbf 1$ is the unit of the adjunction induced by the projection $X^f\to\pt$.
+% \end{prop}
+% \begin{proof}
+%   The proof is analogous to the proof of~\cref{prop:lefschetz-trace}, using the factorization
+%   \begin{equation}
+%     \label{eq:lefschetz-square-factorization}
+%     \begin{tikzcd}[column sep=huge]
+%       \cA\arrow[d,equal]
+%       \arrow[r,"X^*"]
+%       &\cD (X)\arrow[d,"f^*"]\arrow[r,"X_!"]
+%       & \cA\arrow[d,equal]\\
+%       \cA\arrow[r,"X^*"]
+%       &\cD(X)\arrow[r,"X_!"]\arrow[ru,Rightarrow, shorten <=15pt,shorten >=15pt]
+%       & \cA,
+%     \end{tikzcd}
+%   \end{equation}
+%   of~\labelcref{eq:abstract-prereidemeister-trace}.
+% \end{proof}
+% \begin{defn}
+%   Let $f\curvearrowright X$ be as in the preceding proposition. We refer to the map $\mathbf 1\to (X^f)_!(X^f)^*\mathbf 1$ from~\labelcref{eq:abstract-reidemeister-triangle} as the \tdef{Reidemeister cocharacter} of $f$.
+% \end{defn}
+
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-master: "main"

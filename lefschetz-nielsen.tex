@@ -1,110 +1,216 @@
-\subsection{Local systems and the Reidemeister trace}
+% \subsection{Local systems and the Reidemeister trace}
 
-Let $g\colon \anima\to \anima$ be a self-map of a compact anima $\anima$. Consider again the lax commutative square~\eqref{eq:lax-comm-square-lefschetz} from~\cref{sec: lefschetz theory}, which we viewed as a morphism in the category of traceable endomorphisms $\Endtrl(\Prlstf)$. If $g\colon \anima\to \anima$ happened to be induced by a self-map $f\colon\tset\to\tset$ for some well-behaved space $\tset$, we recovered the Lefschetz fixed point theorem for $f$ by factoring~\eqref{eq:lax-comm-square-lefschetz} through the object $(\D{\tset },f_!)\in\Endtrl(\Prlstf)$.
+% Let $g\colon \anima\to \anima$ be a self-map of a compact anima $\anima$. Consider again the lax commutative square~\eqref{eq:lax-comm-square-lefschetz} from~\cref{sec: lefschetz theory}, which we viewed as a morphism in the category of traceable endomorphisms $\Endtrl(\Prlstf)$. If $g\colon \anima\to \anima$ happened to be induced by a self-map $f\colon\tset\to\tset$ for some well-behaved space $\tset$, we recovered the Lefschetz fixed point theorem for $f$ by factoring~\eqref{eq:lax-comm-square-lefschetz} through the object $(\D{\tset },f_!)\in\Endtrl(\Prlstf)$.
 
-Putting topology aside for now, a more obvious factorization of~\eqref{eq:lax-comm-square-lefschetz} is through the category of local systems (aka parametrized spectra) $\Sp^\anima$:
-\begin{prop}
-  Let $g\colon \anima\to \anima$ be a self-map of a compact anima $\anima$. Considered as a morphism in $\Endtrl(\Prlstf)$, the lax commutative square~\eqref{eq:lax-comm-square-lefschetz} factors as
-  \begin{equation}\label{eq:lax-composition-reidemeister}
-\begin{tikzcd}
-	\Sp & {\Sp^{\anima}} & \Sp \\
-	\Sp & {\Sp^{\anima}} & \Sp
-	\arrow["{\anima^{\ast}}", from=1-1, to=1-2]
-	\arrow["\id"', from=1-1, to=2-1]
-	\arrow["{\anima_\sharp}", from=1-2, to=1-3]
-	\arrow["{g^{\ast}}", from=1-2, to=2-2]
-	\arrow["\id", from=1-3, to=2-3]
-	\arrow[Rightarrow, from=2-2, to=1-3]
-	\arrow["{\anima^{\ast}}"', from=2-1, to=2-2]
-    \arrow[Rightarrow, from=2-1, to=1-2]
-	\arrow["{\anima_{\sharp}}"', from=2-2, to=2-3]
-\end{tikzcd}
-    % \left(
-    %   \begin{tikzcd}[column sep=large]
-    %     \Sp^X \arrow[r,"X_\sharp"] \arrow[d,"g^*"] & \Sp \arrow[d,equal]\\
-    %     \Sp^X \arrow[r,swap,"X_\sharp"]  \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]  & \Sp
-    %   \end{tikzcd}
-    % \right)
-    % \circ
-    % \left(
-    %   \begin{tikzcd}[column sep=large]
-    %     \Sp \arrow[r,"X^*"] \arrow[d,equal] & \Sp^X \arrow[d,"g^*"]\\
-    %     \Sp \arrow[r,swap,"X^*"] & \Sp^X
-    %   \end{tikzcd}
-    % \right),
-  \end{equation}
-  where the left hand $2$-cell is the invertible one coming from functoriality of pullback, and the right hand $2$-cell is the counit transformation $\anima_\sharp g^*\simeq \anima_\sharp g_\sharp g^*\to \anima_\sharp$.
-\end{prop}
-\begin{proof}
-  Aside from the usual adjunctions $\anima_\sharp\dashv \anima^*\dashv \anima_*$, the fact that $\anima$ is compact furnishes an additional adjunction $\anima_*\dashv \Hom_{\Sp^\anima} (D_\anima,\anima^*({-}))$, where $D_\anima$ is the dualizing object of $\anima$. It follows that the horizontal morphisms in both squares are strongly continuous, and hence that they define morphisms in $\Endtrl(\Prlstf)$. Concatenating the two $2$-cells recovers the one in~\eqref{eq:lax-comm-square-lefschetz} on the nose.
-\end{proof}
-As in the previous section, we then get
-\begin{cor}\label{cor: reidemeister lefschetz triangle}
-  For a self-map $g\colon \anima\to \anima$ of a compact anima $\anima$, there is a commutative diagram
-  \begin{equation}
-    \label{eq:reidemeister-lefschetz-triangle}
-    \begin{tikzcd}[column sep=tiny]
-      & \tr{g^*\curvearrowright\Sp^\anima}{}\arrow[dr] \\
-      \SS\arrow[rr]\arrow[ru] && \SS,
-    \end{tikzcd}
-  \end{equation}
-  where the bottom arrow is the Lefschetz trace of $g$.
-\end{cor}
-Just as in the previous section, the axioms of six-functor formalisms allow us to quickly compute the trace $\tr{g^*\curvearrowright\Sp^\anima}{}$ with the suspension spectrum of a space of ``fixed points'' for the map $g$. Here fixed points must be interpreted in a homotopy-invariant way; we let $\cL^g\anima$ denote the homotopical fixed point space defined to be the homotopy pullback
-\[
-  \begin{tikzcd}
-    \cL^{g}\anima  & \anima \\
-    \anima & \anima \times \anima\,.
-    \arrow[from=1-1, to=1-2]
-    \arrow["\lrcorner",phantom,very near start, from=1-1, to=2-2]
-    \arrow[from=1-1, to=2-1]
-    \arrow["\Delta", from=1-2, to=2-2]
-    \arrow["\Gamma^g"', from=2-1, to=2-2]
-  \end{tikzcd}
-\]
-That is, we have
-\begin{lem}\label{lem: reidemeister trace computation}
-  Let $g\colon \anima\to \anima$ be a self-map of a compact anima. There is an equivalence of spectra
-  \[
-    \tr{g^*\curvearrowright\Sp^\anima}{}\simeq\SS\lbrack\cL^{g}\anima\rbrack,
-  \]
-  natural in intertwining maps $h\colon (\anima,g)\to (\anima',g')$. 
-\end{lem}
-\begin{proof}
-  The identification comes about exactly as in the proof of~\cref{lem: trace computation}. Unlike in the topological setting, we do not need to require anything of $h$ beyond being an intertwining map, since any intertwining map induces a morphism
-  \begin{equation}
-    \label{eq:square-induced-by-proper-morphism}
-    \begin{tikzcd}
-      \Sp^{\anima}\arrow[r,"h_\sharp"]\arrow[d,"g^*"]
-      & \Sp^{\anima' }\arrow[d,"(g')^*"]\\
-      \Sp^{\anima}\arrow[r,"h_\sharp"]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]
-      & \Sp^{\anima'}
-    \end{tikzcd}
-  \end{equation}
-  in $\Endtrl(\Prlstf)$, where the $2$-cell is the Beck--Chevalley morphism.
-\end{proof}
-Combining~\cref{lem: reidemeister trace computation} with~\cref{cor: reidemeister lefschetz triangle}, we find
-\begin{thm}
-  Let $g\colon \anima\to \anima$ be a self-map of a compact anima. There is a commutative triangle
-  \begin{equation}
-    \label{eq:reidemeister-lefschetz-triangle-with-identification}
-    \begin{tikzcd}[column sep=tiny]
-      & \SS\lbrack\cL^{g}\anima \rbrack\arrow[dr] \\
-      \SS\arrow[rr]\arrow[ru] && \SS,
-    \end{tikzcd}
-  \end{equation}
-  in which the bottom arrow is the Lefschetz trace and the arrow $\SS\lbrack\cL^{g}\anima \rbrack\to\SS$ is induced by the projection $\cL^{g}\anima \to\pt$.
-\end{thm}
-\begin{proof}
-  The second statement follows from the naturality of the identification in~\cref{lem: reidemeister trace computation}.
-\end{proof}
-We have constructed a homotopy invariant for self-maps that refines the Lefschetz trace:
+% Putting topology aside for now, a more obvious factorization of~\eqref{eq:lax-comm-square-lefschetz} is through the category of local systems (aka parametrized spectra) $\Sp^\anima$:
+% \begin{prop}
+%   Let $g\colon \anima\to \anima$ be a self-map of a compact anima $\anima$. Considered as a morphism in $\Endtrl(\Prlstf)$, the lax commutative square~\eqref{eq:lax-comm-square-lefschetz} factors as
+%   \begin{equation}\label{eq:lax-composition-reidemeister}
+% \begin{tikzcd}
+% 	\Sp & {\Sp^{\anima}} & \Sp \\
+% 	\Sp & {\Sp^{\anima}} & \Sp
+% 	\arrow["{\anima^{\ast}}", from=1-1, to=1-2]
+% 	\arrow["\id"', from=1-1, to=2-1]
+% 	\arrow["{\anima_\sharp}", from=1-2, to=1-3]
+% 	\arrow["{g^{\ast}}", from=1-2, to=2-2]
+% 	\arrow["\id", from=1-3, to=2-3]
+% 	\arrow[Rightarrow, from=2-2, to=1-3]
+% 	\arrow["{\anima^{\ast}}"', from=2-1, to=2-2]
+%     \arrow[Rightarrow, from=2-1, to=1-2]
+% 	\arrow["{\anima_{\sharp}}"', from=2-2, to=2-3]
+% \end{tikzcd}
+%     % \left(
+%     %   \begin{tikzcd}[column sep=large]
+%     %     \Sp^X \arrow[r,"X_\sharp"] \arrow[d,"g^*"] & \Sp \arrow[d,equal]\\
+%     %     \Sp^X \arrow[r,swap,"X_\sharp"]  \arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]  & \Sp
+%     %   \end{tikzcd}
+%     % \right)
+%     % \circ
+%     % \left(
+%     %   \begin{tikzcd}[column sep=large]
+%     %     \Sp \arrow[r,"X^*"] \arrow[d,equal] & \Sp^X \arrow[d,"g^*"]\\
+%     %     \Sp \arrow[r,swap,"X^*"] & \Sp^X
+%     %   \end{tikzcd}
+%     % \right),
+%   \end{equation}
+%   where the left hand $2$-cell is the invertible one coming from functoriality of pullback, and the right hand $2$-cell is the counit transformation $\anima_\sharp g^*\simeq \anima_\sharp g_\sharp g^*\to \anima_\sharp$.
+% \end{prop}
+% \begin{proof}
+%   Aside from the usual adjunctions $\anima_\sharp\dashv \anima^*\dashv \anima_*$, the fact that $\anima$ is compact furnishes an additional adjunction $\anima_*\dashv \Hom_{\Sp^\anima} (D_\anima,\anima^*({-}))$, where $D_\anima$ is the dualizing object of $\anima$. It follows that the horizontal morphisms in both squares are strongly continuous, and hence that they define morphisms in $\Endtrl(\Prlstf)$. Concatenating the two $2$-cells recovers the one in~\eqref{eq:lax-comm-square-lefschetz} on the nose.
+% \end{proof}
+% As in the previous section, we then get
+% \begin{cor}\label{cor: reidemeister lefschetz triangle}
+%   For a self-map $g\colon \anima\to \anima$ of a compact anima $\anima$, there is a commutative diagram
+%   \begin{equation}
+%     \label{eq:reidemeister-lefschetz-triangle}
+%     \begin{tikzcd}[column sep=tiny]
+%       & \tr{g^*\curvearrowright\Sp^\anima}{}\arrow[dr] \\
+%       \SS\arrow[rr]\arrow[ru] && \SS,
+%     \end{tikzcd}
+%   \end{equation}
+%   where the bottom arrow is the Lefschetz trace of $g$.
+% \end{cor}
+% Just as in the previous section, the axioms of six-functor formalisms allow us to quickly compute the trace $\tr{g^*\curvearrowright\Sp^\anima}{}$ with the suspension spectrum of a space of ``fixed points'' for the map $g$. Here fixed points must be interpreted in a homotopy-invariant way; we let $\cL^g\anima$ denote the homotopical fixed point space defined to be the homotopy pullback
+% \[
+%   \begin{tikzcd}
+%     \cL^{g}\anima  & \anima \\
+%     \anima & \anima \times \anima\,.
+%     \arrow[from=1-1, to=1-2]
+%     \arrow["\lrcorner",phantom,very near start, from=1-1, to=2-2]
+%     \arrow[from=1-1, to=2-1]
+%     \arrow["\Delta", from=1-2, to=2-2]
+%     \arrow["\Gamma^g"', from=2-1, to=2-2]
+%   \end{tikzcd}
+% \]
+% That is, we have
+% \begin{lem}\label{lem: reidemeister trace computation}
+%   Let $g\colon \anima\to \anima$ be a self-map of a compact anima. There is an equivalence of spectra
+%   \[
+%     \tr{g^*\curvearrowright\Sp^\anima}{}\simeq\SS\lbrack\cL^{g}\anima\rbrack,
+%   \]
+%   natural in intertwining maps $h\colon (\anima,g)\to (\anima',g')$. 
+% \end{lem}
+% \begin{proof}
+%   The identification comes about exactly as in the proof of~\cref{lem: trace computation}. Unlike in the topological setting, we do not need to require anything of $h$ beyond being an intertwining map, since any intertwining map induces a morphism
+%   \begin{equation}
+%     \label{eq:square-induced-by-proper-morphism}
+%     \begin{tikzcd}
+%       \Sp^{\anima}\arrow[r,"h_\sharp"]\arrow[d,"g^*"]
+%       & \Sp^{\anima' }\arrow[d,"(g')^*"]\\
+%       \Sp^{\anima}\arrow[r,"h_\sharp"]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt]
+%       & \Sp^{\anima'}
+%     \end{tikzcd}
+%   \end{equation}
+%   in $\Endtrl(\Prlstf)$, where the $2$-cell is the Beck--Chevalley morphism.
+% \end{proof}
+% Combining~\cref{lem: reidemeister trace computation} with~\cref{cor: reidemeister lefschetz triangle}, we find
+% \begin{thm}
+%   Let $g\colon \anima\to \anima$ be a self-map of a compact anima. There is a commutative triangle
+%   \begin{equation}
+%     \label{eq:reidemeister-lefschetz-triangle-with-identification}
+%     \begin{tikzcd}[column sep=tiny]
+%       & \SS\lbrack\cL^{g}\anima \rbrack\arrow[dr] \\
+%       \SS\arrow[rr]\arrow[ru] && \SS,
+%     \end{tikzcd}
+%   \end{equation}
+%   in which the bottom arrow is the Lefschetz trace and the arrow $\SS\lbrack\cL^{g}\anima \rbrack\to\SS$ is induced by the projection $\cL^{g}\anima \to\pt$.
+% \end{thm}
+% \begin{proof}
+%   The second statement follows from the naturality of the identification in~\cref{lem: reidemeister trace computation}.
+% \end{proof}
+% We have constructed a homotopy invariant for self-maps that refines the Lefschetz trace:
+% \begin{defn}
+%   The map $\mdef{\rho_g}\colon \SS\to\SS\lbrack\cL^{g}\anima\rbrack$ in~\eqref{eq:reidemeister-lefschetz-triangle-with-identification} is the
+%   \tdef{Reidemeister trace} of $g$.
+% \end{defn}
+
+We now apply the results of the previous section to self maps in 
+topology.
+
+\todo{lol}
+
+\subsection{The topological and homtopical Lefschetz formulae}
+
 \begin{defn}
-  The map $\mdef{\rho_g}\colon \SS\to\SS\lbrack\cL^{g}\anima\rbrack$ in~\eqref{eq:reidemeister-lefschetz-triangle-with-identification} is the
-  \tdef{Reidemeister trace} of $g$.
+    A \mdef{topological set} is a set $\tset$ equipped
+    with a topology that is locally compact and Hausdorff. We denote
+    the category of topological sets by $\Top$. 
 \end{defn}
 
-\subsection{Factoring the Reidemeister trace using cosheaves}
+  Consider the six-functor formalism on $\Top$ induced via the
+  Liu--Zheng construction by the symmetric monoidal functor
+  \[ \D{-}\colon \Top^\op \to \Prlst\,,\quad \tset \mapsto \D{\tset}=\Shv(\tset,\Sp) \]
+  which sends a map $f\colon Y\to \tset$ to the pullback functor $f^*\colon\Shv (X;\Sp )\to\Shv (Y;\Sp )$. \todo{Ref Volpe?}
+  That is, we take $(\cC ,\cE ) = (\Top ,\textrm{all})$ and 
+  $(\cI ,\cP ) = (\textrm{open immersions}, \textrm{proper maps})$.\footnote{In partiuclar, here proper agrees with $\cD$-proper}
+
+  By definition any $\tset \in \Top$ is compact iff the map $\tset \to \pt$ is
+  proper. Moreover, any self map of a compact set is automatically proper
+  and the pullback map of \cref{cons: pb tf and trc} 
+  identifies with the
+  classical pullback of cohomology classes
+  \[ \pb{f}\colon \cptSections{\tset;\SS}\to \cptSections{\tset;\SS}\]
+  
+  Assume additionally that $\tset$ is $\cD$-suave \footnote{This holds, for instance, if $\tset$ is locally of constant shape, or more specifically if $\tset$ is an absolute neighborhood retract.}.\todo{Add REF} 
+  Under these assumptions, any self map $f\colon \tset \to \tset$
+  gives rise to a $\cD$-traceable span \todo{Might want to justify this}
+  $\Lambda =\left(\tset= \tset \xrightarrow{f}\tset \right)$ which, as discussed
+  in \cref{rmk: about pb tf and trc} has $\Sp$-linear trace simply 
+  given by the symmetric monoidal trace of $\pb{f}$. 
+  Moreover, \cref{prop: coincidence triangle} now supplies a commutative triangle
+  \begin{equation}
+    \label{eq:topological-lefschetz-trace}
+    \begin{tikzcd}
+      & \Gamma_c(X^f;\SS )\arrow[dr, "\lambda_f"]\\
+      \SS\arrow[rr, "\tr{\pb{f}}{}"] \arrow[ru]&&\SS,
+    \end{tikzcd}
+  \end{equation}
+  in which $\SS\to\Gamma_c(X^f;\SS )\simeq\Gamma (X^f;\SS )$ is the unit for the sheaf cohomology ring $\Gamma (X^f;\SS )\in\CAlg (\Sp)$. If $X$ is locally of constant shape, then $(\Gamma (X;\SS ),f\curvearrowright \Gamma (X;\SS ))$ is equivalent to the map induced on (singular) spherical cochains $(\SS^{\ani X},f\curvearrowright \SS^{\ani X})$. This is the usual Lefschetz trace, as one may deduce from the symmetric monoidality of the functors
+  \[
+    \Sp\xrightarrow{\QQ\otimes_{\SS}{-}}
+    \Mod_{\QQ}\xrightarrow{\pi_*}
+    \grVect_\QQ,
+  \]
+  where $\grVect_\QQ$ is given the Koszul rule symmetric monoidal structure. In particular, we deduce
+  \begin{cor}[Lefschetz fixed point theorem]
+    Let $X$ be a compact Hausdorff space that is locally of constant shape, and let $f\curvearrowright X$ be some self-map. If
+    \[
+      \tr{\pb{f}}{} = \sum_i (-1)^i\tr{f^*\curvearrowright H^i(X;\QQ )}{}\neq 0,
+    \]
+    then $f$ has a fixed point.
+  \end{cor}
+  \begin{proof}
+    If $X^f = \varnothing$ then $\Gamma_c(X^f;\SS )\simeq 0$, so commutativity of~\labelcref{eq:topological-lefschetz-trace} implies that $\tr{\pb{f}}{}\simeq 0$.
+  \end{proof}
+  \Onote{Maybe say something brief about fixed point indices here}
+
+\paragraph{$\infty$-groupoids}
+Consider the six-functor formalism of parametrized spectra on the $\infty$-category of $\infty$-groupoids, induced via the Liu--Zheng construction by the symmetric monoidal functor
+\[
+  \begin{tikzcd}
+    \spaces^\op\arrow r & \Prlst\\[-20pt]
+    \anima\arrow[r,mapsto] & \Fun (\anima ,\Sp ),
+  \end{tikzcd}
+\]
+which sends a map $f\colon B\to\anima$ to the pullback functor $f^*\colon\Fun (\anima ,\Sp )\to\Fun (B,\Sp )$. That is, we take $(\cC ,\cE ) = (\spaces ,\textrm{all maps})$ and $(\cI ,\cP ) = (\textrm{all maps}, \textrm{equivalences})$.
+
+Fix a finitely-dominated $\infty$-groupoid $\anima$ and a self-map $f\curvearrowright X$ (which, like all maps between $\infty$-groupoids, is \'etale). In this case, we write $\mdef{L^f\anima } = \anima^f$. Informally, points in $L^f\anima$ are pairs $(x,\gamma )$, where $a$ is a point in $\anima$ and $\gamma\colon a\to\gamma (a)$. \cref{prop:reidemeister-trace} supplies a commutative triangle
+  \begin{equation}
+    \label{eq:homotopical-lefschetz-trace}
+    \begin{tikzcd}
+      & \SS\lbrack L^f\anima\rbrack\arrow[dr]\\
+      \SS\arrow[rr,"\chr {}f"] \arrow[ru]&&\SS,
+    \end{tikzcd}
+  \end{equation}
+  The Reidemeister cocharacter $\SS\to\SS\lbrack L^f\anima\rbrack$ is the invariant usually referred to as the ``Reidemeister trace'' of $f$.
+\paragraph{Parametrized $\infty$-groupoids}
+  Let $\tset$ be a locally compact Hausdorff space such that the $\infty$-topos $\Shv (\tset )$ is hypercomplete. There is a symmetric monoidal functor
+  \[
+    \Shv (\tset )^\op\too\etaletopoi\too\Prlst,
+  \]
+  where the first functor is as in~\cite[Rem~6.3.5.10]{Lurie2009} and the second functor is $\Shv ({-};\Sp )$. The composition sends a map of sheaves $f\colon G\to F$ to the pullback functor induced as in Remark 6.3.5.18 of op.~cit.~by the \'etale geometric morphism $f^*=G\times_F{-}\colon\Shv (\tset )_{/F}\to\Shv (\tset )_{/G}$. We will abuse notation by denoting the induced pullback functor by $f^*\colon\Shv (\Shv (\tset )_{/F};\Sp)\to\Shv (\Shv (\tset )_{/G};\Sp )$ also. Since this functor is induced by an \'etale geometric morphism, it has both a left adjoint $f_!$ and a right adjoint $f_*$. 
+  \todo{In fact such a functor exists for any $\infty$-topos (find ref), but generally does not extend to a 6FF.}
+  
+  We claim that the geometric setup $(\Shv (\tset ),\textrm{all})$, the functor $\Shv (\Shv (\tset )_{/{-}};\Sp )$, and the the suitable decomposition $(\cI ,\cP ) = (\textrm{all maps},\textrm{equivalences})$ satisfy the conditions of~\cite[Prop~A.5.10]{Mann2022}. All of these are immediate, except condition (a), i.e.~\'etale base change. That is, we must show that for a commutative square
+  \[
+    \begin{tikzcd}
+      F\arrow[r,"f"]\arrow[d,"h"] & F'\arrow[d,"h'"]\\
+      G\arrow[r,"g"] & G',
+    \end{tikzcd}
+  \]
+  the Beck--Chevalley map $f_!h^*\to (h')^*g_!$ in $\Shv (\Shv (\tset )_{/F'};\Sp )$ is an equivalence. We do this by inspecting stalks \todo{do this argument}
+  
+  Let $F$ be a locally constant sheaf of finitely-dominated anima on $\tset$. Then $F$ is \'etale (as all objects are) and prim with respect to the six-functor formalism described above.\todo{Prove local systems of finitely-dominated anima are prim.} Let $f\curvearrowright F$ be an endomorphism. We then get a commutative triangle
+  \begin{equation}
+    \label{eq:homotopical-lefschetz-trace}
+    \begin{tikzcd}
+      & \SS\lbrack L^fF\rbrack\arrow[dr]\\
+      \SS_\tset\arrow[rr,"\chr {}f"] \arrow[ru]&&\SS_\tset,
+    \end{tikzcd}
+  \end{equation}
+  \todo{work out what this looks like on stalks.}
+
+\subsection{The Lefschetz--Nielsen Theorem}
 
 Let $\tset\in \Top$ be compact and locally of singular shape with
 associated anima $\ani{\tset}$. Given some self map
