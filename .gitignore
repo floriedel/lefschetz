@@ -11,4 +11,6 @@
 *.pdf
 *.synctex.gz
 *.toc
+*.bcf
+*.xml
 ltximg
