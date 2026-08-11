@@ -117,12 +117,16 @@ topology.
     the category of topological sets by $\Top$. 
 \end{defn}
 
-  Consider the six-functor formalism on $\Top$ induced via the
+  Consider the six-functor formalism on the geometric context
+  $(\Top, \all)$ induced via the
   Liu--Zheng construction by the symmetric monoidal functor
   \[ \D{-}\colon \Top^\op \to \Prlst\,,\quad \tset \mapsto \D{\tset}=\Shv(\tset,\Sp) \]
   which sends a map $f\colon Y\to \tset$ to the pullback functor $f^*\colon\Shv (X;\Sp )\to\Shv (Y;\Sp )$. \todo{Ref Volpe?}
-  That is, we take $(\cC ,\cE ) = (\Top ,\textrm{all})$ and 
-  $(\cI ,\cP ) = (\textrm{open immersions}, \textrm{proper maps})$.\footnote{In partiuclar, here proper agrees with $\cD$-proper}
+  By \todo{CITe } the class of all morphisms admits a suitable decomposition given by
+  $(\cI ,\cP ) = (\textrm{open immersions}, \textrm{proper maps})$
+  so that $\cD$ refines a to a symmetric monoidal $(\infty,2)$-functor
+  \[ \cD\colon \sSpan{\Top}_{\cI,\cP}\]
+  
 
   By definition any $\tset \in \Top$ is compact iff the map $\tset \to \pt$ is
   proper. Moreover, any self map of a compact set is automatically proper
@@ -163,6 +167,15 @@ topology.
     If $X^f = \varnothing$ then $\Gamma_c(X^f;\SS )\simeq 0$, so commutativity of~\labelcref{eq:topological-lefschetz-trace} implies that $\tr{\pb{f}}{}\simeq 0$.
   \end{proof}
   \Onote{Maybe say something brief about fixed point indices here}
+
+\begin{rmk}
+    Suppose $X$ and $X^f$ are nice \todo{What does that mean?}. 
+    Then $\lambda_f$ defines
+    a class in $\pi_0\Gamma(X^f;\SS)^{\vee} \simeq H_0(X^f;\ZZ)=\ZZ[\pi_0X^f]$, i.e.~it is given by a formal sum of integers
+    \[ \lambda_f= \sum_{x\in \pi_0X}[x]\lambda_f^{x}\]
+    indexed by the connected components of the set of fixed points $X^f$. 
+\end{rmk}
+  
 
 \paragraph{$\infty$-groupoids}
 Consider the six-functor formalism of parametrized spectra on the $\infty$-category of $\infty$-groupoids, induced via the Liu--Zheng construction by the symmetric monoidal functor
