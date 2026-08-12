@@ -1,7 +1,7 @@
 \documentclass[english]{article}
-\usepackage{style,macros}
+\usepackage{misc/style, misc/macros, misc/quiver}
 \usepackage{showlabels}
-\addbibresource{sources.bib}
+\addbibresource{misc/sources.bib}
 
 \title{Revisiting topological fixed point theory}
 \author{Oscar Harr \and Florian Riedel}
@@ -15,20 +15,22 @@
 \section{Fixed point theory and six-functor formalisms}
 \input{sixfunctor}
 
-\section{Topological fixed point theory}\label{sec:nielsen-theory}
-\input{lefschetz-nielsen}
+\section{Deducing topological Lefschetz theorems}\label{sec:lefschetz}
+\input{toplefschetz}
 
-\section{Parametrized Lefschetz--Nielsen theory}\label{sec:param-nielsen-theory}
+\section{Lefschetz--Nielsen theory}\label{sec:nielsen-theory}
+\input{nielsenthy}
 
+%\input{lefschetz}
 
 \appendix
 
 \section{Trace theory}\label{sec: trace theory}
-\input{tracethy}
+\input{appendix/tracethy}
 
-\section{Six functors and duality}\label{sec: verdier duality}
-\input{sixfapp}
-\input{verdier}
+\section{Six functor formalisms}\label{sec: verdier duality}
+\input{appendix/sixff}
+%\input{verdier}
 
 %\section{Fixed point theorems}\label{sec: fixed point thms}
 %\input{sixfftrace}
