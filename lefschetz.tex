@@ -1,0 +1,38 @@
+We deduce a topological and homotopical Lefschetz fixed point 
+via sheaves and local systems.
+
+\subsection{Topolgical Lefschetz}
+
+\begin{defn}
+    Let $\Top$ denote the category of locally compact Hausdorff
+    spaces. For any $\base \in \Top$ we write 
+    $\pTop{\base} \subseteq \Top_{/\base}$ 
+    for the full subcategory spanned by the proper maps $p\colon X\to \base$.
+\end{defn}
+
+Throughout this section, we make use of the following construction
+from the appendix.
+For any $X\in \Top$ we write $\D{X}\coloneq \Shv(X;\Sp)$ for the 
+category of sheaves of spectra on $X$. Then, the assignment 
+$X\mapsto \D{X}$ refines to a symmetric monoidal functor $(\infty,2)$-functor
+\[ \D{-}\colon \sSpan{\pTop{\base}}_{\cP,\cI}\too \pPrlf{\base}\,.\]
+Here, the source is the $(\infty,2)$-category of spans of REF and the
+target is the $(\infty,2)$-category of $\D{\base}$-linear presentable
+$\infty$-categories. We denote the symmetric monoidal functor underlying
+$\infty$-categories
+\[\cD(-)\colon \Span{\pTop{\base}}\too \pPrl{\base}\]
+by the same name.
+\begin{prop}
+   Let $p\colon X\to \base$ be proper and let $f\colon X\to X$ be 
+   a proper self map of $(X,p)$ with fixed points $i\colon X^f\to X$. 
+   Then we have a map 
+   \[ (pi)_!(pi)^*\SS_{X^f} \xrightarrow{\lambda^f} \SS_{\base} \in \D{\base} \]
+   such that the following hold:
+   \begin{enumerate}
+       \item The composite $\lambda^f\epsilon$ with the unit 
+       $\epsilon \colon \SS_{\base} \to (pi)_!(pi)^{\ast}\SS_{X^f}$
+       is given by the
+       trace of the pullback map $\pb{f}\colon p_!p^{\ast}\SS_{\base}\to p_!p^{\ast}\SS_{\base}$
+       \item this identification is natural in $(\cP,\cI)$ spans.
+   \end{enumerate}
+\end{prop}
