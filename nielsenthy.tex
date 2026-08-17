@@ -1,53 +1,121 @@
-Let $\tset\in \Top$ be compact and locally of singular shape with
-associated space $\ani{\tset}$.
-Given some self map
-$f\colon\tset\to\tset$, we can now associated two different invariants
-to this datum, namely the Lefschetz character
-\[ \lambda^f\colon \cptSections{\tset^f;\SS}\to \SS\,,\]
-as well as the Reidemeister character 
-\[ \rho_{f}\colon \SS \to \SS [\cL^{f}\ani{\tset}]\,,\]
-of the induced map on spaces
-map $f\colon \ani{\tset}\to \ani{\tset}$.
-
-\begin{defn}\label{defn: Nielsen number}
-   The rationalization of the Reidemeister character provides
-   a class 
-   \[[\rho_f]_{\QQ}\in \pi_0\QQ[\cL^f\ani{\tset}] \simeq
-   \QQ[\pi_0\cL^f\ani{\tset}]\,.\]
-   We define the \tdef{Nielsen Number} of $f$ denoted $\mdef{N_f}$ to be the support of $[\rho_f]_{\QQ}$ in
-   this basis.
-\end{defn}
-
-Note under these assumptions on $f$ and $X$ we have that 
-$\cptSections{\tset^f;\SS}^{\vee}\simeq \Sections{\tset^f;\omega_{\tset^f}} \simeq \SS[\ani{\tset^f}]$, and hence we can 
-consider the dual of $\lambda^f$ as map of spectra
-\[ \lambda_f\colon \SS \to \SS[\ani{\tset^f}]\,.\]
-Moreover, there is a natural assembly map $\ass\colon \SS[\ani{\tset^f}]\to \SS[\cL^f\ani{\tset}]$ induced
-by taking an actual fixed point $x\in \tset$ to the
-constant path $x\to x$. The goal of this section is
-to prove the following compatibility of these constructions:
-
+\subsection{Parametrized traces and the Nielsen fixed point theorem}
+For an allowable dynamical system $f\curvearrowright \tset\xrightarrow p B$, we defined the associated invariants
+\begin{equation}
+  \label{eq:nielsenthy-intro-characters}
+  \lambda^f\colon (pi)_*(pi)^*\SS_B\to \SS_B\,
+  \qquad\text{and}\qquad\rho_{f}\colon \SS_B \to \SS [\cL^{f}p_\sharp(\pt_\tset )]\,,
+\end{equation}
+where $i\colon\tset^f\to\tset$ denotes the inclusion of the fixed points.
+The goal of this subsection is to establish the following relationship between $\lambda^f$ and $\rho_{f}$:
 \begin{thm}\label{thm: lefschetz-nielsen}
-    Let $\tset \in \Top$ be compact and locally of singular shape. 
-    Then we have a commutative diagram in the category of spectra:
-    \[\begin{tikzcd}
-	& {\Sections{\tset^f,\omega_{\tset}}} \\
-	\SS & {\SS[\cL^f\ani{\tset}]}
-	\arrow["{\mathfrak{a}}", from=1-2, to=2-2]
-	\arrow["{\lambda_f}", from=2-1, to=1-2]
-	\arrow["{\rho_f}"', from=2-1, to=2-2]
-\end{tikzcd}\]
-which is natural in intertwining maps.
+  Let $f\curvearrowright \tset\xrightarrow p B$ be an allowable dynamical system. There is a commutative diagram in the category of sheaves of spectra on $B$:
+  \[\begin{tikzcd}
+      &  (pi)_*(pi)^!\SS_B\\
+      \SS_B & {\SS [\cL^{f}p_\sharp(\pt_\tset )]},
+      \arrow["\mathfrak a", from=1-2, to=2-2]
+      \arrow["{\lambda_f}", from=2-1, to=1-2]
+      \arrow["{\rho_f}"', from=2-1, to=2-2]
+    \end{tikzcd}\]
+  where $\lambda_f$ denotes the $\SS_B$-linear dual of $\lambda^f$. Furthermore,
+  \begin{enumerate}[label=(\roman*)]
+  \item $\mathfrak a$ is natural in proper maps of allowable dynamical systems; and
+  \item for $f = \id$, the map $\mathfrak a$ is equivalent to the composition
+    \[
+      p_*p^!\SS_B\xrightarrow\sim\SS\lbrack p_\sharp (\pt_\tset)\rbrack\to \SS\lbrack \cL p_\sharp, (\pt_\tset)\rbrack,
+    \]
+    where the first map is the canonical equivalence and the second map is induced by the map $p_\sharp (\pt_\tset)\to \cL p_\sharp (\pt_\tset)$ adjoint to the projection $S_B^1\times p_\sharp (\pt_\tset)\to p_\sharp (\pt_\tset)$.
+  \end{enumerate}
 \end{thm}
+As an immediate consequence of this result, we will deduce the classical Nielsen fixed point theorem, see~\cref{subsec:classical-nielsen}.
+\subsubsection{Factoring the Reidemeister trace}
+\begin{thm}
+  Let $f\curvearrowright \tset\xrightarrow p B$ be an allowable dynamical system. The lax commutative square
+  \[
+    \begin{tikzcd}
+      \Sp_B\arrow[d,equal] \arrow[r] & Sp_B^{p_\sharp (\pt_\tset)}\arrow[d,"f^*"]\\
+      \Sp_B\arrow[r]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt] & \Sp_B^{p_\sharp (\pt_\tset)}
+    \end{tikzcd}
+  \]
+  admits a factorization
+  \begin{equation}
+    \label{eq:categorical-factorization-of-param-reidemeister}
+    \begin{tikzcd}
+      \Sp_B & {\coShat_B(\tset)} & \Sp_B^{p_\sharp (\pt_\tset)} \\
+      \Sp_B & {\coShat_B(\tset)} & \Sp_B^{p_\sharp (\pt_\tset)}
+      \arrow["{w_{\tset}}", from=1-1, to=1-2]
+      \arrow["\id"', from=1-1, to=2-1]
+      \arrow["{a_{\delta}}", from=1-2, to=1-3]
+      \arrow["{f^?}", from=1-2, to=2-2]
+      \arrow["f^{\ast}", from=1-3, to=2-3]
+      \arrow[Rightarrow, from=2-2, to=1-3]
+      \arrow["{w_{\tset}}"', from=2-1, to=2-2]
+      \arrow[Rightarrow, from=2-1, to=1-2]
+      \arrow["{a_{\delta}}"', from=2-2, to=2-3]
+    \end{tikzcd}
+  \end{equation}
+  in $\Endtrl (\pPrlf{B})$, natural in proper maps of allowable dynamical systems.
+\end{thm}
+\begin{prop}
+  Let $f\curvearrowright \tset\xrightarrow p B$ be an allowable dynamical system. 
+  The map
+  \[
+    \TrcL (a_\delta)\colon \TrcL (f^?\curvearrowright\coShat_B (\tset ))\too \TrcL(f^*\curvearrowright \Sp_B^{p_\sharp (\pt_\tset)})\simeq \SS [\cL^{f}p_\sharp(\pt_\tset )]
+  \]
+  admits a factorization
+  \begin{equation}
+    \label{eq:lax-trace-on-cosheaves}
+    \begin{tikzcd}
+      &  (pi)_*(pi)^!\SS_B\\
+      \TrcL (f^?\curvearrowright\coShat_B (\tset )) & {\SS [\cL^{f}p_\sharp(\pt_\tset )]},
+      \arrow[from=1-2, to=2-2]
+      \arrow[from=2-1, to=1-2]
+      \arrow[from=2-1, to=2-2]
+    \end{tikzcd}
+  \end{equation}
+  in $\Sp_B$, natural in proper maps of allowable dynamical systems. Furthermore, the composite
+  \[
+    \SS_B\simeq\TrcL (\id\curvearrowright\Sp_B)\to \TrcL (f^?\curvearrowright\coShat_B (\tset ))\to (pi)_*(pi)^!\SS_B
+  \]
+  is homotopic to $\lambda_f$.
+\end{prop}
+\subsubsection{The Nielsen fixed point theorem}\label{subsec:classical-nielsen}
+Let $\tset$ be a topological set that is compact Hausdorff and locally of constant shape. For a self-map $f\colon \tset\to \tset$, the so-called Nielsen fixed point theorem of Reidemeister~\cite{Reidemeister1936} and Wecken~\cite{Wecken1941a,Wecken1941b,Wecken1942} gives a lower bound on the number of fixed points of $f$ that only depends on the homotopy class of $f$. The lower bound is expressed in terms of the following numerical invariant:
+\begin{defn}\label{defn: Nielsen number}
+  The \tdef{Nielsen number} of $f$, denoted $\mdef{N_f}$, is the number of nonzero coordinates of the Reidemeister character $\rho_f\in\pi_0\SS\lbrack\cL^f\ani{\tset}\rbrack$ with respect to the standard basis
+  \begin{equation}
+    \label{eq:standard-basis-of-reidemeister-target}
+    \pi_0\SS\lbrack\cL^f\ani{\tset}\rbrack\simeq\ZZ\lbrack\pi_0\cL^f\ani{\tset}\rbrack.
+  \end{equation}
+\end{defn}
+By construction, $N_f$ depends only on the homotopy class of $f$.\footnote{In other approaches to Nielsen fixed point theory, the Nielsen number---or rather the Reidemeister trace---is often defined in terms of $\tset^f$, and one then has to do some work to show that it is homotopy-invariant. For us, the homotopy-invariance of the Nielsen number is congenital, and the work that we do instead goes towards showing that it relates to $\tset^f$, which is the content of~\cref{thm: lefschetz-nielsen}.}
+\begin{prop}[Nielsen fixed point theorem]
+  $\#\tset^f \geq N_f\,$.
+\end{prop}
+Since the Lefschetz trace is the sum of the coordinates of the Reidemeister trace, we have
+\begin{equation}
+  \label{eq:lefschetz-vs-nielsen-fixed-pt}
+  \text{Lefschetz trace }\geq 1\Leftrightarrow N_f\geq 1.
+\end{equation}
+We can therefore see the Nielsen fixed point theorem as a refinement of the Lefschetz fixed point theorem. Note however that aside from~\eqref{eq:lefschetz-vs-nielsen-fixed-pt}, there is no relationship between the Nielsen number and the Lefschetz trace.
+\begin{proof}
+  We may assume that $\# \tset^f < \infty$, as the statement is trivial otherwise. Consider the commutative diagram
+  \[
+    \begin{tikzcd}
+      \tset^f\arrow[d,"\id"]\arrow[r,"i"] & \tset\arrow[d,"f"] \\
+      \tset^f\arrow[r,"i"] & \tset,
+    \end{tikzcd}
+  \]
+  where $i$ denotes the inclusion. By~\cref{thm: lefschetz-nielsen}, we get a commutative diagram
+  \[
+    \begin{tikzcd}
+      \SS\lbrack \tset^f\rbrack \arrow[d] \arrow[r,"\sim"] & (pi)_*(pi)^!\SS\arrow[d,"\mathfrak a"] \\
+      \SS\lbrack\cL \tset^f\rbrack\arrow[r] & \SS\lbrack\cL^f\tset\rbrack,
+    \end{tikzcd}
+  \]
+  where the left vertical map is induced by the canonical map $\tset^f\to\cL \tset^f$, which is an equivalence since $\tset^f$ is discrete. On $\pi_0$, we thus find that the image of $\mathfrak a\colon (pi)_*(pi)^!\SS\to \SS\lbrack\cL^f\tset\rbrack$ is contained in the span of the basis vectors given by path components of $(x,c_x)\in\cL^f\tset$, where $x\in \tset^f$ and $c_x$ is the constant loop at $x$. It follows that $N_f\leq\# \tset^f$ as desired.
+\end{proof}
 
-This immediately implies:
-
-\begin{cor}
-   Let $X\in \Top$ be compact of singular shape and let
-   $f\colon X\to X$ be a self map. For any map $g\colon X\to X$
-   that is homotopic to $f$ we have that
-   \[ \#X^g \geq N_f\,.\]
-\end{cor}
+\newpage
 
  We prove this by following the pattern of~\cref{sec: lefschetz theory}. First, then, we factor the square
 \begin{equation}
@@ -113,7 +181,7 @@ Finally, we will need to introduce some notation for the functoriality of $\coSh
 \[
 h_?\colon \coShat (\tset )\to \coShat (\tset ').
 \]
-That is, the category of completed cosheaves is {\em covariantly functorial in proper maps}. Since $h_?$ is strongly continuous by construction, it admits a colimit-preserving left adjoint that we denote
+That is, the category of completed cosheaves is {\em covariantly functorial in proper maps}. Since $h_?$ is strongly continuous by construction, it admits a colimit-preserving right3 adjoint that we denote
 \[
 h^?\colon \coShat (\tset ')\to \coShat (\tset ).
 \]
@@ -214,3 +282,8 @@ We should expect the calculation of $\tr{f^?\curvearrowright\coShat (\tset )}{}$
 \begin{defn}[The free algebra on one dualizable object]
   $\freeondual = \Fun (\mathrm{Bord}^1_{\mathrm{fr}}(\RR^1)^{\op},\Sp )$\todo{define Hopf algebra structure}
 \end{defn}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: "main"
+%%% End:
