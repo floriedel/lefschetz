@@ -27,6 +27,15 @@ The goal of this subsection is to establish the following relationship between $
   \end{enumerate}
 \end{thm}
 As an immediate consequence of this result, we will deduce the classical Nielsen fixed point theorem, see~\cref{subsec:classical-nielsen}.
+
+The proof of~\cref{thm: lefschetz-nielsen} follows the same pattern as our treatment of the Lefschetz trace formula in the preceding section. Since $\rho_f$ can be defined as the trace of the morphism
+\[
+  \begin{tikzcd}
+    \Sp_B\arrow[d,equal] \arrow[r] & Sp_B^{p_\sharp (\pt_\tset)}\arrow[d,"f^*"]\\
+    \Sp_B\arrow[r]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt] & \Sp_B^{p_\sharp (\pt_\tset)}
+  \end{tikzcd}
+\]
+in the category of traceable endomorphisms $\Endtrl (\pPrlf B )$, our goal is to factor this morphism through a traceable endomorphism that ``remembers the topology'' of the dynamical system $f\curvearrowright\tset$. Such a factorization is provided by the (parametrized) assembly functor and (parametrized) Wall object of Bartels--Nikolaus (in the unparametrized case) and Volpe--Wolff--Ramzi (in the general case). 
 \subsubsection{Factoring the Reidemeister trace}
 \begin{thm}
   Let $f\curvearrowright \tset\xrightarrow p B$ be an allowable dynamical system. The lax commutative square
@@ -55,7 +64,7 @@ As an immediate consequence of this result, we will deduce the classical Nielsen
   \end{equation}
   in $\Endtrl (\pPrlf{B})$, natural in proper maps of allowable dynamical systems.
 \end{thm}
-\begin{prop}
+\begin{prop}\label{prop: lax calculation of trace on coshv hat}
   Let $f\curvearrowright \tset\xrightarrow p B$ be an allowable dynamical system. 
   The map
   \[
@@ -78,6 +87,23 @@ As an immediate consequence of this result, we will deduce the classical Nielsen
   \]
   is homotopic to $\lambda_f$.
 \end{prop}
+In order to prove~\cref{prop: lax calculation of trace on coshv hat}, we want to interpret the lax commutative square
+  \[
+    \begin{tikzcd}
+      \coShat_B(\tset )\arrow[d,"f^?"] \arrow[r,"a_\delta"] & Sp_B^{p_\sharp (\pt_\tset)}\arrow[d,"f^*"]\\
+      \coShat_B(\tset )\arrow[r,"a_\delta"]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt] & \Sp_B^{p_\sharp (\pt_\tset)}
+    \end{tikzcd}
+  \]
+  as an assembly map in a convenient closed symmetric monoidal category. As inspiration, recall that for a commutative ring $k$ there is an (often useful) equivalence between on one side the category of pairs $(V,T\colon V\to V)$, where $V$ is a $k$-module and $T$ is a $k$-linear map, and on the other side the category of modules over the polynomial ring $k\lbrack t\rbrack$. This equivalence is a consequence of the fact that $k\lbrack t\rbrack$ is the free associative (and coincidentally also commutative) $k$-algebra on a single generator, so a module structure $k\lbrack t\rbrack\to\End_k(V)$ is uniquely determined by the value of $t$. Similarly, we will consider the free $E_1$-algebra $\Sp_B\lbrack T\rbrack$ on a single dualizable object:
+  \begin{thm}
+    Let $B\NN$ be the delooping category of the monoid of non-negative integers under addition, and let $\Fun_0 (B\NN ,\pPrl B)\subseteq\Fun (B\NN ,\pPrl B)$ denote the full subcategory spanned by functors $F\colon B\NN\to\pPrl B$ such that $F(1)$ is strongly continuous, where $1$ denotes the generating morphism $\ast\to \ast$ in $B\NN$.
+
+    The forgetful functor
+    \[
+      \Fun_0(B\NN ,\pPrl B)\too\pPrl B
+    \]
+    is monadic.
+  \end{thm}
 \subsubsection{The Nielsen fixed point theorem}\label{subsec:classical-nielsen}
 Let $\tset$ be a topological set that is compact Hausdorff and locally of constant shape. For a self-map $f\colon \tset\to \tset$, the so-called Nielsen fixed point theorem of Reidemeister~\cite{Reidemeister1936} and Wecken~\cite{Wecken1941a,Wecken1941b,Wecken1942} gives a lower bound on the number of fixed points of $f$ that only depends on the homotopy class of $f$. The lower bound is expressed in terms of the following numerical invariant:
 \begin{defn}\label{defn: Nielsen number}
@@ -96,7 +122,7 @@ Since the Lefschetz trace is the sum of the coordinates of the Reidemeister trac
   \label{eq:lefschetz-vs-nielsen-fixed-pt}
   \text{Lefschetz trace }\geq 1\Leftrightarrow N_f\geq 1.
 \end{equation}
-We can therefore see the Nielsen fixed point theorem as a refinement of the Lefschetz fixed point theorem. Note however that aside from~\eqref{eq:lefschetz-vs-nielsen-fixed-pt}, there is no relationship between the Nielsen number and the Lefschetz trace.
+We can therefore see the Nielsen fixed point theorem as a refinement of the Lefschetz fixed point theorem. Note however that aside from~\eqref{eq:lefschetz-vs-nielsen-fixed-pt}, there is no formula relating the Nielsen number and the Lefschetz trace.
 \begin{proof}
   We may assume that $\# \tset^f < \infty$, as the statement is trivial otherwise. Consider the commutative diagram
   \[
