@@ -6,8 +6,9 @@ via sheaves and local systems.
 \begin{defn}
     Let $\Top$ denote the category of locally compact Hausdorff
     spaces. For any $\base \in \Top$ we write 
-    $\pTop{\base} \subseteq \Top_{/\base}$ 
-    for the full subcategory spanned by the proper maps $p\colon X\to \base$.
+    $\pTop{\base}, \sTop{\base} \subseteq \Top_{/\base}$ 
+    for the full subcategories spanned by the proper and suave maps $p\colon X\to \base$ respectively. Moreover,
+    set $\psTop{\base}= \pTop{\base} \cap \sTop{\base}$. 
 \end{defn}
 
 Throughout this section, we make use of the following construction
@@ -18,21 +19,81 @@ $X\mapsto \D{X}$ refines to a symmetric monoidal functor $(\infty,2)$-functor
 \[ \D{-}\colon \sSpan{\pTop{\base}}_{\cP,\cI}\too \pPrlf{\base}\,.\]
 Here, the source is the $(\infty,2)$-category of spans of REF and the
 target is the $(\infty,2)$-category of $\D{\base}$-linear presentable
-$\infty$-categories. We denote the symmetric monoidal functor underlying
+$\infty$-categories. We denote the symmetric monoidal functor of underlying
 $\infty$-categories
 \[\cD(-)\colon \Span{\pTop{\base}}\too \pPrl{\base}\]
 by the same name.
+
+\begin{lem}\label{lem: trace identification}
+    Let $f\colon (X,p)\to (X,p)$ be a self map in $\pTop{\base}$ with
+    fixed points $i\colon X^f\to X$. Then we
+    have an equivalence:
+    \[ \tr{f_!\colon \D{X}\to \D{X}}{\pPrl{\base}}\simeq (pi)_!(pi)^{\ast}\SS_{\base}\in \D{\base}\,,\]
+    which is natural in spans $X\xleftarrow{j}C\xrightarrow{g} Y$ where $j$ is
+    an open immersion and $g$ is proper.
+\end{lem}
+
+\begin{cons}\label{cons: Lefschetz index}
+    Let $f\colon (X,p)\to (X,p)$ be a self map in $\psTop{\base}$ with
+    fixed points $i\colon X^f\to X$. Consider 
+    the following diagram in $\pPrlf{\base}$:
+   \[\begin{tikzcd}
+	{\D{X}} & {\D{\base}} \\
+	{\D{X}} & {\D{\base}}
+	\arrow["{p_!}", from=1-1, to=1-2]
+	\arrow["{f_!}"', from=1-1, to=2-1]
+	\arrow["\id", from=1-2, to=2-2]
+	\arrow[Rightarrow, from=2-1, to=1-2]
+	\arrow["{p_!}"', from=2-1, to=2-2]
+\end{tikzcd} \]
+where the 2-cell is given by the natural equivalence 
+$p_!f_!=p_!$. Since $p$ is a proper shape submersion,
+the functor $p_!$ admits an internal right adjoint by REF/CITE,
+and hence this defines a morphism $(\D{X},f_!)\to (\D{\base},\id)$ in $\Endtrl(\pPrlf{\base})$. Applying the symmetric
+monoidal functor $\Trc\colon \Endtrl(\pPrlf{\base}) \to \D{\base}$ and using the identification of REF we obtain
+a map:
+\[ \mdef{\lambda^f}\colon (pi)_!(pi)^{\ast}\SS_{\base} 
+\to \SS_{\base} \in \D{\base}\]
+which we call the \tdef{Lefschetz index} of $f$. 
+    \end{cons}
+
 \begin{prop}
-   Let $p\colon X\to \base$ be proper and let $f\colon X\to X$ be 
-   a proper self map of $(X,p)$ with fixed points $i\colon X^f\to X$. 
-   Then we have a map 
-   \[ (pi)_!(pi)^*\SS_{X^f} \xrightarrow{\lambda^f} \SS_{\base} \in \D{\base} \]
-   such that the following hold:
-   \begin{enumerate}
-       \item The composite $\lambda^f\epsilon$ with the unit 
-       $\epsilon \colon \SS_{\base} \to (pi)_!(pi)^{\ast}\SS_{X^f}$
-       is given by the
-       trace of the pullback map $\pb{f}\colon p_!p^{\ast}\SS_{\base}\to p_!p^{\ast}\SS_{\base}$
-       \item this identification is natural in $(\cP,\cI)$ spans.
-   \end{enumerate}
+Let $f\colon (X,p)\to (X,p)$ be a self map in $\psTop{\base}$ with 
+fixed points $i\colon X^f\to X$. 
+Let $\lambda^f\colon (pi)_!(pi)^{\ast}\SS_{\base} \to \SS_{\base}$ be
+the Lefschetz index of \cref{cons: Lefschetz index} and write 
+$\epsilon\colon \SS_{\base}\to (pi)_!(pi)^{\ast}\SS_{\base}$ for the unit
+of the adjunction $(pi)^{\ast}\dashv(pi)_!$.\footnote{Note that the map
+$X^f\to X \to \base$ is automatically proper.} The composite 
+\[ \SS_{\base} \xrightarrow{\epsilon} (pi)_!(pi)^{\ast}\SS_{\base}
+\xrightarrow{\lambda^f} \SS_{\base}\,\]
+is given by the trace of the pullback map 
+\[ \pb{f}\colon p_!p^{\ast}\SS_{\base}\to p_!p^{\ast}\SS_{\base} \]
+on (relative) compactly supported cohomology.
 \end{prop}
+
+\subsection{Homotopical Lefschetz}
+\begin{defn}
+    For some $\base \in \Top$ write 
+    \[\mdef{\pSpc{\base}}\coloneq \Shv(\base,\Spc) \in \Prl\]
+    for the $\infty$-category of sheaves of spaces on $\base$.
+    Moreover for any $A\in \pSpc{\base}$ we define:
+    \[ \mdef{\pSp{\base}{A}}\coloneq \Shv((\pSpc{\base})_{/A};\Sp)\in \Prlst \]
+\end{defn}
+
+WE no makes use of the following fact from REF appendix. Let $\cI$ denote
+the class of all maps in $\pSpc{\base}$ and $\cP$ the class of equivalences. 
+By REF the assignment $A\mapsto \pSp{\base}{A}$ refines to a symmetric
+monoidal $(\infty,2)$-functor:
+\[ \pSp{\base}{(-)}\colon \sSpan{\pSpc{\base}}_{\cI,\cP} \too \pPrlf{\base}\]
+Note that we have $\pSp{\base}{\pt} = \D{\base}$. 
+
+\begin{lem}
+    Let $f\colon A\to A$ be a self map in $\pSpc{\base}$ with homotopy
+    fixed points $i\colon \cL^fA \to A$. We have an equivalence 
+    \[ \tr{f^* \colon \pSp{\base}{A}\to \pSp{\base}{A}}{\pPrl{\base}}
+    \simeq \SS_{\base}[\cL^fA] \in \D{\base}\,
+    \]
+   which is natural in spans $A\xleftarrow{i} C \xrightarrow{g} B$ where
+   $i$ is an equivalence and $g$ is any map.
+\end{lem}
