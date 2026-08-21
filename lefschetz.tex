@@ -21,7 +21,7 @@ Here, the source is the $(\infty,2)$-category of spans of REF and the
 target is the $(\infty,2)$-category of $\D{\base}$-linear presentable
 $\infty$-categories. We denote the symmetric monoidal functor of underlying
 $\infty$-categories
-\[\Sp{(-)}\colon \Span{\pTop{\base}}\too \pPrl{\base}\]
+\[\D{(-)}\colon \Span{\pTop{\base}}\too \pPrl{\base}\]
 by the same name.
 
 \begin{lem}\label{lem: top trace identification}
@@ -32,6 +32,18 @@ by the same name.
     which is natural in spans $X\xleftarrow{j}C\xrightarrow{g} Y$ where $j$ is
     an open immersion and $g$ is proper.
 \end{lem}
+\begin{proof}
+  By CITE, the symmetric monoidal $(\infty,2)$-functor 
+  $\sD{(-)}$ induces a symmetric monoidal functor 
+  \[ \sD{(-)}\colon \Endtrl(\sSpan{\pTop{\base}}_{\cP,\cI}) 
+  \too \Endtrl(\pPrlf{\base})\,,\]
+  which is compatible with trace. Thus, we learn that 
+ the trace of the functor $f_!\colon \D{X}\to \D{X}$
+ is computed as the image of the trace of the span 
+ $(X = X \xrightarrow{f}X$, which by \cref{lem: trace in Span}
+ is given by the fixed points $\base \leftarrow X^f \to \base$,
+ which was the claim. \todo{Unwind naturality}
+\end{proof}
 
 \begin{cons}\label{cons: Lefschetz index}
     Let $f\colon (X,p)\to (X,p)$ be a self map in $\psTop{\base}$ with
@@ -46,8 +58,8 @@ by the same name.
 	\arrow[Rightarrow, from=2-1, to=1-2]
 	\arrow["{p_!}"', from=2-1, to=2-2]
 \end{tikzcd} \]
-where the 2-cell is given by the natural equivalence 
-$p_!f_!=p_!$. Since $p$ is a proper shape submersion,
+where the 2-cell is induced by the natural equivalence
+$pf=p$. Since $p$ is a proper shape submersion,
 the functor $p_!$ admits an internal right adjoint by REF/CITE,
 and hence this defines a morphism $(\D{X},f_!)\to (\D{\base},\id)$ in $\Endtrl(\pPrlf{\base})$. Applying the symmetric
 monoidal functor $\Trc\colon \Endtrl(\pPrlf{\base}) \to \D{\base}$ and using the identification of \cref{lem: top trace identification} we obtain
@@ -61,13 +73,11 @@ which we call the \tdef{Lefschetz index} of $f$.
 Let $f\colon (X,p)\to (X,p)$ be a self map in $\psTop{\base}$ with 
 fixed points $i\colon X^f\to X$. 
 Let $\lambda^f\colon (pi)_!(pi)^{\ast}\SS_{\base} \to \SS_{\base}$ be
-the Lefschetz index of \cref{cons: Lefschetz index} and write 
-$\epsilon\colon \SS_{\base}\to (pi)_!(pi)^{\ast}\SS_{\base}$ for the unit
-of the adjunction $(pi)^{\ast}\dashv(pi)_!$.\footnote{Note that the map
-$X^f\to X \to \base$ is automatically proper.} The composite 
-\[ \SS_{\base} \xrightarrow{\epsilon} (pi)_!(pi)^{\ast}\SS_{\base}
+the Lefschetz index of \cref{cons: Lefschetz index}. 
+The composite 
+\[ \SS_{\base} \xrightarrow{\pb{pi}} (pi)_!(pi)^{\ast}\SS_{\base}
 \xrightarrow{\lambda^f} \SS_{\base}\,\]
-is given by the trace of the pullback map 
+of $\lambda^f$ with the pullback along $pi\colon X^f\to \base$ is given by the trace of the pullback map 
 \[ \pb{f}\colon p_!p^{\ast}\SS_{\base}\to p_!p^{\ast}\SS_{\base} \]
 on (relative) compactly supported cohomology.
 \end{prop}
@@ -75,7 +85,7 @@ on (relative) compactly supported cohomology.
 \subsection{Homotopical Lefschetz}
 \begin{defn}
     For some $\base \in \Top$ we denote the $\infty$-category
-    fo sheaves of spaces on $\base$ by:
+    of sheaves of spaces on $\base$ by:
     \[\mdef{\pSpc{\base}}\coloneq \Shv(\base,\Spc) \in \Prl\,.\]
     In a slight abuse of notation, we denote the terminal 
     of $\pSpc{\base}$ also by $\base$. 
@@ -91,7 +101,7 @@ monoidal $(\infty,2)$-functor:
 \[ \pSp{\base}{(-)}\colon \sSpan{\pSpc{\base}}_{\cI,\cP} \too \pPrlf{\base}\]
 
 \begin{notation}
-    For any $A\in \pSpc{\base}$ with terminal map $p\colon A\to \pt_{\base}$, we write $\SS_{\base}[A]\coloneq p_!p^* \SS_{\base}$. If $f\colon A\to B$ is a map in $\pSpc{\base}$ we denote the induced transfer map by
+    For any $A\in \pSpc{\base}$ with terminal map $p\colon A\to \pt_{\base}$, we write $\SS_{\base}[A]\coloneq p_!p^* \SS_{\base} \in \pSp{\base}{}$ and refer to this as the relative spherical homology of $A$. If $f\colon A\to B$ is a map in $\pSpc{\base}$ we denote the induced transfer map by
     $\tf{f}\colon \SS_{\base}[A]\to \SS_{\base}[B]$. 
 \end{notation}
 
@@ -104,6 +114,9 @@ monoidal $(\infty,2)$-functor:
    which is natural in spans $A\xleftarrow{i} C \xrightarrow{g} B$ where
    $i$ is an equivalence and $g$ is any map.
 \end{lem}
+\begin{proof}
+    Completely analogous to \cref{lem: top trace identification}. 
+\end{proof}
 
 
 \begin{cons}
@@ -126,17 +139,17 @@ in $\Endtrl(\pPrlf{\base})$. Applying
 the symmetric monoidal functor $\Trc$ of REF 
 and using the identification of \cref{lem: homo trace identification}, we obtain a map:
 \[ \mdef{\rho_f}\colon \SS_{\base} \to \SS_{\base}[\cL^fA] \]
-which we call the \tdef{Reidemeister index} of $f$. 
+which we call the \tdef{Reidemeister trace} of $f$. 
 \end{cons}
 
 \begin{prop}
-    Let $f\colon A\to A$ be a self map in $\pSpc{\base}$
-    with homotopy fixed points $\cL^f$ and Reidemeister
+    Let $f\colon A\to A$ be a self map in $\pSpc{\base}$ with
+    terminal map $p\colon A\to \base$,
+   homotopy fixed points $i\colon \cL^fA \to A$
+    and Reidemeister
     trace $\rho_f\colon \SS_{\base}\to \SS_{\base}[\cL^f]$.
-    Write $\eta\colon \SS[\cL^f]\to \SS_{\base}$ for
-    the transfer along the terminal map.
     The composite
-    \[ \SS_{\base}\xrightarrow{\rho_f} \SS_{\base}[\cL^fA] \xrightarrow{\eta} \SS_{\base}\]
+    \[ \SS_{\base}\xrightarrow{\rho_f} \SS_{\base}[\cL^fA] \xrightarrow{\tf{ip}} \SS_{\base}\]
     is given by the trace of the transfer 
     \[ \tf{f}\colon \SS_{\base}[A]\to \SS_{\base}[A]\]
     on relative spherical homology.
