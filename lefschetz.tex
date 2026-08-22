@@ -11,8 +11,9 @@ via sheaves and local systems.
     set $\psTop{\base}= \pTop{\base} \cap \sTop{\base}$. 
 \end{defn}
 
-Throughout this section, we make use of the following construction
-from the appendix.
+Now fix some base $\base\in \Top$ for the remainder of this section. 
+
+We make use of the following construction from the appendix:
 For any $X\in \Top$ we write $\D{X}\coloneq \Shv(X;\Sp)$ for the 
 category of sheaves of spectra on $X$. Then, the assignment 
 $X\mapsto \D{X}$ refines to a symmetric monoidal functor $(\infty,2)$-functor
@@ -23,6 +24,33 @@ $\infty$-categories. We denote the symmetric monoidal functor of underlying
 $\infty$-categories
 \[\D{(-)}\colon \Span{\pTop{\base}}\too \pPrl{\base}\]
 by the same name.
+
+\begin{notation}
+For any map $f\colon (X,p)\to (Y,q)$ in $\pTop{\base}$ we write 
+\[ \pb{f}\colon q_!q^*\SS_{\base}\to p_!p^*\SS_{\base} \]
+for the pullback on relative compactly supported cohomology. 
+Explicitly, $\pb{f}$ is the image of the 2-morphism 
+\[
+\begin{tikzcd}
+	& X & \\
+	\base & X & \base \\
+	& Y
+	\arrow["p"', from=1-2, to=2-1]
+	\arrow["p", from=1-2, to=2-3]
+	\arrow["\id"', from=2-2, to=1-2]
+	\arrow["f", from=2-2, to=3-2]
+	\arrow["q", from=3-2, to=2-1]
+	\arrow["q"', from=3-2, to=2-3]
+\end{tikzcd}
+\]
+under the 2-functor $\D{(-)}\colon \sSpan{\pTop{\base}}_{\cP,\cI} \to \pPrlf{\base}$.
+\end{notation}
+
+\begin{lem}\label{lem: proper internal right adj}
+    For any $(p\colon X\to \base)\in \pTop{\base}$ the span 
+    $(\base \xleftarrow{p} X \xrightarrow{\id} X) \in \sSpan{\pTop{\base}}_{\cP,\cI}$ admits an internal
+    right adjoint given by $(X \xleftarrow{\id} X \xrightarrow{p} \base)$.
+\end{lem}
 
 \begin{lem}\label{lem: top trace identification}
     Let $f\colon (X,p)\to (X,p)$ be a self map in $\pTop{\base}$ with
@@ -40,9 +68,9 @@ by the same name.
   which is compatible with trace. Thus, we learn that 
  the trace of the functor $f_!\colon \D{X}\to \D{X}$
  is computed as the image of the trace of the span 
- $(X = X \xrightarrow{f}X$, which by \cref{lem: trace in Span}
+ $(X\xleftarrow{\id} X \xrightarrow{f}X)$, which by \cref{lem: trace in Span}
  is given by the fixed points $\base \leftarrow X^f \to \base$,
- which was the claim. \todo{Unwind naturality}
+ which was the claim. 
 \end{proof}
 
 \begin{cons}\label{cons: Lefschetz index}
@@ -81,6 +109,82 @@ of $\lambda^f$ with the pullback along $pi\colon X^f\to \base$ is given by the t
 \[ \pb{f}\colon p_!p^{\ast}\SS_{\base}\to p_!p^{\ast}\SS_{\base} \]
 on (relative) compactly supported cohomology.
 \end{prop}
+\begin{proof}
+    Consider the commutative diagram in $\Endtrl(\pPrlf{\base})$:
+\begin{equation}\label{eq: categorical factorization top}
+   \begin{tikzcd}
+	{\D{\base}} & {\D{X}} & {\D{\base}} \\
+	{\D{\base}} & {\D{X}} & {\D{\base}}
+	\arrow["{p^*}", from=1-1, to=1-2]
+	\arrow["\id"', from=1-1, to=2-1]
+	\arrow["{p_!}", from=1-2, to=1-3]
+	\arrow["{f_!}", from=1-2, to=2-2]
+	\arrow["\id", from=1-3, to=2-3]
+	\arrow["\alpha", Rightarrow, from=2-1, to=1-2]
+	\arrow["{p^*}"', from=2-1, to=2-2]
+	\arrow["\beta", Rightarrow, from=2-2, to=1-3]
+	\arrow["{p_!}"', from=2-2, to=2-3]
+\end{tikzcd} 
+    \end{equation}
+    where$\alpha\colon f_!p^*\to p^*$ is adjoint to the preferred equivalence $f^*p^* = p^*$ and $\beta$ is the preferred
+    equivalence $p_!f_!=p_!$. Applying the functor 
+    \[ \Trc\colon \Endtrl(\pPrlf{\base})\to \D{\base}\,\]
+    we obtain a commutative diagram in $\D{\base}$ of
+    the form:
+    \[
+\begin{tikzcd}
+	{} & {(pi)_!(pi)^*\SS_{\base}} & \\
+	{\SS_{\base}} && {\SS_{\base}}
+	\arrow["{\lambda^f}", from=1-2, to=2-3]
+	\arrow["{\Trc(p^*,\alpha)}", from=2-1, to=1-2]
+	\arrow["{\Trc(p_!p^*, \beta\alpha)}"', from=2-1, to=2-3]
+\end{tikzcd}
+    \]
+    The map $\beta\alpha\colon p_!p^*\SS_{\base}\to p_!p^*\SS_{\base}$ is by definition the pullback $\pb{f}$
+    along $f$ and so by construction of the functor 
+    $\Trc$ REF, we have that
+    \[ \Trc(p_!p^*,\beta\alpha)= \tr{\pb{f}}{\D{\base}}\,.\]
+    It remains to show that $\Trc(p^*,\alpha)$ is given
+    by the pullback $\pb{pi}$ along the projection 
+    map $pi\colon X^{f}\to \base$.
+    Indeed, by \cref{lem: proper internal right adj} the span 
+    $(\base \xleftarrow{p} X \xrightarrow{\id} X$ admits an internal
+    right adjoint and thus defines a map:
+    \[
+    \begin{tikzcd}
+	\base & X & X \\
+	\base && X \\
+	\base & X & X 
+	\arrow["p"', from=1-2, to=1-1]
+	\arrow["\id", from=1-2, to=1-3]
+	\arrow["\id"', from=2-1, to=1-1]
+	\arrow["\id", from=2-1, to=3-1]
+	\arrow["f", from=2-3, to=1-3]
+	\arrow["\id"', from=2-3, to=3-3]
+	\arrow["p"', from=3-2, to=3-1]
+	\arrow["\id", from=3-2, to=3-3]
+\end{tikzcd}
+\]
+in $\Endtrl(\sSpan{\pTop{\base}}_{\cP,\cI})$ whose image under the functor 
+$\D{(-)}$ is the left hand square of \eqref{eq: categorical factorization top}. Thus, unwinding the definitions and using the naturality of the
+functor $\Trc$, we learn that the map $\Trc(p^*,\alpha)$
+is the image of the 2-morphism: 
+\[
+\begin{tikzcd}
+	& {X^f} & \\
+	\base & {X^f} & \base \\
+	& \base
+	\arrow["pi"', from=1-2, to=2-1]
+	\arrow["pi", from=1-2, to=2-3]
+	\arrow["\id"', from=2-2, to=1-2]
+	\arrow["pi", from=2-2, to=3-2]
+	\arrow[from=3-2, to=2-1]
+	\arrow[from=3-2, to=2-3]
+\end{tikzcd}
+\]
+under the functor $\D{(-)}$, which is exactly the pullback along 
+$pi\colon X^f \to \base$. 
+\end{proof}
 
 \subsection{Homotopical Lefschetz}
 \begin{defn}
@@ -101,7 +205,9 @@ monoidal $(\infty,2)$-functor:
 \[ \pSp{\base}{(-)}\colon \sSpan{\pSpc{\base}}_{\cI,\cP} \too \pPrlf{\base}\]
 
 \begin{notation}
-    For any $A\in \pSpc{\base}$ with terminal map $p\colon A\to \pt_{\base}$, we write $\SS_{\base}[A]\coloneq p_!p^* \SS_{\base} \in \pSp{\base}{}$ and refer to this as the relative spherical homology of $A$. If $f\colon A\to B$ is a map in $\pSpc{\base}$ we denote the induced transfer map by
+    For any $A\in \pSpc{\base}$ with terminal map $p\colon A\to \pt_{\base}$, we write
+    \[\SS_{\base}[A]\coloneq p_\sharp p^* \SS_{\base} \in \pSp{\base}{}\] 
+    and refer to this as the relative spherical homology of $A$. If $f\colon A\to B$ is a map in $\pSpc{\base}$ we denote the induced transfer map by
     $\tf{f}\colon \SS_{\base}[A]\to \SS_{\base}[B]$. 
 \end{notation}
 
@@ -154,3 +260,21 @@ which we call the \tdef{Reidemeister trace} of $f$.
     \[ \tf{f}\colon \SS_{\base}[A]\to \SS_{\base}[A]\]
     on relative spherical homology.
 \end{prop}
+\begin{proof}
+    Consider the commutative diagram in $\Endtrl(\pPrlf{\base})$:
+    \[
+   \begin{tikzcd}
+	{\D{\base}} & {\pSp{\base}{A}} & {\D{\base}} \\
+	{\D{\base}} & {\pSp{\base}{A}} & {\D{\base}}
+	\arrow["{p^*}", from=1-1, to=1-2]
+	\arrow["\id"', from=1-1, to=2-1]
+	\arrow["{p_\sharp}", from=1-2, to=1-3]
+	\arrow["{f^*}", from=1-2, to=2-2]
+	\arrow["\id", from=1-3, to=2-3]
+	\arrow["\gamma", Rightarrow, from=2-1, to=1-2]
+	\arrow["{p^*}"', from=2-1, to=2-2]
+	\arrow["\delta", Rightarrow, from=2-2, to=1-3]
+	\arrow["{p_\sharp}"', from=2-2, to=2-3]
+\end{tikzcd} 
+    \]
+\end{proof}
