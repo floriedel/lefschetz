@@ -20,10 +20,11 @@ $X\mapsto \D{X}$ refines to a symmetric monoidal functor $(\infty,2)$-functor
 \[ \D{(-)}\colon \sSpan{\pTop{\base}}_{\cP,\cI}\too \pPrlf{\base}\,.\]
 Here, the source is the $(\infty,2)$-category of spans of REF and the
 target is the $(\infty,2)$-category of $\D{\base}$-linear presentable
-$\infty$-categories. We denote the symmetric monoidal functor of underlying
-$\infty$-categories
-\[\D{(-)}\colon \Span{\pTop{\base}}\too \pPrl{\base}\]
-by the same name.
+$\infty$-categories. 
+% We denote the symmetric monoidal functor of underlying
+% $\infty$-categories
+% \[\D{(-)}\colon \Span{\pTop{\base}}\too \pPrl{\base}\]
+% by the same name.
 
 \begin{notation}
 For any map $f\colon (X,p)\to (Y,q)$ in $\pTop{\base}$ we write 
@@ -58,7 +59,7 @@ under the 2-functor $\D{(-)}\colon \sSpan{\pTop{\base}}_{\cP,\cI} \to \pPrlf{\ba
     have an equivalence:
     \[ \tr{f_!\colon \D{X}\to \D{X}}{\pPrl{\base}}\simeq (pi)_!(pi)^{\ast}\SS_{\base}\in \D{\base}\,,\]
     which is natural in spans $X\xleftarrow{j}C\xrightarrow{g} Y$ where $j$ is
-    an open immersion and $g$ is proper.
+    an open immersion and $g$ is proper. \todo{Make naturality precise!}
 \end{lem}
 \begin{proof}
   By CITE, the symmetric monoidal $(\infty,2)$-functor 
@@ -148,7 +149,7 @@ on (relative) compactly supported cohomology.
     by the pullback $\pb{pi}$ along the projection 
     map $pi\colon X^{f}\to \base$.
     Indeed, by \cref{lem: proper internal right adj} the span 
-    $(\base \xleftarrow{p} X \xrightarrow{\id} X$ admits an internal
+    $(\base \xleftarrow{p} X \xrightarrow{\id} X)$ admits an internal
     right adjoint and thus defines a map:
     \[
     \begin{tikzcd}
@@ -182,7 +183,7 @@ is the image of the 2-morphism:
 	\arrow[from=3-2, to=2-3]
 \end{tikzcd}
 \]
-under the functor $\D{(-)}$, which is exactly the pullback along 
+under the functor $\Omega \D{(-)}$, which is exactly the pullback along 
 $pi\colon X^f \to \base$. 
 \end{proof}
 
@@ -198,18 +199,44 @@ $pi\colon X^f \to \base$.
     and write $\SS_{A}$ for the monoidal unit of $\pSp{\base}{A}$.
 \end{defn}
 
-WE make use of the following fact from REF appendix. Let $\cI$ denote
-the class of all maps in $\pSpc{\base}$ and $\cP$ the class of equivalences. 
+WE make use of the following fact from REF appendix. 
 By REF the assignment $A\mapsto \pSp{\base}{A}$ refines to a symmetric
 monoidal $(\infty,2)$-functor:
-\[ \pSp{\base}{(-)}\colon \sSpan{\pSpc{\base}}_{\cI,\cP} \too \pPrlf{\base}\]
+\[ \pSp{\base}{(-)}\colon \sSpan{\pSpc{\base}}_{\simeq,\all} \too \pPrlf{\base}\,.\]
+Consider the induced functor on endomorphism $(\infty,1)$-categories
+\[ \Omega \pSp{\base}{(-)}\colon \Omega_{\base}\sSpan{\pSpc{\base}}_{\simeq,\all}\to \pSp{\base}{}\,,\]
+and let $F\colon \pSpc{\base}\to \Omega_{\base}\sSpan{\pSpc{\base}}_{\simeq,\all}$ denote the functor which takes $A\in \pSpc{\base}$ to the terminal
+span $\base\leftarrow A \rightarrow \base$ and takes any map 
+$f\colon A\to B$ to the 2-morphism
+\[\begin{tikzcd}
+	& B & \\
+	\base & A & \base \\
+	& A
+	\arrow[from=1-2, to=2-1]
+	\arrow[from=1-2, to=2-3]
+	\arrow["f"', from=2-2, to=1-2]
+	\arrow["\id", from=2-2, to=3-2]
+	\arrow[from=3-2, to=2-1]
+	\arrow[from=3-2, to=2-3]
+\end{tikzcd}\]
+We denote the composite $\Omega \pSp{\base}{F(-)}$ by
+\[ \mdef{\SS_{\base}[-]}\colon \pSpc{\base}\too \Sp_{\base}\,,\]
+and refer to $\SS_{\base}[A]$ as the relative spherical homology
+of $A$. Moreover, we call the map 
+\[ \tf{f}\coloneq \SS_{\base}[f]\colon \SS_{\base}[A]\to \SS_{\base}[B]\]
+the transfer along $f$. 
+\begin{rmk}
+    Explicitly, for any $p\colon A\to \base \in \pSpc{\base}$, the
+    relative spherical homology of $A$ is given by
+    \[ \SS_{\base}[A]= p_{\sharp}p^*\SS_{\base}\,.\]
+    Moreover, the transfer along a map $f\colon (A,p)\to (B,q)$
+    is given by the composite natural transformation:
+    \todo{Write out}
+\end{rmk}
 
-\begin{notation}
-    For any $A\in \pSpc{\base}$ with terminal map $p\colon A\to \pt_{\base}$, we write
-    \[\SS_{\base}[A]\coloneq p_\sharp p^* \SS_{\base} \in \pSp{\base}{}\] 
-    and refer to this as the relative spherical homology of $A$. If $f\colon A\to B$ is a map in $\pSpc{\base}$ we denote the induced transfer map by
-    $\tf{f}\colon \SS_{\base}[A]\to \SS_{\base}[B]$. 
-\end{notation}
+\begin{lem}
+    
+\end{lem}
 
 \begin{lem}\label{lem: homo trace identification}
     Let $f\colon A\to A$ be a self map in $\pSpc{\base}$ with homotopy
@@ -249,7 +276,7 @@ which we call the \tdef{Reidemeister trace} of $f$.
 \end{cons}
 
 \begin{prop}
-    Let $f\colon A\to A$ be a self map in $\pSpc{\base}$ with
+    Let $f\colon A\to A$ be a self map in $\pSpc{\base}$ \todo{add assumption}with
     terminal map $p\colon A\to \base$,
    homotopy fixed points $i\colon \cL^fA \to A$
     and Reidemeister
@@ -277,4 +304,7 @@ which we call the \tdef{Reidemeister trace} of $f$.
 	\arrow["{p_\sharp}"', from=2-2, to=2-3]
 \end{tikzcd} 
     \]
+where $\gamma$ is the preferred equivalence $f^{*}p^*=p^*$ and 
+$\delta$ is adjoint to the preferred equivalence $p_\sharp f_{\sharp}= p_{\sharp}$. Applying the symmetric monoidal functor 
+    
 \end{proof}
