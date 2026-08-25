@@ -17,7 +17,7 @@ We make use of the following construction from the appendix:
 For any $X\in \Top$ we write $\D{X}\coloneq \Shv(X;\Sp)$ for the 
 category of sheaves of spectra on $X$. Then, the assignment 
 $X\mapsto \D{X}$ refines to a symmetric monoidal functor $(\infty,2)$-functor
-\[ \D{(-)}\colon \sSpan{\pTop{\base}}_{\cP,\cI}\too \pPrlf{\base}\,.\]
+\[ \D{(-)}\colon \sSpan{\pTop{\base}}_{\cI,\cP}\too \pPrlf{\base}\,.\]
 Here, the source is the $(\infty,2)$-category of spans of REF and the
 target is the $(\infty,2)$-category of $\D{\base}$-linear presentable
 $\infty$-categories. 
@@ -57,9 +57,7 @@ under the 2-functor $\D{(-)}\colon \sSpan{\pTop{\base}}_{\cP,\cI} \to \pPrlf{\ba
     Let $f\colon (X,p)\to (X,p)$ be a self map in $\pTop{\base}$ with
     fixed points $i\colon X^f\to X$. Then we
     have an equivalence:
-    \[ \tr{f_!\colon \D{X}\to \D{X}}{\pPrl{\base}}\simeq (pi)_!(pi)^{\ast}\SS_{\base}\in \D{\base}\,,\]
-    which is natural in spans $X\xleftarrow{j}C\xrightarrow{g} Y$ where $j$ is
-    an open immersion and $g$ is proper. \todo{Make naturality precise!}
+    \[ \tr{f_!\colon \D{X}\to \D{X}}{\pPrl{\base}}\simeq (pi)_!(pi)^{\ast}\SS_{\base}\in \D{\base}\,.\]
 \end{lem}
 \begin{proof}
   By CITE, the symmetric monoidal $(\infty,2)$-functor 
@@ -91,14 +89,14 @@ where the 2-cell is induced by the natural equivalence
 $pf=p$. Since $p$ is a proper shape submersion,
 the functor $p_!$ admits an internal right adjoint by REF/CITE,
 and hence this defines a morphism $(\D{X},f_!)\to (\D{\base},\id)$ in $\Endtrl(\pPrlf{\base})$. Applying the symmetric
-monoidal functor $\Trc\colon \Endtrl(\pPrlf{\base}) \to \D{\base}$ and using the identification of \cref{lem: top trace identification} we obtain
+monoidal functor $\TrcL\colon \Endtrl(\pPrlf{\base}) \to \D{\base}$ and using the identification of \cref{lem: top trace identification} we obtain
 a map:
 \[ \mdef{\lambda^f}\colon (pi)_!(pi)^{\ast}\SS_{\base} 
 \to \SS_{\base} \in \D{\base}\]
 which we call the \tdef{Lefschetz index} of $f$. 
     \end{cons}
 
-\begin{prop}
+\begin{prop}\label{prop: Top Lefschetz}
 Let $f\colon (X,p)\to (X,p)$ be a self map in $\psTop{\base}$ with 
 fixed points $i\colon X^f\to X$. 
 Let $\lambda^f\colon (pi)_!(pi)^{\ast}\SS_{\base} \to \SS_{\base}$ be
@@ -129,7 +127,7 @@ on (relative) compactly supported cohomology.
     \end{equation}
     where$\alpha\colon f_!p^*\to p^*$ is adjoint to the preferred equivalence $f^*p^* = p^*$ and $\beta$ is the preferred
     equivalence $p_!f_!=p_!$. Applying the functor 
-    \[ \Trc\colon \Endtrl(\pPrlf{\base})\to \D{\base}\,\]
+    \[ \TrcL\colon \Endtrl(\pPrlf{\base})\to \D{\base}\,\]
     we obtain a commutative diagram in $\D{\base}$ of
     the form:
     \[
@@ -137,15 +135,15 @@ on (relative) compactly supported cohomology.
 	{} & {(pi)_!(pi)^*\SS_{\base}} & \\
 	{\SS_{\base}} && {\SS_{\base}}
 	\arrow["{\lambda^f}", from=1-2, to=2-3]
-	\arrow["{\Trc(p^*,\alpha)}", from=2-1, to=1-2]
-	\arrow["{\Trc(p_!p^*, \beta\alpha)}"', from=2-1, to=2-3]
+	\arrow["{\TrcL(p^*,\alpha)}", from=2-1, to=1-2]
+	\arrow["{\TrcL(p_!p^*, \beta\alpha)}"', from=2-1, to=2-3]
 \end{tikzcd}
     \]
     The map $\beta\alpha\colon p_!p^*\SS_{\base}\to p_!p^*\SS_{\base}$ is by definition the pullback $\pb{f}$
     along $f$ and so by construction of the functor 
-    $\Trc$ REF, we have that
-    \[ \Trc(p_!p^*,\beta\alpha)= \tr{\pb{f}}{\D{\base}}\,.\]
-    It remains to show that $\Trc(p^*,\alpha)$ is given
+    $\TrcL$ REF, we have that
+    \[ \TrcL(p_!p^*,\beta\alpha)= \tr{\pb{f}}{\D{\base}}\,.\]
+    It remains to show that $\TrcL(p^*,\alpha)$ is given
     by the pullback $\pb{pi}$ along the projection 
     map $pi\colon X^{f}\to \base$.
     Indeed, by \cref{lem: proper internal right adj} the span 
@@ -168,7 +166,7 @@ on (relative) compactly supported cohomology.
 \]
 in $\Endtrl(\sSpan{\pTop{\base}}_{\cP,\cI})$ whose image under the functor 
 $\D{(-)}$ is the left hand square of \eqref{eq: categorical factorization top}. Thus, unwinding the definitions and using the naturality of the
-functor $\Trc$, we learn that the map $\Trc(p^*,\alpha)$
+functor $\Trc$, we learn that the map $\TrcL(p^*,\alpha)$
 is the image of the 2-morphism: 
 \[
 \begin{tikzcd}
@@ -203,11 +201,16 @@ WE make use of the following fact from REF appendix.
 By REF the assignment $A\mapsto \pSp{\base}{A}$ refines to a symmetric
 monoidal $(\infty,2)$-functor:
 \[ \pSp{\base}{(-)}\colon \sSpan{\pSpc{\base}}_{\simeq,\all} \too \pPrlf{\base}\,.\]
+
+\begin{notation}
 Consider the induced functor on endomorphism $(\infty,1)$-categories
-\[ \Omega \pSp{\base}{(-)}\colon \Omega_{\base}\sSpan{\pSpc{\base}}_{\simeq,\all}\to \pSp{\base}{}\,,\]
-and let $F\colon \pSpc{\base}\to \Omega_{\base}\sSpan{\pSpc{\base}}_{\simeq,\all}$ denote the functor which takes $A\in \pSpc{\base}$ to the terminal
-span $\base\leftarrow A \rightarrow \base$ and takes any map 
-$f\colon A\to B$ to the 2-morphism
+\[ \Omega \pSp{\base}{(-)}\colon \Omega_{\base}\sSpan{\pSpc{\base}}_{\simeq,\all}\to \pSp{\base}{}\,.\]
+For any $A\in \pSpc{\base}$ write $\mdef{\SS_{\base}[A]}$ for the 
+\tdef{relative spherical homology} of $A$, i.e~the image
+of the span $\base\leftarrow A \rightarrow \base$ under
+$\Omega\pSp{\base}{(-)}$. Moreover, for any map 
+$f\colon A\to B$ write $\mdef{\tf{f}}\colon \SS_{\base}[A]\to \SS_{\base}[B]$
+for the \tdef{transfer map} induced from the 2-morphism:
 \[\begin{tikzcd}
 	& B & \\
 	\base & A & \base \\
@@ -219,12 +222,9 @@ $f\colon A\to B$ to the 2-morphism
 	\arrow[from=3-2, to=2-1]
 	\arrow[from=3-2, to=2-3]
 \end{tikzcd}\]
-We denote the composite $\Omega \pSp{\base}{F(-)}$ by
-\[ \mdef{\SS_{\base}[-]}\colon \pSpc{\base}\too \Sp_{\base}\,,\]
-and refer to $\SS_{\base}[A]$ as the relative spherical homology
-of $A$. Moreover, we call the map 
-\[ \tf{f}\coloneq \SS_{\base}[f]\colon \SS_{\base}[A]\to \SS_{\base}[B]\]
-the transfer along $f$. 
+via the functor $\Omega\pSp{\base}{(-)}$.
+\end{notation}
+
 \begin{rmk}
     Explicitly, for any $p\colon A\to \base \in \pSpc{\base}$, the
     relative spherical homology of $A$ is given by
@@ -234,8 +234,10 @@ the transfer along $f$.
     \todo{Write out}
 \end{rmk}
 
-\begin{lem}
-    
+\begin{lem}\label{lem: etale internal right adj}
+For any $(p\colon A\to \base)\in \pSpc{\base}$ the span 
+$(A\xleftarrow{\id} A \xrightarrow{p} \base) \in \sSpan{\pSpc{\base}}_{\simeq, \all}$ admits an internal right adjoint given by 
+$(\base \xrightarrow{p} A \xleftarrow{\id} A)$.
 \end{lem}
 
 \begin{lem}\label{lem: homo trace identification}
@@ -269,7 +271,7 @@ where the 2-cell is induced by the natural identification
 $pf=p$. This datum defines a map
 \[ (\pSp{\base}{},\id)\to (\pSp{\base}{A},f^*)\]
 in $\Endtrl(\pPrlf{\base})$. Applying
-the symmetric monoidal functor $\Trc$ of REF 
+the symmetric monoidal functor $\TrcL$ 
 and using the identification of \cref{lem: homo trace identification}, we obtain a map:
 \[ \mdef{\rho_f}\colon \SS_{\base} \to \SS_{\base}[\cL^fA] \]
 which we call the \tdef{Reidemeister trace} of $f$. 
@@ -288,7 +290,7 @@ which we call the \tdef{Reidemeister trace} of $f$.
     on relative spherical homology.
 \end{prop}
 \begin{proof}
-    Consider the commutative diagram in $\Endtrl(\pPrlf{\base})$:
+    The proof is completely analogous to the one of \cref{prop: Top Lefschetz}. Indeed, consider the commutative diagram in $\Endtrl(\pPrlf{\base})$:
     \[
    \begin{tikzcd}
 	{\D{\base}} & {\pSp{\base}{A}} & {\D{\base}} \\
@@ -305,6 +307,16 @@ which we call the \tdef{Reidemeister trace} of $f$.
 \end{tikzcd} 
     \]
 where $\gamma$ is the preferred equivalence $f^{*}p^*=p^*$ and 
-$\delta$ is adjoint to the preferred equivalence $p_\sharp f_{\sharp}= p_{\sharp}$. Applying the symmetric monoidal functor 
-    
+$\delta$ is adjoint to the preferred equivalence $p_\sharp f_{\sharp}= p_{\sharp}$. Applying the functor $\TrcL$, we obtain a commutative diagram:
+    \[\begin{tikzcd}
+	{} & {\SS_{\base}[\cL^fA]} & \\
+	{\SS_{\base}} && {\SS_{\base}}
+	\arrow["{\TrcL(p_{\sharp},\delta})", from=1-2, to=2-3]
+	\arrow["{\rho_f}", from=2-1, to=1-2]
+	\arrow["{\TrcL(p_\sharp p^*, \delta\gamma)}"', from=2-1, to=2-3]
+\end{tikzcd}\]
+   Unwinding the definitions the lower horizontal map naturally identifies with the trace
+   of the pushforward map. Moreover, we can identify the right hand
+   diagnoal map with the pushforward along the terminal map 
+   $ip\colon \cL^fA\to \base$ using \cref{lem: etale internal right adj}.
 \end{proof}
