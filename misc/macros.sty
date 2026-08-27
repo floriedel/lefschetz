@@ -27,6 +27,7 @@
 \newcommand{\Prdualf}{\mathcal{P}\mathrm{r}_{\mathrm{st}}^{\dual}}
 \newcommand{\Prlstf}{\mathcal{P}\mathrm{r}^{\mathrm{L}}_{\mathrm{st}} }
 \newcommand{\pPrl}[1]{\mathrm{Pr}^{\mathrm{L}}_{#1}} % Modules in Prl over (1: category)
+\newcommand{\pPrll}[1]{\mathrm{Pr}^{\mathrm{LL}}_{#1}} % Modules in Prl over (1: category), with strongly continuous/internally left adjoint functors as morphisms
 \newcommand{\pPrlf}[1]{\mathcal{P}\mathrm{r}^{\mathrm{L}}_{#1}} % Modules in Prlstf over (1: category)
 
 \newcommand{\Bordfr}[1]{\mathrm{Bord}_1^{\mathrm{fr}}(\RR^{#1})}
@@ -78,7 +79,11 @@
 \newcommand{\freeondual}{\Sp\lbrack T,T^\vee\rbrack}
 
 \DeclareMathOperator{\fundgroupoid}{\Pi_\infty}
-\newcommand{\ani}[1]{\fundgroupoid({#1})}
+\NewDocumentCommand{\ani}{ m o }{%
+    \IfNoValueTF{#2}
+    {\fundgroupoid({#1})}
+    {\operatorname{\Pi_\infty^{#2}} (#1)}%
+  }
 
 \newcommand{\lchaus}{\mathrm{LCHaus}}
 \newcommand{\spaces}{\mathrm{Ani}}
@@ -109,6 +114,7 @@
 \DeclareMathOperator{\Spc}{\mathcal{S}}
 \DeclareMathOperator{\Set}{Set}
 \DeclareMathOperator{\Prl}{Pr^L}
+\DeclareMathOperator{\Prll}{Pr^{LL}}
 \DeclareMathOperator{\Prlst}{Pr^L_{st}}
 \DeclareMathOperator{\Prr}{Pr^{R}}
 \DeclareMathOperator{\Prrst}{Pr^{R}_{st}}

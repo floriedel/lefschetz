@@ -1,29 +1,29 @@
 \subsection{Parametrized traces and the Nielsen fixed point theorem}
-For an allowable dynamical system $f\curvearrowright \tset\xrightarrow p B$, we defined the associated invariants
+For an allowable dynamical system $f\curvearrowright \tset\xrightarrow p\base$, we defined the associated Lefschetz index and Reidemeister trace
 \begin{equation}
   \label{eq:nielsenthy-intro-characters}
-  \lambda^f\colon (pi)_*(pi)^*\SS_B\to \SS_B\,
-  \qquad\text{and}\qquad\rho_{f}\colon \SS_B \to \SS [\cL^{f}p_\sharp(\pt_\tset )]\,,
+  \lambda^f\colon (pi)_*(pi)^*\SS_\base\to \SS_\base\,
+  \qquad\text{and}\qquad\rho_{f}\colon \SS_\base \to \SS [\cL^{f}\ani{\tset}[\base]]\,,
 \end{equation}
 where $i\colon\tset^f\to\tset$ denotes the inclusion of the fixed points.
 The goal of this subsection is to establish the following relationship between $\lambda^f$ and $\rho_{f}$:
 \begin{thm}\label{thm: lefschetz-nielsen}
-  Let $f\curvearrowright \tset\xrightarrow p B$ be an allowable dynamical system. There is a commutative diagram in the category of sheaves of spectra on $B$:
+  Let $f\curvearrowright \tset\xrightarrow p\base$ be an allowable dynamical system. There is a commutative diagram in the category of sheaves of spectra on $\base$:
   \[\begin{tikzcd}
-      &  (pi)_*(pi)^!\SS_B\\
-      \SS_B & {\SS [\cL^{f}p_\sharp(\pt_\tset )]},
+      &  (pi)_*(pi)^!\SS_\base\\
+      \SS_\base & {\SS [\cL^{f}\ani{\tset}[\base]]},
       \arrow["\mathfrak a", from=1-2, to=2-2]
       \arrow["{\lambda_f}", from=2-1, to=1-2]
       \arrow["{\rho_f}"', from=2-1, to=2-2]
     \end{tikzcd}\]
-  where $\lambda_f$ denotes the $\SS_B$-linear dual of $\lambda^f$. Furthermore,
+  where $\lambda_f$ denotes the $\SS_\base$-linear dual of $\lambda^f$. Furthermore,
   \begin{enumerate}[label=(\roman*)]
   \item $\mathfrak a$ is natural in proper maps of allowable dynamical systems; and
   \item for $f = \id$, the map $\mathfrak a$ is equivalent to the composition
     \[
-      p_*p^!\SS_B\xrightarrow\sim\SS\lbrack p_\sharp (\pt_\tset)\rbrack\to \SS\lbrack \cL p_\sharp, (\pt_\tset)\rbrack,
+      p_*p^!\SS_\base\xrightarrow\sim\SS\lbrack \ani{\tset}[\base]\rbrack\to \SS\lbrack \cL \ani{\tset}[\base]\rbrack,
     \]
-    where the first map is the canonical equivalence and the second map is induced by the map $p_\sharp (\pt_\tset)\to \cL p_\sharp (\pt_\tset)$ adjoint to the projection $S_B^1\times p_\sharp (\pt_\tset)\to p_\sharp (\pt_\tset)$.
+    where the first map is the canonical equivalence and the second map is induced by the map $\ani{\tset}[\base]\to \cL \ani{\tset}[\base]$ adjoint to the projection $S_\base^1\times \ani{\tset}[\base]\to \ani{\tset}[\base]$.
   \end{enumerate}
 \end{thm}
 As an immediate consequence of this result, we will deduce the classical Nielsen fixed point theorem, see~\cref{subsec:classical-nielsen}.
@@ -31,26 +31,26 @@ As an immediate consequence of this result, we will deduce the classical Nielsen
 The proof of~\cref{thm: lefschetz-nielsen} follows the same pattern as our treatment of the Lefschetz trace formula in the preceding section. Since $\rho_f$ can be defined as the trace of the morphism
 \[
   \begin{tikzcd}
-    \Sp_B\arrow[d,equal] \arrow[r] & Sp_B^{p_\sharp (\pt_\tset)}\arrow[d,"f^*"]\\
-    \Sp_B\arrow[r]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt] & \Sp_B^{p_\sharp (\pt_\tset)}
+    \Sp_\base\arrow[d,equal] \arrow[r] & \Sp_\base^{\ani{\tset}[\base]}\arrow[d,"f^*"]\\
+    \Sp_\base\arrow[r]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt] & \Sp_\base^{\ani{\tset}[\base]}
   \end{tikzcd}
 \]
-in the category of traceable endomorphisms $\Endtrl (\pPrlf B )$, our goal is to factor this morphism through a traceable endomorphism that ``remembers the topology'' of the dynamical system $f\curvearrowright\tset$. Such a factorization is provided by the (parametrized) assembly functor and (parametrized) Wall object of Bartels--Nikolaus (in the unparametrized case) and Volpe--Wolff--Ramzi (in the general case). 
-\subsubsection{Factoring the Reidemeister trace}
+in the category of traceable endomorphisms $\Endtrl (\pPrlf\base )$, our goal is to factor this morphism through a traceable endomorphism that ``remembers the topology'' of the dynamical system. Such a factorization is provided by the assembly functor and Wall object of Bartels--Nikolaus (in the unparametrized case) and Volpe--Wolff--Ramzi (in the general case), as we explain in~\cref{subsec:factoring-reidemeister}.
+\subsubsection{Factoring the Reidemeister trace}\label{subsec:factoring-reidemeister}
 \begin{thm}
-  Let $f\curvearrowright \tset\xrightarrow p B$ be an allowable dynamical system. The lax commutative square
+  Let $f\curvearrowright \tset\xrightarrow p\base$ be an allowable dynamical system. The lax commutative square
   \[
     \begin{tikzcd}
-      \Sp_B\arrow[d,equal] \arrow[r] & Sp_B^{p_\sharp (\pt_\tset)}\arrow[d,"f^*"]\\
-      \Sp_B\arrow[r]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt] & \Sp_B^{p_\sharp (\pt_\tset)}
+      \Sp_\base\arrow[d,equal] \arrow[r] & Sp_\base^{\ani{\tset}[\base]}\arrow[d,"f^*"]\\
+      \Sp_\base\arrow[r]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt] & \Sp_\base^{\ani{\tset}[\base]}
     \end{tikzcd}
   \]
   admits a factorization
   \begin{equation}
     \label{eq:categorical-factorization-of-param-reidemeister}
     \begin{tikzcd}
-      \Sp_B & {\coShat_B(\tset)} & \Sp_B^{p_\sharp (\pt_\tset)} \\
-      \Sp_B & {\coShat_B(\tset)} & \Sp_B^{p_\sharp (\pt_\tset)}
+      \Sp_\base & {\coShat_\base(\tset)} & \Sp_\base^{\ani{\tset}[\base]} \\
+      \Sp_\base & {\coShat_\base(\tset)} & \Sp_\base^{\ani{\tset}[\base]}
       \arrow["{w_{\tset}}", from=1-1, to=1-2]
       \arrow["\id"', from=1-1, to=2-1]
       \arrow["{a_{\delta}}", from=1-2, to=1-3]
@@ -65,44 +65,42 @@ in the category of traceable endomorphisms $\Endtrl (\pPrlf B )$, our goal is to
   in $\Endtrl (\pPrlf{B})$, natural in proper maps of allowable dynamical systems.
 \end{thm}
 \begin{prop}\label{prop: lax calculation of trace on coshv hat}
-  Let $f\curvearrowright \tset\xrightarrow p B$ be an allowable dynamical system. 
+  Let $f\curvearrowright \tset\xrightarrow p\base$ be an allowable dynamical system. 
   The map
   \[
-    \TrcL (a_\delta)\colon \TrcL (f^?\curvearrowright\coShat_B (\tset ))\too \TrcL(f^*\curvearrowright \Sp_B^{p_\sharp (\pt_\tset)})\simeq \SS [\cL^{f}p_\sharp(\pt_\tset )]
+    \TrcL (a_\delta)\colon \TrcL (f^?\curvearrowright\coShat_\base (\tset ))\too \TrcL(f^*\curvearrowright \Sp_\base^{\ani{\tset}[\base]})\simeq \SS [\cL^{f}\ani{\tset}[\base]]
   \]
   admits a factorization
   \begin{equation}
     \label{eq:lax-trace-on-cosheaves}
     \begin{tikzcd}
-      &  (pi)_*(pi)^!\SS_B\\
-      \TrcL (f^?\curvearrowright\coShat_B (\tset )) & {\SS [\cL^{f}p_\sharp(\pt_\tset )]},
+      &  (pi)_*(pi)^!\SS_\base\\
+      \TrcL (f^?\curvearrowright\coShat_\base (\tset )) & {\SS [\cL^{f}\ani{\tset}[\base]]},
       \arrow[from=1-2, to=2-2]
       \arrow[from=2-1, to=1-2]
       \arrow[from=2-1, to=2-2]
     \end{tikzcd}
   \end{equation}
-  in $\Sp_B$, natural in proper maps of allowable dynamical systems. Furthermore, the composite
+  in $\Sp_\base$, natural in proper maps of allowable dynamical systems. Furthermore, the composite
   \[
-    \SS_B\simeq\TrcL (\id\curvearrowright\Sp_B)\to \TrcL (f^?\curvearrowright\coShat_B (\tset ))\to (pi)_*(pi)^!\SS_B
+    \SS_\base\simeq\TrcL (\id\curvearrowright\Sp_\base)\to \TrcL (f^?\curvearrowright\coShat_\base (\tset ))\to (pi)_*(pi)^!\SS_\base
   \]
   is homotopic to $\lambda_f$.
 \end{prop}
 In order to prove~\cref{prop: lax calculation of trace on coshv hat}, we want to interpret the lax commutative square
   \[
     \begin{tikzcd}
-      \coShat_B(\tset )\arrow[d,"f^?"] \arrow[r,"a_\delta"] & Sp_B^{p_\sharp (\pt_\tset)}\arrow[d,"f^*"]\\
-      \coShat_B(\tset )\arrow[r,"a_\delta"]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt] & \Sp_B^{p_\sharp (\pt_\tset)}
+      \coShat_\base(\tset )\arrow[d,"f^?"] \arrow[r,"a_\delta"] & Sp_\base^{\ani{\tset}[\base]}\arrow[d,"f^*"]\\
+      \coShat_\base(\tset )\arrow[r,"a_\delta"]\arrow[ru,Rightarrow, shorten <=5pt,shorten >=5pt] & \Sp_\base^{\ani{\tset}[\base]}
     \end{tikzcd}
   \]
-  as an assembly map in a convenient closed symmetric monoidal category. As inspiration, recall that for a commutative ring $k$ there is an (often useful) equivalence between on one side the category of pairs $(V,T\colon V\to V)$, where $V$ is a $k$-module and $T$ is a $k$-linear map, and on the other side the category of modules over the polynomial ring $k\lbrack t\rbrack$. This equivalence is a consequence of the fact that $k\lbrack t\rbrack$ is the free associative (and coincidentally also commutative) $k$-algebra on a single generator, so a module structure $k\lbrack t\rbrack\to\End_k(V)$ is uniquely determined by the value of $t$. Similarly, we will consider the free $E_1$-algebra $\Sp_B\lbrack T\rbrack$ on a single dualizable object:
+  in terms of an assembly map in a convenient closed symmetric monoidal category. As inspiration, recall that for a commutative ring $k$ there is an (often useful) equivalence between on one side the category of pairs $(V,t\colon V\to V)$, where $V$ is a $k$-module and $t$ is a $k$-linear map, and on the other side the category of modules over the polynomial ring $k\lbrack T\rbrack$. This equivalence is a consequence of the fact that $k\lbrack T\rbrack$ is the free associative (and coincidentally also commutative) $k$-algebra on a single generator, so a module structure $k\lbrack T\rbrack\to\End_k(V)$ is uniquely determined by the value of $T$. Similarly, we will consider the free associate $\Sp_\base$-algebra on a single dualizable object:
   \begin{thm}
-    Let $B\NN$ be the delooping category of the monoid of non-negative integers under addition, and let $\Fun_0 (B\NN ,\pPrl B)\subseteq\Fun (B\NN ,\pPrl B)$ denote the full subcategory spanned by functors $F\colon B\NN\to\pPrl B$ such that $F(1)$ is strongly continuous, where $1$ denotes the generating morphism $\ast\to \ast$ in $B\NN$.
-
     The forgetful functor
     \[
-      \Fun_0(B\NN ,\pPrl B)\too\pPrl B
+      \Fun(B\NN ,\pPrll\base)\too\pPrl\base
     \]
-    is monadic.
+    has a left adjoint. Furthermore, this adjunction is monadic and symmetric monoidal, where $\Fun (B\NN ,\pPrll\base)$ is equipped with the pointwise Lurie tensor product.
   \end{thm}
 \subsubsection{The Nielsen fixed point theorem}\label{subsec:classical-nielsen}
 Let $\tset$ be a topological set that is compact Hausdorff and locally of constant shape. For a self-map $f\colon \tset\to \tset$, the so-called Nielsen fixed point theorem of Reidemeister~\cite{Reidemeister1936} and Wecken~\cite{Wecken1941a,Wecken1941b,Wecken1942} gives a lower bound on the number of fixed points of $f$ that only depends on the homotopy class of $f$. The lower bound is expressed in terms of the following numerical invariant:
@@ -120,9 +118,9 @@ By construction, $N_f$ depends only on the homotopy class of $f$.\footnote{In ot
 Since the Lefschetz trace is the sum of the coordinates of the Reidemeister trace, we have
 \begin{equation}
   \label{eq:lefschetz-vs-nielsen-fixed-pt}
-  \text{Lefschetz trace }\geq 1\Leftrightarrow N_f\geq 1.
+  \text{Lefschetz trace }\geq 1\Rightarrow N_f\geq 1.
 \end{equation}
-We can therefore see the Nielsen fixed point theorem as a refinement of the Lefschetz fixed point theorem. Note however that aside from~\eqref{eq:lefschetz-vs-nielsen-fixed-pt}, there is no formula relating the Nielsen number and the Lefschetz trace.
+We can therefore view the Nielsen fixed point theorem as a refinement of the Lefschetz fixed point theorem. Note however that aside from~\eqref{eq:lefschetz-vs-nielsen-fixed-pt}, there is no general formula relating the Nielsen number and the Lefschetz trace. ()
 \begin{proof}
   We may assume that $\# \tset^f < \infty$, as the statement is trivial otherwise. Consider the commutative diagram
   \[
@@ -169,7 +167,7 @@ through an object in $\Endtrl(\Prlstf)$ that has access to actual topological in
       % Nodes
       \node (Bvee) at (-0.3,3.3) {$B^\vee$};
       \node (deltabox) at (1,2.5) [rectangle, draw, minimum width=0.6cm, minimum height=0.6cm] {$\delta$};
-      \node (evbox) at (0,1) [rectangle, draw, minimum width=0.6cm, minimum height=0.6cm] {$\mathrm{ev}_B$};
+      \node (evbox) at (0,1) [rectangle, draw, minimum width=0.6cm, minimum height=0.6cm] {$\mathrm{ev}_\base$};
       \node (A) at (1.2,0) {$A$,};
       \node (B) at (0.3,1.8) {$B$};
 
@@ -179,7 +177,7 @@ through an object in $\Endtrl(\Prlstf)$ that has access to actual topological in
       \draw (deltabox.south -| 1.2,2.5) -- (A);
     \end{tikzpicture}
   \end{equation*}
-  where $B^\vee = \Hom_{\mathcal C}(B,1)$ and $\mathrm{ev}_B\colon B^\vee\otimes B\to 1$ is the evaluation map, i.e. the counit of the adjunction between ${-}\otimes B$ and $\Hom_{\mathcal C}(B,{-})$.
+  where $B^\vee = \Hom_{\mathcal C}(B,1)$ and $\mathrm{ev}_\base\colon B^\vee\otimes B\to 1$ is the evaluation map, i.e. the counit of the adjunction between ${-}\otimes B$ and $\Hom_{\mathcal C}(B,{-})$.
 \end{defn}
 Let $\Prdual$ denote the category of dualizable stable categories with strongly continuous functors between them. The Lurie tensor product on presentable categories restricts to a symmetric monoidal structure on $\Prdual$. By \cite{Ramzi2024}, this symmetric monoidal structure is closed. We denote the resulting internal mapping object by $\Homd ({-},{-})$.
 \begin{defn}[Bartels--Nikolaus]
